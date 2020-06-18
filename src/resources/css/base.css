@@ -1,0 +1,29 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  /* This defines what 1rem is*/
+  /*1 rem = 12px;  */
+  font-size: 12px;
+  background-image: linear-gradient(
+    120deg,
+    #6885AD 0%,
+    #446694 100%
+  ); /*happy fisher*/
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  box-sizing: border-box;
+
+  font-family:  "Roboto", "Open Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 400, 700;
+  line-height: 1.7;
+  color: #f3fafe;
+}

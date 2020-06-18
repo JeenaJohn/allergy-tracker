@@ -1,0 +1,40 @@
+header {
+  background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(0, 0, 0, 0.7)),
+      to(rgba(0, 0, 0, 0.7))
+    ),
+    url(../images/header_img.jpg);
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)),
+    url(../images/header_img.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+}
+
+.header__logo-box {
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+}
+
+.header__logo {
+  height: 3.5rem;
+}
+
+.header__userinfo {
+  position: absolute;
+  top: 4rem;
+  right: 4rem;
+}
+
+.header__text-box {
+  position: absolute;
+  top: 30%;
+  left: 10rem;
+  width: 50%;
+  
+}

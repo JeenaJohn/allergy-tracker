@@ -1,24 +1,79 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import logo from "./logo.svg";
+
+import firebase, { auth, provider } from "./firebase.js";
+import "./App.css";
+import MyAllergy from "./MyAllergy";
 
 function App() {
+  const [kid, setKidProfile] = useState({});
+
+  const [user, setUser] = useState(null);
+  const [userID, setUserID] = useState(null);
+
+  const logout = () => {
+    auth.signOut().then(() => {
+      setUser(null);
+      setUserID(null);
+    });
+  };
+
+  const login = () => {
+    auth.signInWithPopup(provider).then((result) => {
+      const user = result.user;
+      setUser(user);
+      setUserID(user.uid);
+     
+    });
+
+  };
+
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUser(user);
+        setUserID(user.uid);
+      }
+    });
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+           <header>
+        <nav>
+          <div className="row">
+            <div className="header__logo-box">
+              <img src={logo} alt="Logo" className="header__logo" />
+            </div>
+            <div className="header__userinfo">
+              {user ? (
+                <span>
+                  <h4>Welcome {user.displayName}</h4>
+                  <button className="btn btn-medium-ghost" onClick={logout}>
+                    Logout
+                  </button>
+                </span>
+              ) : (
+                <button className="btn btn-medium" onClick={login}>
+                  LogIn with Google
+                </button>
+              )}
+            </div>
+          </div>
+        </nav>
+        <div className="header__text-box">
+          <h1 className="heading-primary">
+            <span className="heading-primary--main">Allergy Tracker</span>
+ 
+          </h1>
+
+          <a href="#section-list-data" className="btn btn-header">
+            Show my Allergies
+          </a>
+        </div>
       </header>
+      <MyAllergy/>
     </div>
   );
 }
