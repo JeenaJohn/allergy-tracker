@@ -1,0 +1,31 @@
+.section-list-data {
+    background-color: #f7f7f7;
+    /*  background-color:#e6e1e1; */
+    padding: 6rem 0;
+    color: #777777;
+  }
+
+/*Add new kid's profile */
+
+  .new-kid{
+    margin-top: 0.5rem;
+    padding: 2rem 3rem;
+    font-size: 1.3rem;
+    color: #5e5e5e;
+  }
+
+  .kid-name-label {
+    margin: 0.5rem;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    font-style: oblique;
+  }
+  
+  .kid-name-input {
+    margin: 0 0.5rem;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    
+    
+  }
+  

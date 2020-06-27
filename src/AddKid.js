@@ -1,21 +1,43 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
-function AddKid() {
+function AddKid(props) {
+  const [newKidName, setNewKidName] = useState("");
 
-    const [newKidName, setNewKidName] = useState('');
-    const [newKidAge, setNewKidAge] = useState('');
-    return (
-    <div>
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    switch (name) {
+      case "kidName":
+        setNewKidName(value);
+        break;
+      default:
+    }
+  };
+
+  return (
+    <div className="new-kid">
       <div>
-        <label for="kidName">Child's Name</label>
-        <input type="text" name="kidName" value={newKidName} />
+        <label for="kidName" className="kid-name-label">
+          Kid's Name
+        </label>
+        <input
+          type="text"
+          name="kidName"
+          className="kid-name-input"
+          value={newKidName}
+          onChange={(e) => handleChange(e)}
+          required
+        />
       </div>
-      <div>
-        <label for="kidAge">Child's Age</label>
-        <input type="number" name="kidage" value={newKidAge} />
-      </div>
-      <div>
-        <button type="submit">Save</button>
+
+      <div className="u-center-text">
+        <button
+          className="btn btn-medium "
+          type="submit"
+          onClick={(e) => props.save(e, newKidName)}
+        >
+          Save
+        </button>
       </div>
     </div>
   );

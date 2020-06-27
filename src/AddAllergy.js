@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
-function AddAllergy() {
+function AddAllergy(props) {
   let itchy = true;
   let itchLevel = 0;
   let food, activity;
   let eatTime, activityTime;
   return (
     <div>
-      <h2>Add Allergy Details</h2>
+      <h2>Add Allergy Details - {props.selectedKid}</h2>
       <h3>Symptoms</h3>
       <div>
         <div>

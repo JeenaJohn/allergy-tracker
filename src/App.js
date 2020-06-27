@@ -73,7 +73,21 @@ function App() {
           </a>
         </div>
       </header>
-      <MyAllergy/>
+
+      <section id="section-list-data" className="section-list-data">
+        <div className="u-center-text u-margin-bottom-medium">
+          <h2 className="heading-secondary bg-color-blue">Choose Kid Profile</h2>
+        </div>
+        {userID != null ? (
+          <ul>
+            <MyAllergy userID={userID} />
+          </ul>
+        ) : (
+          <p className="paragraph u-text-left">You have to login first to use the tracker</p>
+        )}
+ 
+        
+      </section>
     </div>
   );
 }
