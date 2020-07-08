@@ -1,31 +1,68 @@
 .section-list-data {
     background-color: #f7f7f7;
     /*  background-color:#e6e1e1; */
-    padding: 6rem 0;
+    
     color: #777777;
+  }
+
+  .section-choose-kid{
+    background-color: #e6e1e1;
+    padding: 6rem 0;
+  }
+
+  /*List kid profiles for user */
+  .list-kids{
+    width:60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-size: 1.8rem;
+    padding-left: 0.2rem;
+    text-transform: capitalize;
+    
   }
 
 /*Add new kid's profile */
 
-  .new-kid{
+  .add-kid{
     margin-top: 0.5rem;
-    padding: 2rem 3rem;
-    font-size: 1.3rem;
+    padding: 5rem 3rem;
+    font-size: 1.5rem;
     color: #5e5e5e;
   }
 
   .kid-name-label {
     margin: 0.5rem;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     padding: 0.5rem;
-    font-style: oblique;
+    
   }
   
   .kid-name-input {
     margin: 0 0.5rem;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     padding: 0.5rem;
     
     
   }
+
+  /*Add allergy-details*/
+
+  .box-questions{
+    width:60%;
+    margin-left: 20%;
+    margin-bottom:  5rem;
+    padding: 2rem;
+    border: 1px solid #fff;
+    background-color: #e6e1e1;
+    border-radius: 1rem;
+ 
+  }
+
+  .question{
+    font-size: 1.5rem;
+    margin: 1rem 3rem;
+  }
+
+  
   

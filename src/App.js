@@ -23,11 +23,8 @@ function App() {
       const user = result.user;
       setUser(user);
       setUserID(user.uid);
-     
     });
-
   };
-
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -40,7 +37,7 @@ function App() {
 
   return (
     <div className="App">
-           <header>
+      <header>
         <nav>
           <div className="row">
             <div className="header__logo-box">
@@ -65,7 +62,6 @@ function App() {
         <div className="header__text-box">
           <h1 className="heading-primary">
             <span className="heading-primary--main">Allergy Tracker</span>
- 
           </h1>
 
           <a href="#section-list-data" className="btn btn-header">
@@ -75,19 +71,25 @@ function App() {
       </header>
 
       <section id="section-list-data" className="section-list-data">
-        <div className="u-center-text u-margin-bottom-medium">
-          <h2 className="heading-secondary bg-color-blue">Choose Kid Profile</h2>
-        </div>
+  
         {userID != null ? (
           <ul>
             <MyAllergy userID={userID} />
           </ul>
         ) : (
-          <p className="paragraph u-text-left">You have to login first to use the tracker</p>
+          <p className="paragraph u-text-left">
+            You have to login first to use the tracker
+          </p>
         )}
- 
-        
       </section>
+
+      <footer>
+        <div className="u-center-text">
+          <p className="paragraph">
+            Copyright &copy; 2020 by ThinkLambda. All rights reserved.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function AddKid(props) {
-  const [newKidName, setNewKidName] = useState("");
+  const [newKidName, setNewKidName] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -15,7 +15,7 @@ function AddKid(props) {
   };
 
   return (
-    <div className="new-kid">
+    <div >
       <div>
         <label for="kidName" className="kid-name-label">
           Kid's Name

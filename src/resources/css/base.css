@@ -17,9 +17,13 @@ html {
 body {
   box-sizing: border-box;
 
-  font-family:  "Roboto", "Open Sans", sans-serif;
+  font-family:  "Roboto", sans-serif;
   font-size: 10px;
   font-weight: 400, 700;
   line-height: 1.7;
   color: #f3fafe;
+}
+
+footer{
+  color: #777777;
 }
