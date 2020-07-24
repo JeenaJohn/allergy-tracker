@@ -71,7 +71,8 @@ function App() {
                 logout={logout}
                 stateChanged={stateChanged}>
           <Switch>
-            <Route path="/" exact component={MyAllergy} />
+            <Route path="/" exact 
+            component={()=> <Home userID={userID} /> } />
             <Route path="/kid" 
             component={()=> <AddKid userID={userID} /> } />
             <Route path="/diary" 

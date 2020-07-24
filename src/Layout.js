@@ -15,7 +15,7 @@ function Layout(props) {
 
   return (
     <div>
-      <header>
+      <header className="not-home-page">
         <nav>
           <div className="row">
             <div className="header__logo-box">
@@ -37,15 +37,7 @@ function Layout(props) {
             </div>
           </div>
         </nav>
-        <div className="header__text-box">
-          <h1 className="heading-primary">
-            <span className="heading-primary--main">Allergy Tracker</span>
-          </h1>
-
-          <a href="#section-list-data" className="btn btn-header">
-            Show my Allergies
-          </a>
-        </div>
+       
       </header>
 
       <div>{props.children}</div>
