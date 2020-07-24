@@ -1,15 +1,26 @@
-import React, { useState, useEffect } from "react";
-import logo from "./logo.svg";
+import React, { Fragment, useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Link, Switch, useParams } 
+from "react-router-dom";
 
 import firebase, { auth, provider } from "./firebase.js";
+
 import "./App.css";
+import Layout from "./Layout";
+import Home from "./Home";
+import AddKid from "./AddKid";
+import Sidebar from "./Sidebar";
 import MyAllergy from "./MyAllergy";
+import Report from "./Report";
+
+
+let userID ="jjj";
 
 function App() {
-  const [kid, setKidProfile] = useState({});
+
 
   const [user, setUser] = useState(null);
   const [userID, setUserID] = useState(null);
+
 
   const logout = () => {
     auth.signOut().then(() => {
@@ -26,71 +37,51 @@ function App() {
     });
   };
 
-  useEffect(() => {
+  const stateChanged = () => {
     auth.onAuthStateChanged((user) => {
       if (user) {
         setUser(user);
         setUserID(user.uid);
       }
     });
-  });
+  }
 
   return (
-    <div className="App">
-      <header>
-        <nav>
-          <div className="row">
-            <div className="header__logo-box">
-              <img src={logo} alt="Logo" className="header__logo" />
-            </div>
-            <div className="header__userinfo">
-              {user ? (
-                <span>
-                  <h4>Welcome {user.displayName}</h4>
-                  <button className="btn btn-medium-ghost" onClick={logout}>
-                    Logout
-                  </button>
-                </span>
-              ) : (
-                <button className="btn btn-medium" onClick={login}>
-                  LogIn with Google
-                </button>
-              )}
-            </div>
-          </div>
-        </nav>
-        <div className="header__text-box">
-          <h1 className="heading-primary">
-            <span className="heading-primary--main">Allergy Tracker</span>
-          </h1>
-
-          <a href="#section-list-data" className="btn btn-header">
-            Show my Allergies
-          </a>
-        </div>
-      </header>
-
-      <section id="section-list-data" className="section-list-data">
-  
-        {userID != null ? (
-          <ul>
-            <MyAllergy userID={userID} />
-          </ul>
-        ) : (
-          <p className="paragraph u-text-left">
-            You have to login first to use the tracker
-          </p>
-        )}
-      </section>
-
-      <footer>
-        <div className="u-center-text">
-          <p className="paragraph">
-            Copyright &copy; 2020 by ThinkLambda. All rights reserved.
-          </p>
-        </div>
-      </footer>
-    </div>
+    <Router>
+      <div className="sidebar">
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/kid">Add Kid</Link>
+          </li>
+          <li>
+            <Link to="/diary">Diary</Link>
+          </li>
+          <li>
+            <Link to="/report">Report</Link>
+          </li>
+        </ul>
+      </div>
+      <div className="main-layout">
+        <Layout user={user}
+                userID={userID}
+                login={login}
+                logout={logout}
+                stateChanged={stateChanged}>
+          <Switch>
+            <Route path="/" exact component={MyAllergy} />
+            <Route path="/kid" 
+            component={()=> <AddKid userID={userID} /> } />
+            <Route path="/diary" 
+            component={()=> <MyAllergy userID={userID} /> } />
+             <Route path="/report" 
+            component={()=> <Report userID={userID} /> } />
+          </Switch>
+        </Layout>
+      </div>
+    </Router>
   );
 }
 

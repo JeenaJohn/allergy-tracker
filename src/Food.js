@@ -10,7 +10,8 @@ function Food(props) {
 
   const foodRef = firebase
     .database()
-    .ref(props.userID + "/" + props.kidId + "/" + props.date + "/food" );
+    .ref(props.userID + "/" + props.kidId + "/" + props.date_yyyy_mm
+    + "/" + props.date + "/food" );
 
   useEffect(() => {
     //initialize the questionaire values

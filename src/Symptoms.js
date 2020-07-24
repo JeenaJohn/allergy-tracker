@@ -8,7 +8,8 @@ function Symptoms(props) {
 
   const symptomsRef = firebase
     .database()
-    .ref(props.userID + "/" + props.kidId + "/" + props.date + "/symptoms");
+    .ref(props.userID + "/" + props.kidId + "/" + props.date_yyyy_mm + 
+    "/" + props.date + "/symptoms");
 
   useEffect(() => {
     //initialize the questionaire values

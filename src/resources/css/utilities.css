@@ -5,7 +5,11 @@
     text-align: left;
     padding-left: 3rem;
   }
-  
+
+  .u-margin-bottom-very-small {
+    margin-bottom: 1rem !important;
+  }
+
   .u-margin-bottom-small {
     margin-bottom: 2rem !important;
   }
@@ -22,4 +26,13 @@
   }
   .u-margin-top-huge {
     margin-top: 10rem !important;
+  }
+
+  .u-display-mode{
+    border: 0;
+    background-color: transparent;
+  }
+
+  .u-text-underline{
+  text-decoration: underline;;
   }

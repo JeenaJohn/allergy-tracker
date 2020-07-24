@@ -12,7 +12,8 @@ function AdditionalData(props) {
   const additionalDataRef = firebase
     .database()
     .ref(
-      props.userID + "/" + props.kidId + "/" + props.date + "/additionalData"
+      props.userID + "/" + props.kidId + "/" + props.date_yyyy_mm
+       + "/" + props.date + "/additionalData"
     );
 
   useEffect(() => {
