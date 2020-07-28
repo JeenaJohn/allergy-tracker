@@ -22,7 +22,7 @@ function AdditionalData(props) {
 
     additionalDataRef.on("value", (snapshot) => {
       let items = snapshot.val();
-      console.log(items);
+      
 
       for (let item in items) {
         setAdditionalData({
@@ -33,13 +33,13 @@ function AdditionalData(props) {
         });
       }
 
-      console.log(additionalData);
+      
     });
   }, [props]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    console.log(name);
+   
 
     type === "checkbox"
       ? setAdditionalData({ ...additionalData, [name]: checked })

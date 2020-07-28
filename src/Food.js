@@ -22,7 +22,6 @@ function Food(props) {
 
     foodRef.on("value", (snapshot) => {
       let items = snapshot.val();
-      console.log(items);
 
       for (let item in items) {
         setBreakfast(items[item].breakfast);
@@ -35,7 +34,7 @@ function Food(props) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(value);
+    
 
     switch (name) {
       case "breakfast":

@@ -14,32 +14,33 @@ function MyAllergy(props) {
   const [entryDate, setEntryDate] = useState("");
   const [entryMonth, setEntryMonth] = useState("");
 
-  
   let today = new Date();
 
   const kidsRef = firebase.database().ref(props.userID + "/kids");
 
   useEffect(() => {
-    console.log(kidsRef);
-    console.log(props.userID);
     kidsRef.on("value", (snapshot) => {
       let items = snapshot.val();
-      console.log(items);
 
       let newState = [];
       for (let item in items) {
+
         newState.push({
           id: item,
           kidName: items[item].kidName,
         });
+        if (newState.length === 1) {
+          setSelectedKidId(item);
+          setSelectedKid(items[item].kidName);
+        }
+
       }
 
-      console.log(`in useEffect ${newState}`);
-      console.log(newState);
       setKids(newState);
+      
     });
     formatDate(today);
-  }, []);
+  }, [props]);
 
   const formatDate = (date_input) => {
     let date_output;
@@ -55,7 +56,7 @@ function MyAllergy(props) {
       mm = "0" + mm;
     }
     date_output = yyyy + "-" + mm + "-" + dd;
-    date_output_yyyy_mm =  yyyy + "-" + mm;
+    date_output_yyyy_mm = yyyy + "-" + mm;
     setEntryDate(date_output);
     setEntryMonth(date_output_yyyy_mm);
   };
@@ -68,15 +69,14 @@ function MyAllergy(props) {
   const handleEntryDate = (e) => {
     //sets entry date and entry month
     setEntryDate(e.target.value);
-    setEntryMonth(e.target.value.substring(0,7)); 
-   
+    setEntryMonth(e.target.value.substring(0, 7));
   };
 
   return (
     <div>
       <div className="u-center-text u-margin-top-big  u-margin-bottom-medium">
         <h2 className="heading-secondary bg-color-blue ">
-          Add Allergy Details - {selectedKid}
+          Daily Log <span className="u-capitalize"> - {selectedKid} </span>
         </h2>
       </div>
       <div className="box-questions">
@@ -86,20 +86,23 @@ function MyAllergy(props) {
         >
           Choose Kid Profile
         </h3>
-        <div className="list-kids u-margin-bottom-small">
+        <div className="u-margin-bottom-small">
           {kids.map((kid, index) => (
-            <div className="list-kids" onChange={(e) => handleKidSelection(e)}>             
-                <label>
-                  <input
-                    type="radio"
-                    id={kid.id}
-                    name="kid"
-                    value={kid.kidName}
-                    className="radio-btn"
-                    
-                  />
-                  {kid.kidName}
-                </label>             
+            <div
+              className="list-kids u-capitalize"
+              onChange={(e) => handleKidSelection(e)}
+            >
+              <label>
+                <input
+                  type="radio"
+                  id={kid.id}
+                  name="kid"
+                  value={kid.kidName}
+                  className="radio-btn"
+                  checked={selectedKidId === kid.id}
+                />
+                {kid.kidName}
+              </label>
             </div>
           ))}
         </div>
@@ -118,7 +121,6 @@ function MyAllergy(props) {
             onChange={(e) => handleEntryDate(e)}
             required
           />
-
         </div>
       </div>
 

@@ -12,16 +12,9 @@ function Report(props) {
 
   const kidsRef = firebase.database().ref(props.userID + "/kids");
 
- 
-
   useEffect(() => {
-    console.log(kidsRef);
-   
-    console.log(props.userID);
-    console.log(selectedKidId);
     kidsRef.on("value", (snapshot) => {
       let items = snapshot.val();
-      console.log(items);
 
       let newState = [];
       for (let item in items) {
@@ -29,20 +22,17 @@ function Report(props) {
           id: item,
           kidName: items[item].kidName,
         });
-        setSelectedKidId(item);
-        setSelectedKid(items[item].kidName);
+        if (newState.length === 1) {
+          setSelectedKidId(item);
+          setSelectedKid(items[item].kidName);
+        }
       }
 
-      console.log(`in useEffect ${newState}`);
-      console.log(newState);
       setKids(newState);
     });
 
-  
-
-    formatDate(); 
-   
-  },[ ] );
+    formatDate();
+  }, [props]);
 
   const formatDate = () => {
     let today = new Date();
@@ -54,7 +44,7 @@ function Report(props) {
       mm = "0" + mm;
     }
     today = yyyy + "-" + mm;
- 
+
     setEntryMonth(today);
   };
 
@@ -65,15 +55,13 @@ function Report(props) {
 
   const handleEntryMonth = (e) => {
     setEntryMonth(e.target.value);
-    
   };
-  
 
   return (
     <div>
       <div className="u-center-text u-margin-top-big  u-margin-bottom-medium">
         <h2 className="heading-secondary bg-color-blue ">
-          Report - {selectedKid}
+          Report <span className="u-capitalize"> - {selectedKid} </span>
         </h2>
       </div>
       <div className="box-questions">
@@ -83,9 +71,12 @@ function Report(props) {
         >
           Choose Kid Profile
         </h3>
-        <div className="list-kids u-margin-bottom-small">
+        <div className="u-margin-bottom-small">
           {kids.map((kid, index) => (
-            <div className="list-kids" onChange={(e) => handleKidSelection(e)}>
+            <div
+              className="list-kids u-capitalize"
+              onChange={(e) => handleKidSelection(e)}
+            >
               <label>
                 <input
                   type="radio"
@@ -93,8 +84,7 @@ function Report(props) {
                   name="kid"
                   value={kid.kidName}
                   className="radio-btn"
-                  checked
-                  
+                  checked={selectedKidId === kid.id}
                 />
                 {kid.kidName}
               </label>
@@ -113,13 +103,13 @@ function Report(props) {
             type="month"
             name="entryMonth"
             value={entryMonth}
-           onChange={(e) => handleEntryMonth(e)}
+            onChange={(e) => handleEntryMonth(e)}
             required
           />
         </div>
       </div>
-      
-      <ReportListView 
+
+      <ReportListView
         userID={props.userID}
         kid={selectedKid}
         kidId={selectedKidId}

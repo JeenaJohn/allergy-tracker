@@ -19,7 +19,7 @@ function Symptoms(props) {
 
     symptomsRef.on("value", (snapshot) => {
       let items = snapshot.val();
-      console.log(items);
+      
 
       for (let item in items) {
         setRash(items[item].rash);
@@ -31,7 +31,7 @@ function Symptoms(props) {
 
   const handleChange = (e) => {
     const { name, value, checked } = e.target;
-    console.log(checked);
+    
     switch (name) {
       case "rash":
         setRash(checked);
