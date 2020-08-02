@@ -13,8 +13,6 @@ import MyAllergy from "./MyAllergy";
 import Report from "./Report";
 
 
-let userID ="jjj";
-
 function App() {
 
 

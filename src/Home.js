@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import home_page from "./resources/images/home_pg_img.svg";
+import MyAllergy from './MyAllergy';
 
 
 function Home(props) {
@@ -13,7 +14,7 @@ function Home(props) {
           </h1>
 
           <a
-            href="#section-list-data"
+            href="#section-diary"
             className="btn btn-header u-margin-right"
           >
             Start Tracking
@@ -24,13 +25,13 @@ function Home(props) {
         </div>
       </header>
 
-      <section id="section-list-data" className="section-list-data">
+      <section id="section-diary" className="section-list-data">
         {props.userID == null ? (
           <p className="paragraph u-text-left">
             You have to login to use this app.
           </p>
         ) : (
-          <p></p>
+          <MyAllergy userID={props.userID }/>
         )}
       </section>
 

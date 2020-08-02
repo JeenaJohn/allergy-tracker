@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import firebase from "./firebase.js";
@@ -6,10 +6,28 @@ import firebase from "./firebase.js";
 function AddKid(props) {
   const [newKidName, setNewKidName] = useState("");
   const [userMsg, setUserMsg] = useState("");
+  const [kids, setKids] = useState([]);
 
   const kidsRef = firebase.database().ref(props.userID + "/kids");
 
   console.log(props.userID);
+
+  useEffect(() => {
+    kidsRef.on("value", (snapshot) => {
+      let items = snapshot.val();
+
+      let newState = [];
+      for (let item in items) {
+        newState.push({
+          id: item,
+          kidName: items[item].kidName,
+        });
+      }
+
+      setKids(newState);
+    });
+  }, [props]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -35,6 +53,9 @@ function AddKid(props) {
     console.log(kidName);
 
     kidsRef.push({ kidName });
+
+    /* clear kid name field after save*/
+    setNewKidName("");
   };
 
   return (
@@ -56,17 +77,35 @@ function AddKid(props) {
             onChange={(e) => handleChange(e)}
             required
           />
+          <span className="u-margin-left">
+            <button
+              className="btn btn-medium "
+              type="submit"
+              onClick={(e) => save(e, newKidName)}
+            >
+              Save
+            </button>
+          </span>
         </div>
 
-        <div className="u-center-text">
-          <button
-            className="btn btn-medium "
-            type="submit"
-            onClick={(e) => save(e, newKidName)}
-          >
-            Save
-          </button>
-        </div>
+        <div className="u-center-text bg-color-black"></div>
+      </div>
+      <div className="box-questions">
+        <h3
+          className="heading-tertiary 
+          u-text-left u-margin-bottom-small"
+        >
+          Below is the list of kids already added
+        </h3>
+        {kids.length > 0 ? (
+          <ol className="list-kids u-capitalize u-margin-bottom-small">
+            {kids.map((kid, index) => (
+              <li>{kid.kidName}</li>
+            ))}
+          </ol>
+        ) : (
+          <h4><i>Your list is empty. Please add.</i></h4>
+        )}
       </div>
     </div>
   );

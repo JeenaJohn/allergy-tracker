@@ -77,7 +77,7 @@ function Report(props) {
               className="list-kids u-capitalize"
               onChange={(e) => handleKidSelection(e)}
             >
-              <label>
+              <label for={kid.id}>
                 <input
                   type="radio"
                   id={kid.id}

@@ -37,7 +37,7 @@ function MyAllergy(props) {
       }
 
       setKids(newState);
-      
+
     });
     formatDate(today);
   }, [props]);
@@ -73,8 +73,9 @@ function MyAllergy(props) {
   };
 
   return (
-    <div>
-      <div className="u-center-text u-margin-top-big  u-margin-bottom-medium">
+    <div >
+    
+      <div className="u-center-text  u-margin-top-big u-margin-bottom-medium">
         <h2 className="heading-secondary bg-color-blue ">
           Daily Log <span className="u-capitalize"> - {selectedKid} </span>
         </h2>
@@ -92,7 +93,7 @@ function MyAllergy(props) {
               className="list-kids u-capitalize"
               onChange={(e) => handleKidSelection(e)}
             >
-              <label>
+              <label for={kid.id}>
                 <input
                   type="radio"
                   id={kid.id}
@@ -147,6 +148,7 @@ function MyAllergy(props) {
         date={entryDate}
         date_yyyy_mm={entryMonth}
       />
+   
     </div>
   );
 }

@@ -7,7 +7,11 @@ header.home-page {
       to(rgba(0, 0, 0, 0.7))
     ),
     url(../images/header_img.jpg);
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)),
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.8)
+    ),
     url(../images/header_img.jpg);
   background-size: cover;
   background-position: center;
@@ -16,14 +20,18 @@ header.home-page {
   color: #f3fafe;
 }
 
-header > .not-home-page{
-  display: none;
+header nav {
+  position: absolute;
+  height: 8vh;
+  top:0rem;
+  width: 100%;
+  background-color: #9bb2d1;
 }
 
 .header__logo-box {
   position: absolute;
-  top: 4rem;
-  left: 4rem;
+  top: 1rem;
+  left: 2rem;
 }
 
 .header__logo {
@@ -32,16 +40,20 @@ header > .not-home-page{
 
 .header__userinfo {
   position: absolute;
-  top: 4rem;
-  right: 4rem;
+  top: 0.3rem;
+  right: 20rem;
+  color: #fff;
+  height: 8vh;
+  text-align: right;
+ 
 }
+
+
 
 .header__text-box {
   position: absolute;
   top: 40%;
   margin-left: 20%;
-  text-align:center;
+  text-align: center;
   width: 50%;
-  
-  
 }

@@ -1,100 +1,89 @@
-
-
-
-
 .section-list-data {
-    background-color: #f7f7f7;
-    /*  background-color:#e6e1e1; */
-    
-    color: #777777;
-  }
+  background-color: #f7f7f7;
+  /*  background-color:#e6e1e1; */
 
-  .section-about {
-    background-color: #e6e1e1;
-    padding: 6rem 4rem;
-    color: #777777;
-    height: 100vh;
-  }
+  color: #777777;
+}
 
-  .home-page-img{
-    width: 100%;
-    height: 30rem;
-  }
+.section-about {
+  background-color: #e6e1e1;
+  padding: 6rem 4rem;
+  color: #777777;
+  height: 100vh;
+}
 
-  .section-choose-kid{
-    background-color: #e6e1e1;
-    padding: 6rem 0;
-  }
+.home-page-img {
+  width: 100%;
+  height: 30rem;
+}
 
-  /*List kid profiles for user */
-  .list-kids{
-    width:100%;
-    display: block;
-    font-size: 1.8rem;  
-    margin-left: 2rem;   
-  }
+.section-choose-kid {
+  background-color: #e6e1e1;
+  padding: 6rem 0;
+}
 
-    .radio-btn{
-      padding-right: 1rem;
-    }
+/*List kid profiles for user */
+.list-kids {
+  width: 100%;
+  display: block;
+  font-size: 1.8rem;
+  margin-left: 2rem;
+}
 
+.radio-btn {
+  padding-right: 1rem;
+}
 
 /*Add new kid's profile */
 
-  .add-kid{
-    margin-top: 0.5rem;
-    padding: 5rem 3rem;
-    font-size: 1.5rem;
-    color: #5e5e5e;
-  }
+.add-kid {
+  margin-top: 0.5rem;
+  padding: 5rem 3rem;
+  font-size: 1.5rem;
+  color: #5e5e5e;
+}
 
-  .kid-name-label {
-    margin: 0.5rem;
-    font-size: 1.5rem;
-    padding: 0.5rem;
-    
-  }
-  
-  .kid-name-input {
-    margin: 0 0.5rem;
-    font-size: 1.5rem;
-    padding: 0.5rem;
-    
-    
-  }
+.kid-name-label {
+  margin: 0.5rem;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}
 
-  /*Add allergy-details*/
+.kid-name-input {
+  margin: 0 0.5rem;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}
 
-  .box-questions{
-    width:60%;
-    margin-left: 20%;
-    margin-bottom:  5rem;
-    padding: 2rem;
-    border: 1px solid #fff;
-    background-color: #e6e1e1;
-    border-radius: 1rem;
- 
-  }
+/*Add allergy-details*/
 
-  .question{
-    font-size: 1.5rem;
-    margin: 1rem 3rem;
-  }
 
-  /*Display report*/
-  .box-report{
-    width:60%;
-    margin-left: 20%;
-    margin-bottom:  5rem;
-    padding: 2rem;
-    border: 1px solid #fff;
-    background-color: #e6e1e1;
-    border-radius: 1rem;
- 
-  }
-  .report-item{
-    font-size: 1.4rem;
-    margin: 0.5rem 3rem;
-  }
-  
-  
+.box-questions {
+  width: 60%;
+  margin-left: 20%;
+  margin-bottom: 5rem;
+  padding: 2rem;
+  border: 1px solid #fff;
+  background-color: #e6e1e1;
+  border-radius: 1rem;
+}
+
+.question {
+  font-size: 1.5rem;
+  margin: 1rem 3rem;
+}
+
+/*Display report*/
+.box-report {
+  width: 60%;
+  margin-left: 20%;
+  margin-bottom: 5rem;
+  padding: 2rem;
+  border: 1px solid #fff;
+  background-color: #e6e1e1;
+  border-radius: 1rem;
+}
+.report-item {
+  font-size: 1.4rem;
+  margin: 0.5rem 3rem;
+}

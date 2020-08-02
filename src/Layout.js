@@ -5,39 +5,37 @@ import logo from "./logo.svg";
 import firebase, { auth, provider } from "./firebase.js";
 
 function Layout(props) {
-  
-
-
-
   useEffect(() => {
     props.stateChanged();
   });
 
   return (
     <div>
-      <header className="not-home-page">
+      <header className="all-pages">
         <nav>
-          <div className="row">
-            <div className="header__logo-box">
-              <img src={logo} alt="Logo" className="header__logo" />
-            </div>
-            <div className="header__userinfo">
-              {props.user ? (
+          <div className="header__logo-box">
+            <img src={logo} alt="Logo" className="header__logo" />
+          </div>
+          <div className="header__userinfo">
+            {props.user ? (
+              <div>
+                <p className="paragraph">
+                  Welcome <b>{props.user.displayName}</b>
+                </p>
+
                 <span>
-                  <h4>Welcome {props.user.displayName}</h4>
-                  <button className="btn btn-medium-ghost" onClick={props.logout}>
+                  <button className="btn btn-small" onClick={props.logout}>
                     Logout
                   </button>
                 </span>
-              ) : (
-                <button className="btn btn-medium" onClick={props.login}>
-                  LogIn with Google
-                </button>
-              )}
-            </div>
+              </div>
+            ) : (
+              <button className="btn btn-small" onClick={props.login}>
+                LogIn with Google
+              </button>
+            )}
           </div>
         </nav>
-       
       </header>
 
       <div>{props.children}</div>
