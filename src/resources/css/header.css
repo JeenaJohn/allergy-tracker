@@ -20,6 +20,8 @@ header.home-page {
   color: #f3fafe;
 }
 
+
+
 header nav {
   position: absolute;
   height: 8vh;
@@ -41,7 +43,7 @@ header nav {
 .header__userinfo {
   position: absolute;
   top: 0.3rem;
-  right: 20rem;
+  right: 12rem;
   color: #fff;
   height: 8vh;
   text-align: right;
@@ -52,8 +54,8 @@ header nav {
 
 .header__text-box {
   position: absolute;
-  top: 40%;
-  margin-left: 20%;
+  top: 35%;
+  margin-left: 25%;
   text-align: center;
   width: 50%;
 }

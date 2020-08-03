@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import logo from "./logo.svg";
+import Sidebar from "./Sidebar";
 
 import firebase, { auth, provider } from "./firebase.js";
 
@@ -12,10 +13,11 @@ function Layout(props) {
   return (
     <div>
       <header className="all-pages">
+      
         <nav>
-          <div className="header__logo-box">
+         {/*} <div className="header__logo-box">
             <img src={logo} alt="Logo" className="header__logo" />
-          </div>
+  </div> */}
           <div className="header__userinfo">
             {props.user ? (
               <div>
@@ -37,9 +39,10 @@ function Layout(props) {
           </div>
         </nav>
       </header>
-
+     
+      <Sidebar/>
       <div>{props.children}</div>
-
+      
       <footer>
         <div className="u-center-text">
           <p className="paragraph">

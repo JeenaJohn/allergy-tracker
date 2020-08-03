@@ -45,8 +45,10 @@ function App() {
   }
 
   return (
+    
     <Router>
-      <div className="sidebar">
+     
+   {/* <div className="sidebar">
         <ul>
           <li>
             <Link to="/">Home</Link>
@@ -61,8 +63,9 @@ function App() {
             <Link to="/report">Report</Link>
           </li>
         </ul>
-      </div>
+  </div> */}
       <div className="main-layout">
+     
         <Layout user={user}
                 userID={userID}
                 login={login}

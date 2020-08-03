@@ -14,7 +14,7 @@ function Home(props) {
           </h1>
 
           <a
-            href="#section-diary"
+            href="/diary"
             className="btn btn-header u-margin-right"
           >
             Start Tracking
@@ -25,17 +25,8 @@ function Home(props) {
         </div>
       </header>
 
-      <section id="section-diary" className="section-list-data">
-        {props.userID == null ? (
-          <p className="paragraph u-text-left">
-            You have to login to use this app.
-          </p>
-        ) : (
-          <MyAllergy userID={props.userID }/>
-        )}
-      </section>
 
-      <section className="section-about">
+      <section id="section-about" className="section-about">
         <div className="u-center-text u-margin-bottom-big">
           <h2 className="heading-secondary bg-color-blue">
             What is my pattern!!?
