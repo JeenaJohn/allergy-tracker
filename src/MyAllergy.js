@@ -8,7 +8,7 @@ import firebase from "./firebase.js";
 function MyAllergy(props) {
   const [kids, setKids] = useState([]);
 
-  const [selectedKid, setSelectedKid] = useState("");
+  const [selectedKid, setSelectedKid] = useState(null);
   const [selectedKidId, setSelectedKidId] = useState("");
 
   const [entryDate, setEntryDate] = useState("");
@@ -24,7 +24,6 @@ function MyAllergy(props) {
 
       let newState = [];
       for (let item in items) {
-
         newState.push({
           id: item,
           kidName: items[item].kidName,
@@ -33,11 +32,9 @@ function MyAllergy(props) {
           setSelectedKidId(item);
           setSelectedKid(items[item].kidName);
         }
-
       }
 
       setKids(newState);
-
     });
     formatDate(today);
   }, [props]);
@@ -73,13 +70,25 @@ function MyAllergy(props) {
   };
 
   return (
-    <div >
-    
+    <div className="diary">
       <div className="u-center-text  u-margin-top-big u-margin-bottom-medium">
         <h2 className="heading-secondary bg-color-blue ">
-          Daily Log <span className="u-capitalize"> - {selectedKid} </span>
+          Diary
+          {selectedKid != null ? (
+            <span className="u-capitalize"> - {selectedKid} </span>
+          ) : null}
         </h2>
       </div>
+      {props.userID == null ? (
+        <p
+          className="paragraph u-center-text u-text-color-red 
+      u-margin-bottom-small"
+        >
+          <i>You have to first login to use this app.</i>
+        </p>
+      ) : (
+        <p></p>
+      )}
       <div className="box-questions">
         <h3
           className="heading-tertiary 
@@ -106,6 +115,20 @@ function MyAllergy(props) {
               </label>
             </div>
           ))}
+
+          {
+            /* If there are no existing kid profiles */
+            kids.length == 0 ? (
+              <p className="paragraph u-margin-left">
+                <i>No kid profiles exist. To add one, click here</i>
+                <a href="/kid" className="btn btn-medium u-margin-left ">
+                  Add Kid
+                </a>
+              </p>
+            ) : (
+              <p></p>
+            )
+          }
         </div>
         <div className="u-text-left">
           <h3
@@ -124,7 +147,7 @@ function MyAllergy(props) {
           />
         </div>
       </div>
-
+     
       <Symptoms
         userID={props.userID}
         kid={selectedKid}
@@ -148,7 +171,7 @@ function MyAllergy(props) {
         date={entryDate}
         date_yyyy_mm={entryMonth}
       />
-   
+  
     </div>
   );
 }

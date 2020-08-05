@@ -5,7 +5,7 @@ import ReportListView from "./ReportListView";
 function Report(props) {
   const [kids, setKids] = useState([]);
 
-  const [selectedKid, setSelectedKid] = useState("");
+  const [selectedKid, setSelectedKid] = useState(null);
   const [selectedKidId, setSelectedKidId] = useState("");
 
   const [entryMonth, setEntryMonth] = useState("");
@@ -61,9 +61,22 @@ function Report(props) {
     <div>
       <div className="u-center-text u-margin-top-big  u-margin-bottom-medium">
         <h2 className="heading-secondary bg-color-blue ">
-          Report <span className="u-capitalize"> - {selectedKid} </span>
+          Report
+          {selectedKid != null ? (
+            <span className="u-capitalize"> - {selectedKid} </span>
+          ) : null }
         </h2>
       </div>
+      {props.userID == null ? (
+        <p
+          className="paragraph u-center-text u-text-color-red 
+      u-margin-bottom-small"
+        >
+          <i>You have to first login to use this app.</i>
+        </p>
+      ) : (
+        <p></p>
+      )}
       <div className="box-questions">
         <h3
           className="heading-tertiary 
@@ -90,6 +103,21 @@ function Report(props) {
               </label>
             </div>
           ))}
+
+          {
+            /* If there are no existing kid profiles */
+            kids.length == 0 ? (
+              <p className="paragraph u-margin-left">
+                <i>No kid profiles exist. To add one, click here</i>
+                <a href="/kid" className="btn btn-medium u-margin-left ">
+                  Add Kid
+                </a>
+              </p>
+            ) : (
+              <p></p>
+            )
+          }
+
         </div>
         <div className="u-text-left">
           <h3
@@ -108,13 +136,14 @@ function Report(props) {
           />
         </div>
       </div>
-
+     
+     {(selectedKid !=null)? 
       <ReportListView
         userID={props.userID}
         kid={selectedKid}
         kidId={selectedKidId}
         date_yyyy_mm={entryMonth}
-      />
+     /> : <p></p> }
     </div>
   );
 }

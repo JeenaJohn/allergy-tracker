@@ -13,9 +13,8 @@ function Layout(props) {
   return (
     <div>
       <header className="all-pages">
-      
         <nav>
-         {/*} <div className="header__logo-box">
+          {/*} <div className="header__logo-box">
             <img src={logo} alt="Logo" className="header__logo" />
   </div> */}
           <div className="header__userinfo">
@@ -32,17 +31,19 @@ function Layout(props) {
                 </span>
               </div>
             ) : (
-              <button className="btn btn-small" onClick={props.login}>
-                LogIn with Google
-              </button>
+              <div className="login_button">
+                <button className="btn btn-medium" onClick={props.login}>
+                  LogIn with Google
+                </button>
+              </div>
             )}
           </div>
         </nav>
       </header>
-     
-      <Sidebar/>
+
+      <Sidebar />
       <div>{props.children}</div>
-      
+
       <footer>
         <div className="u-center-text">
           <p className="paragraph">

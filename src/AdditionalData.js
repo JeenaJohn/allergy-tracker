@@ -8,12 +8,21 @@ function AdditionalData(props) {
     ac: false,
     nails: false,
   });
+  const [firebaseID, setFirebaseID] = useState("");
+
+  let saveBtnDisabled = props.userID == null ? true : false;
 
   const additionalDataRef = firebase
     .database()
     .ref(
-      props.userID + "/" + props.kidId + "/" + props.date_yyyy_mm
-       + "/" + props.date + "/additionalData"
+      props.userID +
+        "/" +
+        props.kidId +
+        "/" +
+        props.date_yyyy_mm +
+        "/" +
+        props.date +
+        "/additionalData"
     );
 
   useEffect(() => {
@@ -22,9 +31,9 @@ function AdditionalData(props) {
 
     additionalDataRef.on("value", (snapshot) => {
       let items = snapshot.val();
-      
 
       for (let item in items) {
+        setFirebaseID(item);
         setAdditionalData({
           outdoor: items[item].outdoor,
           weather: items[item].weather,
@@ -32,14 +41,11 @@ function AdditionalData(props) {
           nails: items[item].nails,
         });
       }
-
-      
     });
   }, [props]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-   
 
     type === "checkbox"
       ? setAdditionalData({ ...additionalData, [name]: checked })
@@ -48,8 +54,17 @@ function AdditionalData(props) {
 
   const saveAdditionalData = (e, additionalData) => {
     e.preventDefault();
-    console.log(additionalData);
-    additionalDataRef.push(additionalData);
+
+    if (firebaseID == "") {
+      /* adding data */
+      additionalDataRef.push(additionalData);
+    } else {
+      /* update data */
+
+      let updates = {};
+      updates["/" + firebaseID] = additionalData;
+      additionalDataRef.update(updates);
+    }
   };
 
   return (
@@ -104,6 +119,7 @@ function AdditionalData(props) {
             className="btn btn-medium "
             type="submit"
             onClick={(e) => saveAdditionalData(e, additionalData)}
+            disabled={saveBtnDisabled}
           >
             Save
           </button>

@@ -8,9 +8,9 @@ function Home(props) {
     <div>
       {/* header nav bar and footer are in Layout.js */}
       <header className="home-page">
-        <div className="header__text-box">
-          <h1 className="heading-primary">
-            <span className="heading-primary--main">Track My Rash</span>
+        <div className="header__text-box" >
+          <h1 className="heading-primary ">
+            <span className="heading-primary--main">Track My Allergy</span>
           </h1>
 
           <a

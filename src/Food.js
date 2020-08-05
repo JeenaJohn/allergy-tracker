@@ -6,24 +6,36 @@ function Food(props) {
   const [lunch, setLunch] = useState("");
   const [dinner, setDinner] = useState("");
   const [snacks, setSnacks] = useState("");
+  const [firebaseID, setFirebaseID] = useState("");
   const [allFood, setAllFood] = useState([]);
+
+  let saveBtnDisabled = props.userID == null ? true : false;
 
   const foodRef = firebase
     .database()
-    .ref(props.userID + "/" + props.kidId + "/" + props.date_yyyy_mm
-    + "/" + props.date + "/food" );
+    .ref(
+      props.userID +
+        "/" +
+        props.kidId +
+        "/" +
+        props.date_yyyy_mm +
+        "/" +
+        props.date +
+        "/food"
+    );
 
   useEffect(() => {
     //initialize the questionaire values
     setBreakfast("");
-    setLunch('');
-    setSnacks('');
-    setDinner('');
+    setLunch("");
+    setSnacks("");
+    setDinner("");
 
     foodRef.on("value", (snapshot) => {
       let items = snapshot.val();
 
       for (let item in items) {
+        setFirebaseID(item);
         setBreakfast(items[item].breakfast);
         setLunch(items[item].lunch);
         setDinner(items[item].dinner);
@@ -34,7 +46,6 @@ function Food(props) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    
 
     switch (name) {
       case "breakfast":
@@ -60,7 +71,22 @@ function Food(props) {
   const saveFood = (e, breakfast, lunch, dinner, snacks) => {
     e.preventDefault();
 
-    foodRef.push({ breakfast, lunch, dinner, snacks });
+    if (firebaseID == "") {
+      /* adding data */
+      foodRef.push({ breakfast, lunch, dinner, snacks });
+    } else {
+      /* update data */
+
+      let editedData = {
+        breakfast: breakfast,
+        lunch: lunch,
+        dinner: dinner,
+        snacks: snacks,
+      };
+      let updates = {};
+      updates["/" + firebaseID] = editedData;
+      foodRef.update(updates);
+    }
   };
 
   return (
@@ -71,7 +97,38 @@ function Food(props) {
       >
         Food
       </h3>
-
+      <table className="table">
+        <tr>
+          <td>
+            <label for="breakfast" className="td-label">
+              Breakfast
+            </label>
+          </td>
+          <td>
+            <input
+              type="text"
+              name="breakfast"
+              maxLength="80"
+              value={breakfast}
+              onChange={(e) => handleChange(e)}
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="lunch" className="td-label">Lunch</label>
+          </td>
+          <td>
+            <input
+              type="text"
+              name="lunch"
+              maxLength="80"
+              value={lunch}
+              onChange={(e) => handleChange(e)}
+            />
+          </td>
+        </tr>
+      </table>
       <div className="question">
         <label for="breakfast">Breakfast</label>
         <input
@@ -127,6 +184,7 @@ function Food(props) {
           className="btn btn-medium "
           type="submit"
           onClick={(e) => saveFood(e, breakfast, lunch, dinner, snacks)}
+          disabled={saveBtnDisabled}
         >
           Save
         </button>

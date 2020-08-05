@@ -57,6 +57,21 @@
 
 /*Add allergy-details*/
 
+.diary{
+ position: relative; 
+ z-index: 1;
+}
+
+.overlay{
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-size: cover;
+  z-index: 2;
+  opacity: 0.6;
+  height: auto;
+  padding: 1rem;
+  
+}
 
 .box-questions {
   width: 60%;
@@ -70,7 +85,17 @@
 
 .question {
   font-size: 1.5rem;
-  margin: 1rem 3rem;
+  margin: 1rem 3rem; 
+ 
+}
+
+.table {
+  border-spacing: 0 1rem ; /*horizontal spacing*/
+}
+
+.td-label{
+  font-size: 1.5rem;
+  margin-left: 3rem;
 }
 
 /*Display report*/
@@ -87,3 +112,5 @@
   font-size: 1.4rem;
   margin: 0.5rem 3rem;
 }
+
+

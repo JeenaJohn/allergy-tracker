@@ -50,3 +50,15 @@
 .u-capitalize {
   text-transform: capitalize;
 }
+
+.u-text-color-red{
+  color: red !important;
+}
+
+.u-bg-color-black {
+  background-image: linear-gradient(to right, #666, #333);
+}
+
+.u-bg-color-blue {
+  background-image: linear-gradient(to right, #446694, #2c5080);
+}

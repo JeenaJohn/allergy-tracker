@@ -5,11 +5,22 @@ function Symptoms(props) {
   const [rash, setRash] = useState(false);
   const [itchy, setItchy] = useState(false);
   const [itchLevel, setItchLevel] = useState(0);
+  const [firebaseID, setFirebaseID] = useState("");
+
+  let saveBtnDisabled = props.userID == null ? true : false;
 
   const symptomsRef = firebase
     .database()
-    .ref(props.userID + "/" + props.kidId + "/" + props.date_yyyy_mm + 
-    "/" + props.date + "/symptoms");
+    .ref(
+      props.userID +
+        "/" +
+        props.kidId +
+        "/" +
+        props.date_yyyy_mm +
+        "/" +
+        props.date +
+        "/symptoms"
+    );
 
   useEffect(() => {
     //initialize the questionaire values
@@ -19,9 +30,10 @@ function Symptoms(props) {
 
     symptomsRef.on("value", (snapshot) => {
       let items = snapshot.val();
-      
 
+      console.log(items);
       for (let item in items) {
+        setFirebaseID(item);
         setRash(items[item].rash);
         setItchy(items[item].itchy);
         setItchLevel(items[item].itchLevel);
@@ -31,7 +43,7 @@ function Symptoms(props) {
 
   const handleChange = (e) => {
     const { name, value, checked } = e.target;
-    
+
     switch (name) {
       case "rash":
         setRash(checked);
@@ -49,7 +61,22 @@ function Symptoms(props) {
   const saveSymptoms = (e, rash, itchy, itchLevel) => {
     e.preventDefault();
 
-    symptomsRef.push({ rash, itchy, itchLevel });
+    if (firebaseID == "") {
+      /* adding data */
+      symptomsRef.push({ rash, itchy, itchLevel });
+
+    } else {
+      /* update data */
+
+      let editedData = {
+        rash: rash,
+        itchy: itchy,
+        itchLevel: itchLevel
+      };
+      let updates = {};
+      updates["/" + firebaseID] = editedData;
+      symptomsRef.update(updates);
+    }
   };
 
   return (
@@ -85,6 +112,8 @@ function Symptoms(props) {
             <input
               type="number"
               name="itchLevel"
+              min="0"
+              max="10"
               value={itchLevel}
               onChange={(e) => handleChange(e)}
             />
@@ -94,6 +123,7 @@ function Symptoms(props) {
               className="btn btn-medium "
               type="submit"
               onClick={(e) => saveSymptoms(e, rash, itchy, itchLevel)}
+              disabled={saveBtnDisabled}
             >
               Save
             </button>

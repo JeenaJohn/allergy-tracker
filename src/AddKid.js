@@ -8,6 +8,8 @@ function AddKid(props) {
   const [userMsg, setUserMsg] = useState("");
   const [kids, setKids] = useState([]);
 
+  let saveBtnDisabled = props.userID == null ? true : false;
+
   const kidsRef = firebase.database().ref(props.userID + "/kids");
 
   console.log(props.userID);
@@ -40,22 +42,31 @@ function AddKid(props) {
   };
 
   const validateData = (kidName) => {
-    let error = " ";
-    if (kidName.length === 0) {
-      error = "Enter kid's name";
+    let msg = "";
+    console.log(kidName.trim());
+    if (kidName.length == 0) {
+      msg = "Enter kid's name";
     }
-    setUserMsg(error);
+    setUserMsg(msg);
+    console.log(msg);
   };
 
   const save = (e, kidName) => {
     e.preventDefault();
 
-    console.log(kidName);
+    /* validateData(kidName); 
+    console.log(userMsg); */
 
-    kidsRef.push({ kidName });
-
-    /* clear kid name field after save*/
-    setNewKidName("");
+    /* save to DB only if no errors*/
+    /* check to see if user entered a value */
+    if (kidName.length != 0) {
+      kidsRef.push({ kidName });
+      /* clear kid name field and userMsg after save*/
+      setNewKidName("");
+      setUserMsg("");
+    } else {
+      setUserMsg("Enter Kid's name");
+    }
   };
 
   return (
@@ -63,6 +74,17 @@ function AddKid(props) {
       <div className="u-center-text u-margin-top-big  u-margin-bottom-medium">
         <h2 className="heading-secondary bg-color-blue ">Add Kid Profile</h2>
       </div>
+
+      {props.userID == null ? (
+        <p
+          className="paragraph u-center-text u-text-color-red 
+      u-margin-bottom-small"
+        >
+          <i>You have to first login to use this app.</i>
+        </p>
+      ) : (
+        <p></p>
+      )}
       <div className="box-questions">
         <div className="u-text-left u-margin-bottom-small">
           <label for="kidName" className="kid-name-label">
@@ -82,13 +104,21 @@ function AddKid(props) {
               className="btn btn-medium "
               type="submit"
               onClick={(e) => save(e, newKidName)}
+              disabled={saveBtnDisabled}
             >
               Save
             </button>
           </span>
         </div>
 
-        <div className="u-center-text bg-color-black"></div>
+        {userMsg.length != 0 ? (
+          <p
+            className="paragraph u-text-left u-text-color-red 
+      u-margin-bottom-small"
+          >
+            <i>Enter Kid's name</i>
+          </p>
+        ) : null}
       </div>
       <div className="box-questions">
         <h3
@@ -104,7 +134,9 @@ function AddKid(props) {
             ))}
           </ol>
         ) : (
-          <h4><i>Your list is empty. Please add.</i></h4>
+          <h4>
+            <i>Your list is empty. Please add kid.</i>
+          </h4>
         )}
       </div>
     </div>

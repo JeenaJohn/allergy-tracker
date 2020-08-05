@@ -50,11 +50,15 @@ header nav {
  
 }
 
+.login_button{
+  margin-top: 1rem;
+}
+
 
 
 .header__text-box {
   position: absolute;
-  top: 35%;
+  top: 25%;
   margin-left: 25%;
   text-align: center;
   width: 50%;
