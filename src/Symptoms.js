@@ -86,11 +86,11 @@ function Symptoms(props) {
           className="heading-tertiary 
           u-text-left u-margin-bottom-small"
         >
-          Symptoms
+          What are the Symptoms?
         </h3>
         <div>
           <div className="question">
-            <label for="rash">Rashes?</label>
+            <label for="rash">Are there Rashes?</label>
             <input
               type="checkbox"
               name="rash"
@@ -99,7 +99,7 @@ function Symptoms(props) {
             />
           </div>
           <div className="question">
-            <label for="itchy">Itchy?</label>
+            <label for="itchy">Is it Itchy?</label>
             <input
               type="checkbox"
               name="itchy"
@@ -117,6 +117,7 @@ function Symptoms(props) {
               value={itchLevel}
               onChange={(e) => handleChange(e)}
             />
+            <span className="itch-level"><i>(0 is no itch and 10 is severe itching)</i> </span>
           </div>
           <div className="u-text-left">
             <button

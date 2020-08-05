@@ -93,9 +93,9 @@ function Food(props) {
     <div className="box-questions">
       <h3
         className="heading-tertiary
-          u-text-left u-margin-bottom-medium"
+          u-text-left u-margin-bottom-small"
       >
-        Food
+        Let's track Food
       </h3>
       <table className="table">
         <tr>
@@ -128,56 +128,35 @@ function Food(props) {
             />
           </td>
         </tr>
-      </table>
-      <div className="question">
-        <label for="breakfast">Breakfast</label>
-        <input
-          type="text"
-          name="breakfast"
-          maxLength="80"
-          value={breakfast}
-          onChange={(e) => handleChange(e)}
-        />
-      </div>
-
-      <div className="question">
-        <label for="lunch">Lunch</label>
-        <input
-          type="text"
-          name="lunch"
-          maxLength="80"
-          value={lunch}
-          onChange={(e) => handleChange(e)}
-        />
-      </div>
-      <div className="question">
-        <label for="dinner">Dinner</label>
-        <input
+        <tr>
+          <td><label for="dinner" className="td-label">Dinner</label></td>
+          <td><input
           type="text"
           name="dinner"
           maxLength="80"
           value={dinner}
           onChange={(e) => handleChange(e)}
-        />
-      </div>
-
-      <div className="question">
-        <label for="snacks">Snacks</label>
-        <input
+        /></td>
+        </tr>
+        <tr>
+          <td><label for="snacks" className="td-label">Snacks</label></td>
+          <td><input
           type="text"
           name="snacks"
           maxLength="80"
           value={snacks}
           onChange={(e) => handleChange(e)}
-        />
-      </div>
+        /></td>
+        </tr>
+      </table>
+      
 
-      {allFood.map((food1) => (
+     {/* {allFood.map((food1) => (
         <div className="question">
           <label for="food">Food</label>
           <input type="text" name="food" maxLength="60" value={food1.food} />
         </div>
-      ))}
+      ))} */}
 
       <div className="u-text-left">
         <button

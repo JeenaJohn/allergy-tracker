@@ -5,18 +5,15 @@ function ReportListItem(props) {
   const [symptoms, setSymptoms] = useState({});
   const [food, setFood] = useState({});
   const [additionalData, setAdditionalData] = useState({});
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState("");
 
-  function convertDate(date){
+  function convertDate(date) {
     let datearray = date.split("-");
-    let newdate = datearray[1] + '-' + datearray[2] + '-' + datearray[0];
+    let newdate = datearray[1] + "-" + datearray[2] + "-" + datearray[0];
     setDate(newdate);
-    
-    
   }
 
   useEffect(() => {
-
     convertDate(props.date);
 
     /* Symptoms */
@@ -49,7 +46,7 @@ function ReportListItem(props) {
     for (let key in props.additionalData) {
       newStateAdditionalData = {
         outdoor: props.additionalData[key].outdoor,
-        weather: props.additionalData[key].weather,
+        notes: props.additionalData[key].notes,
         ac: props.additionalData[key].ac,
         nails: props.additionalData[key].nails,
       };
@@ -96,14 +93,31 @@ function ReportListItem(props) {
             />
           </div>
           <div className="report-item">
-            <label for="itchLevel">Itch Level (scale of 0 - 10):</label>
-            <input
-              className="u-display-mode"
-              type="number"
-              name="itchLevel"
-              value={symptoms.itchLevel}
-              readOnly
-            />
+            
+
+            {symptoms.itchLevel > 5 ? (
+              <mark>
+                <label for="itchLevel">Itch Level (scale of 0 - 10):</label>
+                <input
+                  className="u-display-mode"
+                  type="number"
+                  name="itchLevel"
+                  value={symptoms.itchLevel}
+                  readOnly
+                />
+              </mark>
+            ) : (
+              <>
+              <label for="itchLevel">Itch Level (scale of 0 - 10):</label>
+              <input
+                className="u-display-mode"
+                type="number"
+                name="itchLevel"
+                value={symptoms.itchLevel}
+                readOnly
+              />
+              </>
+            )}
           </div>
         </div>
 
@@ -179,12 +193,12 @@ function ReportListItem(props) {
             />
           </div>
           <div className="report-item">
-            <label for="weather">Weather:</label>
+            <label for="notes">Additional Notes:</label>
             <input
               type="text"
               className="u-display-mode"
-              name="weather"
-              value={additionalData.weather}
+              name="notes"
+              value={additionalData.notes}
             />
           </div>
           <div className="report-item">

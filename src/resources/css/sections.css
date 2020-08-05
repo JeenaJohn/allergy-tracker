@@ -89,8 +89,22 @@
  
 }
 
+.itch-level{
+  margin-left: 0.6rem;
+}
+
+.additional-notes{
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  overflow-y:scroll;
+  display: block;
+  width: 100%;
+
+  resize: none;
+}
+
 .table {
-  border-spacing: 0 1rem ; /*horizontal spacing*/
+  border-spacing: 0 1.3rem ; /*horizontal spacing*/
 }
 
 .td-label{

@@ -4,7 +4,7 @@ import firebase from "./firebase.js";
 function AdditionalData(props) {
   const [additionalData, setAdditionalData] = useState({
     outdoor: "",
-    weather: "",
+    notes: "",
     ac: false,
     nails: false,
   });
@@ -27,7 +27,7 @@ function AdditionalData(props) {
 
   useEffect(() => {
     //initialize the questionaire values
-    setAdditionalData({ outdoor: "", weather: "", ac: false, nails: false });
+    setAdditionalData({ outdoor: "", notes: "", ac: false, nails: false });
 
     additionalDataRef.on("value", (snapshot) => {
       let items = snapshot.val();
@@ -36,7 +36,7 @@ function AdditionalData(props) {
         setFirebaseID(item);
         setAdditionalData({
           outdoor: items[item].outdoor,
-          weather: items[item].weather,
+          notes: items[item].notes,
           ac: items[item].ac,
           nails: items[item].nails,
         });
@@ -74,29 +74,11 @@ function AdditionalData(props) {
           className="heading-tertiary 
           u-text-left u-margin-bottom-small"
         >
-          Additional Data
+          Some more data to track
         </h3>
         <div>
-          <div className="question">
-            <label for="outdoor">Outdoor Activity</label>
-            <input
-              type="text"
-              name="outdoor"
-              value={additionalData.outdoor}
-              onChange={(e) => handleChange(e)}
-            />
-          </div>
-          <div className="question">
-            <label for="weather">Weather</label>
-            <input
-              type="text"
-              name="weather"
-              value={additionalData.weather}
-              onChange={(e) => handleChange(e)}
-            />
-          </div>
-          <div className="question">
-            <label for="ac">A/C On?</label>
+        <div className="question">
+            <label for="ac">Was A/C On?</label>
             <input
               type="checkbox"
               name="ac"
@@ -105,7 +87,7 @@ function AdditionalData(props) {
             />
           </div>
           <div className="question">
-            <label for="nails">Nails Trimmed?</label>
+            <label for="nails">Kid's nails are trimmed?</label>
             <input
               type="checkbox"
               name="nails"
@@ -113,6 +95,28 @@ function AdditionalData(props) {
               onChange={(e) => handleChange(e)}
             />
           </div>
+          <div className="question">
+            <label for="outdoor">Outdoor Activities?</label>
+            <input
+              type="text"
+              name="outdoor"
+              maxLength="100"
+              value={additionalData.outdoor}
+              onChange={(e) => handleChange(e)}
+            />
+          </div>
+          <div className="question">
+            <label for="notes">Additional notes</label>
+            <textarea
+              name="notes"
+              rows="4"
+            maxLength="200"
+              className="additional-notes"
+              value={additionalData.notes}
+              onChange={(e) => handleChange(e)}
+            />
+          </div>
+
         </div>
         <div className="u-text-left">
           <button

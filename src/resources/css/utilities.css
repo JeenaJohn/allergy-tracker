@@ -55,6 +55,10 @@
   color: red !important;
 }
 
+.u-bg-color-red{
+  background-color: red !important;
+}
+
 .u-bg-color-black {
   background-image: linear-gradient(to right, #666, #333);
 }
