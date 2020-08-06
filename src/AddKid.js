@@ -6,6 +6,7 @@ import firebase from "./firebase.js";
 function AddKid(props) {
   const [newKidName, setNewKidName] = useState("");
   const [userMsg, setUserMsg] = useState("");
+  const [loginMsg, setLoginMsg] = useState("");
   const [kids, setKids] = useState([]);
 
   let saveBtnDisabled = props.userID == null ? true : false;
@@ -15,6 +16,12 @@ function AddKid(props) {
   console.log(props.userID);
 
   useEffect(() => {
+    /*  check if user is logged in */
+
+    props.userID == null
+      ? setLoginMsg("You have to first login to use this app.")
+      : setLoginMsg("");
+
     kidsRef.on("value", (snapshot) => {
       let items = snapshot.val();
 
@@ -75,18 +82,14 @@ function AddKid(props) {
         <h2 className="heading-secondary bg-color-blue ">Add Kid Profile</h2>
       </div>
 
-      {props.userID == null ? (
-        <p
-          className="paragraph u-center-text u-text-color-red 
+      <p
+        className="paragraph u-text-left u-text-color-red 
       u-margin-bottom-small"
-        >
-          <i>You have to first login to use this app.</i>
-        </p>
-      ) : (
-        <p></p>
-      )}
+      >
+        {loginMsg}
+      </p>
       <div className="box-questions">
-        <div className="u-text-left u-margin-bottom-small">
+        <div className="question">
           <label for="kidName" className="kid-name-label">
             Kid's Name
           </label>
@@ -99,16 +102,16 @@ function AddKid(props) {
             onChange={(e) => handleChange(e)}
             required
           />
-          <span className="u-margin-left">
-            <button
-              className="btn btn-medium "
-              type="submit"
-              onClick={(e) => save(e, newKidName)}
-              disabled={saveBtnDisabled}
-            >
-              Save
-            </button>
-          </span>
+        </div>
+        <div className="u-text-left">
+          <button
+            className="btn btn-medium "
+            type="submit"
+            onClick={(e) => save(e, newKidName)}
+            disabled={saveBtnDisabled}
+          >
+            Save
+          </button>
         </div>
 
         {userMsg.length != 0 ? (

@@ -3,7 +3,7 @@
     position: fixed;
     width: 3rem;
     height: 2.5rem;
-    left: 8rem;
+    left: 4rem;
     top: 2rem;
   }
   
@@ -19,8 +19,8 @@
   
   /* Position and sizing of clickable cross button */
   .bm-cross-button {
-    height: 24px;
-    width: 24px;
+    height: 2rem;
+    width: 2rem;
   }
   
   /* Color/shape of close button cross */
@@ -41,7 +41,7 @@
   .bm-menu {
     background:#6785AE;
     padding: 9rem 0rem 0;
-    font-size: 1.15em;
+    font-size: 1.15rem;
    
     
   }

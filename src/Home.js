@@ -9,13 +9,13 @@ function Home(props) {
       {/* header nav bar and footer are in Layout.js */}
       <header className="home-page">
         <div className="header__text-box" >
-          <h1 className="heading-primary ">
+          <h1 className="heading-primary  ">
             <span className="heading-primary--main">Track My Allergy</span>
           </h1>
 
           <a
             href="/diary"
-            className="btn btn-header u-margin-right"
+            className="btn btn-header u-margin-right u-margin-bottom-small "
           >
             Start Tracking
           </a>

@@ -43,7 +43,7 @@ header nav {
 .header__userinfo {
   position: absolute;
   top: 0.3rem;
-  right: 12rem;
+  right: 8rem;
   color: #fff;
   height: 8vh;
   text-align: right;
@@ -60,6 +60,6 @@ header nav {
   position: absolute;
   top: 25%;
   margin-left: 25%;
-  text-align: center;
   width: 50%;
+  text-align: center;
 }
