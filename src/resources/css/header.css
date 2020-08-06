@@ -24,10 +24,10 @@ header.home-page {
 
 header nav {
   position: absolute;
-  height: 8vh;
+  height: 6rem;
   top:0rem;
   width: 100%;
-  background-color: #9bb2d1;
+  background-color: #9BB2D1;
 }
 
 .header__logo-box {
@@ -45,7 +45,7 @@ header nav {
   top: 0.3rem;
   right: 8rem;
   color: #fff;
-  height: 8vh;
+  height: 6rem;
   text-align: right;
  
 }
@@ -62,4 +62,8 @@ header nav {
   margin-left: 25%;
   width: 50%;
   text-align: center;
+}
+
+.header-main-button{
+  margin-right: 1.5rem;
 }

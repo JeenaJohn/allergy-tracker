@@ -5,7 +5,7 @@ import React from "react";
 
 function Sidebar(){
   return(
-    <Menu>
+    <Menu width={ '30%' }>
       
     <a id="home" className="menu-item" href="/">Home</a>
     <a id="kid" className="menu-item" href="/kid">Add Kid</a>

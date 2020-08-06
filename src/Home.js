@@ -15,7 +15,7 @@ function Home(props) {
 
           <a
             href="/diary"
-            className="btn btn-header u-margin-right u-margin-bottom-small "
+            className="btn btn-header header-main-button "
           >
             Start Tracking
           </a>

@@ -208,6 +208,7 @@ function ReportListItem(props) {
               className="u-display-mode"
               name="ac"
               checked={additionalData.ac}
+              readOnly
             />
           </div>
           <div className="report-item">
@@ -217,6 +218,7 @@ function ReportListItem(props) {
               className="u-display-mode"
               name="nails"
               checked={additionalData.nails}
+              readOnly
             />
           </div>
         </div>

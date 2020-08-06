@@ -40,7 +40,7 @@
   /* General sidebar styles */
   .bm-menu {
     background:#6785AE;
-    padding: 9rem 0rem 0;
+    padding: 6rem 0 0;
     font-size: 1.15rem;
    
     
@@ -53,8 +53,9 @@
   
   /* Wrapper for item list */
   .bm-item-list {
-    color: #f3fafe;
-    padding: 0.8rem;
+    color: #f3fafe; 
+    padding: 0.8rem 0;
+    
     
   
   }
@@ -62,6 +63,9 @@
   /* Individual item */
   .bm-item {
     display: inline-block;
+   /* border: 1px solid #9D6C19;
+    border-style: inset; */
+    margin-bottom: 1.6rem;
     
   }
   
@@ -72,11 +76,15 @@
 
   .menu-item {
     text-decoration: none;
+    /*background-color: #e6e1e1;
     
+    color:  #2C5080; */
+
     color: #f3fafe;
     font-weight: bold;
     font-size: 2rem;
-    padding: 5rem;
+    text-align: center;
+    padding: 3rem;
     line-height: 200%;
     height: 10rem;
    
