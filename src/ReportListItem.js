@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import firebase from "./firebase.js";
 
 function ReportListItem(props) {
   const [symptoms, setSymptoms] = useState({});
@@ -26,7 +25,6 @@ function ReportListItem(props) {
       };
     }
     setSymptoms(newStateSymptoms);
-    console.log(newStateSymptoms);
 
     /* Food */
     let newStateFood = {};
@@ -39,7 +37,6 @@ function ReportListItem(props) {
       };
     }
     setFood(newStateFood);
-    console.log(newStateFood);
 
     /* AdditionalData */
     let newStateAdditionalData = {};
@@ -52,7 +49,6 @@ function ReportListItem(props) {
       };
     }
     setAdditionalData(newStateAdditionalData);
-    console.log(newStateAdditionalData);
   }, [props]);
 
   return (
@@ -93,8 +89,6 @@ function ReportListItem(props) {
             />
           </div>
           <div className="report-item">
-            
-
             {symptoms.itchLevel > 5 ? (
               <mark>
                 <label for="itchLevel">Itch Level (scale of 0 - 10):</label>
@@ -108,14 +102,14 @@ function ReportListItem(props) {
               </mark>
             ) : (
               <>
-              <label for="itchLevel">Itch Level (scale of 0 - 10):</label>
-              <input
-                className="u-display-mode"
-                type="number"
-                name="itchLevel"
-                value={symptoms.itchLevel}
-                readOnly
-              />
+                <label for="itchLevel">Itch Level (scale of 0 - 10):</label>
+                <input
+                  className="u-display-mode"
+                  type="number"
+                  name="itchLevel"
+                  value={symptoms.itchLevel}
+                  readOnly
+                />
               </>
             )}
           </div>

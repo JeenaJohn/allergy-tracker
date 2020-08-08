@@ -37,7 +37,7 @@ function MyAllergy(props) {
       setKids(newState);
     });
     formatDate(today);
-  }, [props]);
+  }, [kidsRef, today]);
 
   const formatDate = (date_input) => {
     let date_output;
@@ -118,16 +118,14 @@ function MyAllergy(props) {
 
           {
             /* If there are no existing kid profiles */
-            kids.length == 0 ? (
+            kids.length === 0 ? (
               <p className="paragraph u-margin-left">
                 <i>No kid profiles exist. To add one, click here</i>
                 <a href="/kid" className="btn btn-medium u-margin-left ">
                   Add Kid
                 </a>
               </p>
-            ) : (
-              <p></p>
-            )
+            ) : null
           }
         </div>
         <div className="u-text-left">
@@ -147,10 +145,9 @@ function MyAllergy(props) {
           />
         </div>
       </div>
-     
+
       <Symptoms
         userID={props.userID}
-        kid={selectedKid}
         kidId={selectedKidId}
         date={entryDate}
         date_yyyy_mm={entryMonth}
@@ -158,7 +155,6 @@ function MyAllergy(props) {
 
       <Food
         userID={props.userID}
-        kid={selectedKid}
         kidId={selectedKidId}
         date={entryDate}
         date_yyyy_mm={entryMonth}
@@ -166,12 +162,10 @@ function MyAllergy(props) {
 
       <AdditionalData
         userID={props.userID}
-        kid={selectedKid}
         kidId={selectedKidId}
         date={entryDate}
         date_yyyy_mm={entryMonth}
       />
-  
     </div>
   );
 }

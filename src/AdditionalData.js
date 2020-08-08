@@ -42,7 +42,7 @@ function AdditionalData(props) {
         });
       }
     });
-  }, [props]);
+  }, [additionalDataRef]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -55,7 +55,7 @@ function AdditionalData(props) {
   const saveAdditionalData = (e, additionalData) => {
     e.preventDefault();
 
-    if (firebaseID == "") {
+    if (firebaseID === "") {
       /* adding data */
       additionalDataRef.push(additionalData);
     } else {
@@ -77,7 +77,7 @@ function AdditionalData(props) {
           Some more data to track
         </h3>
         <div>
-        <div className="question">
+          <div className="question">
             <label for="ac">Was A/C On?</label>
             <input
               type="checkbox"
@@ -110,13 +110,12 @@ function AdditionalData(props) {
             <textarea
               name="notes"
               rows="4"
-            maxLength="200"
+              maxLength="200"
               className="additional-notes"
               value={additionalData.notes}
               onChange={(e) => handleChange(e)}
             />
           </div>
-
         </div>
         <div className="u-text-left">
           <button

@@ -32,7 +32,7 @@ function Report(props) {
     });
 
     formatDate();
-  }, [props]);
+  }, [kidsRef]);
 
   const formatDate = () => {
     let today = new Date();
@@ -64,7 +64,7 @@ function Report(props) {
           Report
           {selectedKid != null ? (
             <span className="u-capitalize"> - {selectedKid} </span>
-          ) : null }
+          ) : null}
         </h2>
       </div>
       {props.userID == null ? (
@@ -106,18 +106,15 @@ function Report(props) {
 
           {
             /* If there are no existing kid profiles */
-            kids.length == 0 ? (
+            kids.length === 0 ? (
               <p className="paragraph u-margin-left">
                 <i>No kid profiles exist. To add one, click here</i>
                 <a href="/kid" className="btn btn-medium u-margin-left ">
                   Add Kid
                 </a>
               </p>
-            ) : (
-              <p></p>
-            )
+            ) : null
           }
-
         </div>
         <div className="u-text-left">
           <h3
@@ -136,14 +133,14 @@ function Report(props) {
           />
         </div>
       </div>
-     
-     {(selectedKid !=null)? 
-      <ReportListView
-        userID={props.userID}
-        kid={selectedKid}
-        kidId={selectedKidId}
-        date_yyyy_mm={entryMonth}
-     /> : <p></p> }
+
+      {selectedKid != null ? (
+        <ReportListView
+          userID={props.userID}
+          kidId={selectedKidId}
+          date_yyyy_mm={entryMonth}
+        />
+      ) : null}
     </div>
   );
 }

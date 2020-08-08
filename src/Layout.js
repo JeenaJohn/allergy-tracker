@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import logo from "./logo.svg";
 import Sidebar from "./Sidebar";
-
-import firebase, { auth, provider } from "./firebase.js";
 
 function Layout(props) {
   useEffect(() => {

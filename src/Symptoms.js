@@ -39,7 +39,7 @@ function Symptoms(props) {
         setItchLevel(items[item].itchLevel);
       }
     });
-  }, [props]);
+  }, [symptomsRef]);
 
   const handleChange = (e) => {
     const { name, value, checked } = e.target;
@@ -61,7 +61,7 @@ function Symptoms(props) {
   const saveSymptoms = (e, rash, itchy, itchLevel) => {
     e.preventDefault();
 
-    if (firebaseID == "") {
+    if (firebaseID === "") {
       /* adding data */
       symptomsRef.push({ rash, itchy, itchLevel });
 

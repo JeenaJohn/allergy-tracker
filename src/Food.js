@@ -7,7 +7,6 @@ function Food(props) {
   const [dinner, setDinner] = useState("");
   const [snacks, setSnacks] = useState("");
   const [firebaseID, setFirebaseID] = useState("");
-  const [allFood, setAllFood] = useState([]);
 
   let saveBtnDisabled = props.userID == null ? true : false;
 
@@ -42,7 +41,7 @@ function Food(props) {
         setSnacks(items[item].snacks);
       }
     });
-  }, [props]);
+  }, [foodRef]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -71,7 +70,7 @@ function Food(props) {
   const saveFood = (e, breakfast, lunch, dinner, snacks) => {
     e.preventDefault();
 
-    if (firebaseID == "") {
+    if (firebaseID === "") {
       /* adding data */
       foodRef.push({ breakfast, lunch, dinner, snacks });
     } else {
@@ -150,13 +149,6 @@ function Food(props) {
         </tr>
       </table>
       
-
-     {/* {allFood.map((food1) => (
-        <div className="question">
-          <label for="food">Food</label>
-          <input type="text" name="food" maxLength="60" value={food1.food} />
-        </div>
-      ))} */}
 
       <div className="u-text-left">
         <button

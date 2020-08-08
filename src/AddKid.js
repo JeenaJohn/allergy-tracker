@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 
 import firebase from "./firebase.js";
 
@@ -35,7 +34,7 @@ function AddKid(props) {
 
       setKids(newState);
     });
-  }, [props]);
+  }, [props, kidsRef]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -51,7 +50,7 @@ function AddKid(props) {
   const validateData = (kidName) => {
     let msg = "";
     console.log(kidName.trim());
-    if (kidName.length == 0) {
+    if (kidName.length === 0) {
       msg = "Enter kid's name";
     }
     setUserMsg(msg);
@@ -66,7 +65,7 @@ function AddKid(props) {
 
     /* save to DB only if no errors*/
     /* check to see if user entered a value */
-    if (kidName.length != 0) {
+    if (kidName.length !== 0) {
       kidsRef.push({ kidName });
       /* clear kid name field and userMsg after save*/
       setNewKidName("");
@@ -114,7 +113,7 @@ function AddKid(props) {
           </button>
         </div>
 
-        {userMsg.length != 0 ? (
+        {userMsg.length !== 0 ? (
           <p
             className="paragraph u-text-left u-text-color-red 
       u-margin-bottom-small"
