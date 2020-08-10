@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import { auth, provider } from "./firebase.js";
+import { firebase, auth, provider } from "./firebase.js";
 
 import "./App.css";
 import Layout from "./Layout";

@@ -86,7 +86,7 @@ function Symptoms(props) {
           className="heading-tertiary 
           u-text-left u-margin-bottom-small"
         >
-          What are the Symptoms?
+          Let's track Symptoms through out the day
         </h3>
         <div>
           <div className="question">
