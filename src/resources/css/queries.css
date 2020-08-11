@@ -34,12 +34,23 @@ $breakpoint arguement choices:
     width: 80%;
     margin-left: 10%;
   }
+
+
 }
 
 /*900px Tablet portrait //1 rem = 9px */
 @media only screen and (max-width: 900px) {
   html {
     font-size: 9px;
+  }
+
+  .header__text-box {
+    width: 35%;
+  }
+
+  .header-main-button{
+    margin-bottom: 2rem;
+    margin-right: 0rem;
   }
 }
 
@@ -48,6 +59,7 @@ $breakpoint arguement choices:
   html {
     font-size: 8px;
   }
+ 
 }
 
 @media only screen and (max-width: 480px) {

@@ -66,12 +66,17 @@
    /* border: 1px solid #9D6C19;
     border-style: inset; */
     margin-bottom: 1.6rem;
+    transition: color 0.2s;
     
   }
+
+  .bm-item:hover {
+    color:  #2C5080;
+   }
   
   /* Styling of overlay */
   .bm-overlay {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.9);
   }
 
   .menu-item {

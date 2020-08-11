@@ -10,7 +10,7 @@ function Home(props) {
           <h1 className="heading-primary  ">
             <span className="heading-primary--main">Track My Allergy</span>
           </h1>
-
+         
           <a href="/diary" className="btn btn-header header-main-button ">
             Start Tracking
           </a>
