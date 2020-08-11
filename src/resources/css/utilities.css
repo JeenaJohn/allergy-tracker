@@ -36,6 +36,10 @@
   margin-top: 10rem !important;
 }
 
+.u-padding-top-big {
+  padding-top: 8rem !important;
+}
+
 .u-display-mode {
   border: 0;
   background-color: transparent;

@@ -59,7 +59,7 @@ function Report(props) {
 
   return (
     <div>
-      <div className="u-center-text u-margin-top-big  u-margin-bottom-medium">
+      <div className="u-center-text u-padding-top-big  u-margin-bottom-medium">
         <h2 className="heading-secondary bg-color-blue ">
           Report
           {selectedKid != null ? (
