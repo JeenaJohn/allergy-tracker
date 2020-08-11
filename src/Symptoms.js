@@ -39,7 +39,7 @@ function Symptoms(props) {
         setItchLevel(items[item].itchLevel);
       }
     });
-  }, [symptomsRef]);
+  }, [props]);
 
   const handleChange = (e) => {
     const { name, value, checked } = e.target;

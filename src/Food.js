@@ -41,7 +41,7 @@ function Food(props) {
         setSnacks(items[item].snacks);
       }
     });
-  }, [foodRef]);
+  }, [props]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

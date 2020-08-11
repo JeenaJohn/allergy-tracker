@@ -26,7 +26,7 @@ function ReportListView(props) {
       setAllergies(newState);
       console.log(newState);
     });
-  }, [dbRef]);
+  }, [props]);
 
   return (
     <div>

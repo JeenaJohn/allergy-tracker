@@ -12,8 +12,6 @@ function AddKid(props) {
 
   const kidsRef = firebase.database().ref(props.userID + "/kids");
 
-  console.log(props.userID);
-
   useEffect(() => {
     /*  check if user is logged in */
 
@@ -34,7 +32,7 @@ function AddKid(props) {
 
       setKids(newState);
     });
-  }, [props, kidsRef]);
+  }, [props]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

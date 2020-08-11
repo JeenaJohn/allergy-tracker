@@ -37,7 +37,7 @@ function MyAllergy(props) {
       setKids(newState);
     });
     formatDate(today);
-  }, [kidsRef, today]);
+  }, [props]);
 
   const formatDate = (date_input) => {
     let date_output;

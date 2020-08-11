@@ -32,7 +32,7 @@ function Report(props) {
     });
 
     formatDate();
-  }, [kidsRef]);
+  }, [props]);
 
   const formatDate = () => {
     let today = new Date();
