@@ -76,7 +76,7 @@
   
   /* Styling of overlay */
   .bm-overlay {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.8) !important;
   }
 
   .menu-item {
@@ -93,5 +93,22 @@
     line-height: 200%;
     height: 10rem;
    
+  }
+
+  .sidebar-logo-box {
     
+    top: 3rem;
+   
+    border: 1px solid #9D6C19;
+    border-style: inset; 
+    border-radius: 8px;
+    width: 30%;
+    margin-left: 35%;
+    text-align: center;
+    background-color: #f3fafe ;
+  }
+  
+  .sidebar-logo {
+    
+    height: 12rem;
   }

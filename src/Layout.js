@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import logo from "./logo.svg";
+//import logo from "./resources/images/logo.png";
 import Sidebar from "./Sidebar";
 
 function Layout(props) {
@@ -12,9 +12,9 @@ function Layout(props) {
     <div>
       <header className="all-pages">
         <nav>
-          {/*} <div className="header__logo-box">
+          {/* <div className="header__logo-box">
             <img src={logo} alt="Logo" className="header__logo" />
-  </div> */}
+          </div> */}
           <div className="header__userinfo">
             {props.user ? (
               <div>
