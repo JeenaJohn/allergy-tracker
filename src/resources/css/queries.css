@@ -52,6 +52,10 @@ $breakpoint arguement choices:
     margin-bottom: 2rem;
     margin-right: 0rem;
   }
+  
+  .sidebar-logo { 
+    height: 8rem;
+  }
 }
 
 /*600px Phone //1 rem = 8px*/
