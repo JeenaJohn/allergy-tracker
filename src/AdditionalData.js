@@ -111,7 +111,7 @@ function AdditionalData(props) {
               name="notes"
               rows="4"
               maxLength="200"
-              className="additional-notes"
+              className="notes"
               value={additionalData.notes}
               onChange={(e) => handleChange(e)}
             />

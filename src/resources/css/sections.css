@@ -93,7 +93,7 @@
   margin-left: 0.6rem;
 }
 
-.additional-notes{
+.notes{
   font-size: 1.5rem;
   padding: 0.5rem;
   overflow-y:scroll;
@@ -102,6 +102,21 @@
 
   resize: none;
 }
+
+.notes::-webkit-scrollbar {
+ 
+  width: 4px;
+  height: 5px;
+}
+
+.notes::-webkit-scrollbar-thumb {
+  border: 1px solid #5e5e5e;
+  border-radius: 4px;
+  background-color: #5e5e5e;
+  box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
+
 
 .table {
   border-spacing: 0 1.3rem ; /*horizontal spacing*/
@@ -125,6 +140,16 @@
 .report-item {
   font-size: 1.4rem;
   margin: 0.5rem 3rem;
+}
+
+.box-existing-symptoms {
+  width: 90%;
+  margin: 3rem 3rem; 
+ 
+  padding: 1rem;
+  border: 1px solid #fff;
+  background-color: #f7f7f7;
+  border-radius: 1rem;
 }
 
 

@@ -6,6 +6,7 @@ function Symptoms(props) {
   const [rash, setRash] = useState(false);
   const [itchTime, setItchTime] = useState("");
   const [itchLevel, setItchLevel] = useState(0);
+  const [notes, setNotes] = useState("");
   const [firebaseID, setFirebaseID] = useState("");
 
   const [existingSymptoms, setExistingSymptoms] = useState([]);
@@ -30,6 +31,7 @@ function Symptoms(props) {
     setRash(false);
     setItchLevel(0);
     setItchTime("");
+    setNotes("");
 
     symptomsRef.on("value", (snapshot) => {
       let items = snapshot.val();
@@ -41,6 +43,7 @@ function Symptoms(props) {
           rash: items[item].rash,
           itchLevel: items[item].itchLevel,
           itchTime: items[item].itchTime,
+          notes: items[item].notes
         });
       }
 
@@ -73,16 +76,20 @@ function Symptoms(props) {
       case "itchLevel":
         setItchLevel(value);
         break;
+      case "notes":
+        setNotes(value);
+        break;
       default:
     }
   };
 
-  const saveSymptoms = (e, rash, itchLevel, itchTime) => {
+  const saveSymptoms = (e, rash, itchLevel, itchTime, notes) => {
     e.preventDefault();
+    console.log(notes);
 
     if (firebaseID === "") {
       /* adding data */
-      symptomsRef.push({ rash, itchLevel, itchTime });
+      symptomsRef.push({ rash, itchLevel, itchTime, notes });
     } else {
       /* update data */
 
@@ -90,6 +97,7 @@ function Symptoms(props) {
         rash: rash,
         itchLevel: itchLevel,
         itchTime: itchTime,
+        notes: notes,
       };
       let updates = {};
       updates["/" + firebaseID] = editedData;
@@ -116,10 +124,7 @@ function Symptoms(props) {
               onChange={(e) => handleChange(e)}
             />
           </div>
-            <div className="question">
-            <label for="itchy">Time</label>
-  <time>20:05</time>
-  </div> 
+
           <div className="question">
             <label for="itchLevel">Itch Level (scale of 0 - 10)</label>
             <input
@@ -136,11 +141,22 @@ function Symptoms(props) {
           </div>
 
           <div className="question">
-            <label for="rash">What was the time when it was itchy?</label>
+            <label for="itchTime">What was the time when it was itchy?</label>
             <input
               type="time"
               name="itchTime"
-              checked={itchTime}
+              value={itchTime}
+              onChange={(e) => handleChange(e)}
+            />
+          </div>
+          <div className="question">
+            <label for="notes">Notes</label>
+            <textarea
+              name="notes"
+              rows="3"
+              maxLength="200"
+              className="notes"
+              value={notes}
               onChange={(e) => handleChange(e)}
             />
           </div>
@@ -149,30 +165,26 @@ function Symptoms(props) {
             <button
               className="btn btn-medium "
               type="submit"
-              onClick={(e) => saveSymptoms(e, rash, itchLevel, itchTime)}
+              onClick={(e) => saveSymptoms(e, rash, itchLevel, itchTime, notes)}
               disabled={saveBtnDisabled}
             >
               Save
             </button>
           </div>
         </div>
-      </div>
-
-      <div className="box-questions">
         <h3
           className="heading-tertiary 
-          u-text-left u-margin-bottom-small"
+          u-text-left  u-margin-top-medium u-margin-bottom-small"
         >
           Symptoms already added for the day
         </h3>
         <div>
-      {existingSymptoms.map((symptom, index) => (
-        <ListSymptoms
-          index={index}
-          symptom={symptom}
-        />
-      ))}
-    </div>
+          {existingSymptoms.map((symptom, index) => (
+            <div className="box-existing-symptoms u-text-left">
+              <ListSymptoms index={index} symptom={symptom} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

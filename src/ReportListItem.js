@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
+import ReportListSymptoms from  "./ReportListSymptoms";
 
 function ReportListItem(props) {
-  const [symptoms, setSymptoms] = useState({});
+  const [symptoms, setSymptoms] = useState([]);
   const [food, setFood] = useState({});
   const [additionalData, setAdditionalData] = useState({});
   const [date, setDate] = useState("");
@@ -15,16 +16,24 @@ function ReportListItem(props) {
   useEffect(() => {
     convertDate(props.date);
 
-    /* Symptoms */
-    let newStateSymptoms = {};
-    for (let key in props.symptoms) {
-      newStateSymptoms = {
-        itchy: props.symptoms[key].itchy,
-        itchLevel: props.symptoms[key].itchLevel,
-        rash: props.symptoms[key].rash,
-      };
-    }
-    setSymptoms(newStateSymptoms);
+    console.log(props.symptoms);
+
+    /* Symptoms - There can be multiple entries for symptoms for the day*/
+    /* component ReportListSymptoms will be used to list the symptoms*/ 
+
+
+    let existingData = [];
+      for (let key in props.symptoms) {
+        existingData.push({
+          id: key,
+          rash: props.symptoms[key].rash,
+          itchLevel: props.symptoms[key].itchLevel,
+          itchTime: props.symptoms[key].itchTime,
+          notes: props.symptoms[key].notes
+        });
+      }
+ 
+    setSymptoms(existingData); 
 
     /* Food */
     let newStateFood = {};
@@ -54,7 +63,7 @@ function ReportListItem(props) {
   return (
     <div>
       {/* Display Symptoms*/}
-      <div className="box-report">
+      < div className="box-report">
         <h3
           className="heading-report-item 
           u-text-left u-margin-bottom-very-small"
@@ -68,52 +77,13 @@ function ReportListItem(props) {
           Symptoms
         </h3>
         <div>
-          <div className="report-item">
-            <label for="rash">Rashes?</label>
-            <input
-              className="u-display-mode"
-              type="checkbox"
-              name="rash"
-              checked={symptoms.rash}
-              readOnly
-            />
-          </div>
-          <div className="report-item">
-            <label for="itchy">Itchy?</label>
-            <input
-              className="u-display-mode"
-              type="checkbox"
-              name="itchy"
-              checked={symptoms.itchy}
-              readOnly
-            />
-          </div>
-          <div className="report-item">
-            {symptoms.itchLevel > 5 ? (
-              <mark>
-                <label for="itchLevel">Itch Level (scale of 0 - 10):</label>
-                <input
-                  className="u-display-mode"
-                  type="number"
-                  name="itchLevel"
-                  value={symptoms.itchLevel}
-                  readOnly
-                />
-              </mark>
-            ) : (
-              <>
-                <label for="itchLevel">Itch Level (scale of 0 - 10):</label>
-                <input
-                  className="u-display-mode"
-                  type="number"
-                  name="itchLevel"
-                  value={symptoms.itchLevel}
-                  readOnly
-                />
-              </>
-            )}
-          </div>
+          {symptoms.map((symptom, index) => (
+            <div className="box-existing-symptoms">
+              <ReportListSymptoms index={index} symptom={symptom} />
+            </div>
+          ))}
         </div>
+        
 
         {/* Display Food*/}
 

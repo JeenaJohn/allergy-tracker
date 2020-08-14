@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function ListSymptoms(props) {
+function ReportListSymptoms(props) {
   //const [editMode, setEditMode] = useState(false);
 
   const [rash, setRash] = useState(props.symptom.rash);
@@ -18,13 +18,6 @@ function ListSymptoms(props) {
     setNotes(props.symptom.notes);
   }, [props]);
 
-  const discardChanges = () => {
-    // setEditMode(false);
-    setRash(props.symptom.rash);
-    setItchLevel(props.symptom.itchLevel);
-    setItchTime(props.symptom.itchTime);
-    setNotes(props.symptom.notes);
-  };
 
   return (
     <div>
@@ -38,17 +31,31 @@ function ListSymptoms(props) {
           readOnly
         />
       </div>
-
       <div className="report-item">
-        <label for="itchLevel">Itch Level:</label>
-        <input
-          className="u-display-mode"
-          type="number"
-          name="itchLevel"
-          value={itchLevel}
-          readOnly
-        />
-      </div>
+      {itchLevel > 5 ? (
+              <mark>
+                <label for="itchLevel">Itch Level (scale of 0 - 10):</label>
+                <input
+                  className="u-display-mode"
+                  type="number"
+                  name="itchLevel"
+                  value={itchLevel}
+                  readOnly
+                />
+              </mark>
+            ) : (
+              <div>
+                <label for="itchLevel">Itch Level (scale of 0 - 10):</label>
+                <input
+                  className="u-display-mode"
+                  type="number"
+                  name="itchLevel"
+                  value={itchLevel}
+                  readOnly
+                />
+              </div>
+            )}
+            </div>
 
       <div className="report-item">
         <label for="itchTime">Time when it was itchy?</label>
@@ -71,10 +78,10 @@ function ListSymptoms(props) {
             value={notes}
             readOnly
           />
-        </div>
-      ) : null}
+        </div>) : null }
+    
     </div>
   );
 }
 
-export default ListSymptoms;
+export default ReportListSymptoms;
