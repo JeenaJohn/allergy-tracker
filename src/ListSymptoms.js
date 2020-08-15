@@ -10,7 +10,6 @@ function ListSymptoms(props) {
   const [notes, setNotes] = useState(props.symptom.notes);
 
   useEffect(() => {
-    console.log(props.symptom.notes);
     // setEditMode(false);
     setRash(props.symptom.rash);
     setItchLevel(props.symptom.itchLevel);

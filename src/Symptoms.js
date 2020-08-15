@@ -74,7 +74,6 @@ function Symptoms(props) {
 
   const saveSymptoms = (e, rash, itchLevel, itchTime, notes) => {
     e.preventDefault();
-    console.log(notes);
 
     if (firebaseID === "") {
       /* adding data */

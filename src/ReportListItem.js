@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ReportListSymptoms from  "./ReportListSymptoms";
+import ReportListSymptoms from "./ReportListSymptoms";
 
 function ReportListItem(props) {
   const [symptoms, setSymptoms] = useState([]);
@@ -16,24 +16,21 @@ function ReportListItem(props) {
   useEffect(() => {
     convertDate(props.date);
 
-    console.log(props.symptoms);
-
     /* Symptoms - There can be multiple entries for symptoms for the day*/
-    /* component ReportListSymptoms will be used to list the symptoms*/ 
-
+    /* component ReportListSymptoms will be used to list the symptoms*/
 
     let existingData = [];
-      for (let key in props.symptoms) {
-        existingData.push({
-          id: key,
-          rash: props.symptoms[key].rash,
-          itchLevel: props.symptoms[key].itchLevel,
-          itchTime: props.symptoms[key].itchTime,
-          notes: props.symptoms[key].notes
-        });
-      }
- 
-    setSymptoms(existingData); 
+    for (let key in props.symptoms) {
+      existingData.push({
+        id: key,
+        rash: props.symptoms[key].rash,
+        itchLevel: props.symptoms[key].itchLevel,
+        itchTime: props.symptoms[key].itchTime,
+        notes: props.symptoms[key].notes,
+      });
+    }
+
+    setSymptoms(existingData);
 
     /* Food */
     let newStateFood = {};
@@ -63,7 +60,7 @@ function ReportListItem(props) {
   return (
     <div>
       {/* Display Symptoms*/}
-      < div className="box-report">
+      <div className="box-report">
         <h3
           className="heading-report-item 
           u-text-left u-margin-bottom-very-small"
@@ -83,7 +80,6 @@ function ReportListItem(props) {
             </div>
           ))}
         </div>
-        
 
         {/* Display Food*/}
 

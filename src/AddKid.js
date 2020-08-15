@@ -16,8 +16,6 @@ function AddKid(props) {
   useEffect(() => {
     /*  check if user is logged in */
 
-   console.log(props.userID);
-
     kidsRef.on("value", (snapshot) => {
       let items = snapshot.val();
 
@@ -78,16 +76,15 @@ function AddKid(props) {
         <h2 className="heading-secondary bg-color-blue ">Add Kid Profile</h2>
       </div>
       <div>
-      {props.userID === null ? (
-        <p
-          className="paragraph u-center-text u-text-color-red 
+        {props.userID === null ? (
+          <p
+            className="paragraph u-center-text u-text-color-red 
     u-margin-bottom-small"
-        >
-          You have to first login to use this app.
-        </p>
-      ) : null}
+          >
+            You have to first login to use this app.
+          </p>
+        ) : null}
       </div>
-
 
       <div className="box-questions">
         <div className="question">
@@ -106,7 +103,9 @@ function AddKid(props) {
         </div>
         <div className="u-text-left">
           <button
-            className={`btn btn-medium ${saveBtnDisabled ? "btn-disabled" : ""} `}
+            className={`btn btn-medium ${
+              saveBtnDisabled ? "btn-disabled" : ""
+            } `}
             type="submit"
             onClick={(e) => save(e, newKidName)}
             disabled={saveBtnDisabled}

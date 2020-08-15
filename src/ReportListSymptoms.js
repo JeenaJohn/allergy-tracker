@@ -10,14 +10,12 @@ function ReportListSymptoms(props) {
   const [notes, setNotes] = useState(props.symptom.notes);
 
   useEffect(() => {
-    console.log(props.symptom.notes);
     // setEditMode(false);
     setRash(props.symptom.rash);
     setItchLevel(props.symptom.itchLevel);
     setItchTime(props.symptom.itchTime);
     setNotes(props.symptom.notes);
   }, [props]);
-
 
   return (
     <div>
@@ -32,30 +30,30 @@ function ReportListSymptoms(props) {
         />
       </div>
       <div className="report-item">
-      {itchLevel > 5 ? (
-              <mark>
-                <label for="itchLevel">Itch Level (scale of 0 - 10):</label>
-                <input
-                  className="u-display-mode"
-                  type="number"
-                  name="itchLevel"
-                  value={itchLevel}
-                  readOnly
-                />
-              </mark>
-            ) : (
-              <div>
-                <label for="itchLevel">Itch Level (scale of 0 - 10):</label>
-                <input
-                  className="u-display-mode"
-                  type="number"
-                  name="itchLevel"
-                  value={itchLevel}
-                  readOnly
-                />
-              </div>
-            )}
-            </div>
+        {itchLevel > 5 ? (
+          <mark>
+            <label for="itchLevel">Itch Level (scale of 0 - 10):</label>
+            <input
+              className="u-display-mode"
+              type="number"
+              name="itchLevel"
+              value={itchLevel}
+              readOnly
+            />
+          </mark>
+        ) : (
+          <div>
+            <label for="itchLevel">Itch Level (scale of 0 - 10):</label>
+            <input
+              className="u-display-mode"
+              type="number"
+              name="itchLevel"
+              value={itchLevel}
+              readOnly
+            />
+          </div>
+        )}
+      </div>
 
       <div className="report-item">
         <label for="itchTime">Time when it was itchy?</label>
@@ -78,8 +76,8 @@ function ReportListSymptoms(props) {
             value={notes}
             readOnly
           />
-        </div>) : null }
-    
+        </div>
+      ) : null}
     </div>
   );
 }

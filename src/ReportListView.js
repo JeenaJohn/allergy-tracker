@@ -10,9 +10,8 @@ function ReportListView(props) {
 
   useEffect(() => {
     dbRef.on("value", (snapshot) => {
-      let items = {} ;
+      let items = {};
       items = snapshot.val();
-      console.log(items);
 
       let newState = [];
       for (let date in items) {
@@ -20,11 +19,10 @@ function ReportListView(props) {
           date: date,
           symptoms: items[date].symptoms,
           food: items[date].food,
-          additionalData: items[date].additionalData
+          additionalData: items[date].additionalData,
         });
       }
       setAllergies(newState);
-      console.log(newState);
     });
   }, [props]);
 
