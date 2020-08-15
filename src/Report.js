@@ -67,16 +67,15 @@ function Report(props) {
           ) : null}
         </h2>
       </div>
-      {props.userID == null ? (
+      
+      {props.userID === null ? (
         <p
           className="paragraph u-center-text u-text-color-red 
       u-margin-bottom-small"
         >
           <i>You have to first login to use this app.</i>
         </p>
-      ) : (
-        <p></p>
-      )}
+      ) : null}
       <div className="box-questions">
         <h3
           className="heading-tertiary 

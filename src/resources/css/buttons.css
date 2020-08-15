@@ -33,6 +33,12 @@
   font-size: 1.1rem;
 }
 
+.btn-disabled{
+  background-color: grey !important;
+  cursor: none !important;
+  
+}
+
 .btn:hover {
   transform: scaleX(1.2) scaleY(1.1);
 }

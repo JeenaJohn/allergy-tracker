@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import firebase from "./firebase.js";
 
 function Food(props) {
@@ -73,6 +74,7 @@ function Food(props) {
     if (firebaseID === "") {
       /* adding data */
       foodRef.push({ breakfast, lunch, dinner, snacks });
+      toast.success("Saved successfully");
     } else {
       /* update data */
 
@@ -99,7 +101,7 @@ function Food(props) {
       <table className="table">
         <tr>
           <td>
-            <label for="breakfast" className="td-label">
+            <label htmlFor="breakfast" className="td-label">
               Breakfast
             </label>
           </td>
@@ -115,7 +117,7 @@ function Food(props) {
         </tr>
         <tr>
           <td>
-            <label for="lunch" className="td-label">Lunch</label>
+            <label htmlFor="lunch" className="td-label">Lunch</label>
           </td>
           <td>
             <input
@@ -128,7 +130,7 @@ function Food(props) {
           </td>
         </tr>
         <tr>
-          <td><label for="dinner" className="td-label">Dinner</label></td>
+          <td><label htmlFor="dinner" className="td-label">Dinner</label></td>
           <td><input
           type="text"
           name="dinner"
@@ -138,7 +140,7 @@ function Food(props) {
         /></td>
         </tr>
         <tr>
-          <td><label for="snacks" className="td-label">Snacks</label></td>
+          <td><label htmlFor="snacks" className="td-label">Snacks</label></td>
           <td><input
           type="text"
           name="snacks"
@@ -152,7 +154,7 @@ function Food(props) {
 
       <div className="u-text-left">
         <button
-          className="btn btn-medium "
+          className={`btn btn-medium ${saveBtnDisabled ? "btn-disabled" : ""} `}
           type="submit"
           onClick={(e) => saveFood(e, breakfast, lunch, dinner, snacks)}
           disabled={saveBtnDisabled}

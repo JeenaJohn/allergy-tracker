@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+
 
 import { firebase, auth, provider } from "./firebase.js";
 
 import "./App.css";
+import "react-toastify/dist/ReactToastify.css";
 import Layout from "./Layout";
 import Home from "./Home";
 import AddKid from "./AddKid";
@@ -41,6 +44,7 @@ function App() {
   return (
     <Router>
       <div className="main-layout">
+        <ToastContainer />
         <Layout
           user={user}
           userID={userID}

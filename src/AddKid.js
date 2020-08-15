@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 
 import firebase from "./firebase.js";
 
 function AddKid(props) {
   const [newKidName, setNewKidName] = useState("");
-  const [userMsg, setUserMsg] = useState("");
-  const [loginMsg, setLoginMsg] = useState("");
+  // const [userMsg, setUserMsg] = useState("");
+  //const [loginMsg, setLoginMsg] = useState("");
   const [kids, setKids] = useState([]);
 
   let saveBtnDisabled = props.userID == null ? true : false;
@@ -15,9 +16,7 @@ function AddKid(props) {
   useEffect(() => {
     /*  check if user is logged in */
 
-    props.userID == null
-      ? setLoginMsg("You have to first login to use this app.")
-      : setLoginMsg("");
+   console.log(props.userID);
 
     kidsRef.on("value", (snapshot) => {
       let items = snapshot.val();
@@ -45,7 +44,7 @@ function AddKid(props) {
     }
   };
 
-  const validateData = (kidName) => {
+  /*const validateData = (kidName) => {
     let msg = "";
     console.log(kidName.trim());
     if (kidName.length === 0) {
@@ -53,7 +52,7 @@ function AddKid(props) {
     }
     setUserMsg(msg);
     console.log(msg);
-  };
+  };*/
 
   const save = (e, kidName) => {
     e.preventDefault();
@@ -63,13 +62,13 @@ function AddKid(props) {
 
     /* save to DB only if no errors*/
     /* check to see if user entered a value */
-    if (kidName.length !== 0) {
+    if (kidName.trim().length !== 0) {
       kidsRef.push({ kidName });
       /* clear kid name field and userMsg after save*/
       setNewKidName("");
-      setUserMsg("");
+      toast.success("Kid profile saved successfully");
     } else {
-      setUserMsg("Enter Kid's name");
+      toast.error("Kid's name is empty");
     }
   };
 
@@ -78,13 +77,18 @@ function AddKid(props) {
       <div className="u-center-text u-padding-top-big  u-margin-bottom-medium">
         <h2 className="heading-secondary bg-color-blue ">Add Kid Profile</h2>
       </div>
+      <div>
+      {props.userID === null ? (
+        <p
+          className="paragraph u-center-text u-text-color-red 
+    u-margin-bottom-small"
+        >
+          You have to first login to use this app.
+        </p>
+      ) : null}
+      </div>
 
-      <p
-        className="paragraph u-text-left u-text-color-red 
-      u-margin-bottom-small"
-      >
-        {loginMsg}
-      </p>
+
       <div className="box-questions">
         <div className="question">
           <label for="kidName" className="kid-name-label">
@@ -102,7 +106,7 @@ function AddKid(props) {
         </div>
         <div className="u-text-left">
           <button
-            className="btn btn-medium "
+            className={`btn btn-medium ${saveBtnDisabled ? "btn-disabled" : ""} `}
             type="submit"
             onClick={(e) => save(e, newKidName)}
             disabled={saveBtnDisabled}
@@ -111,14 +115,14 @@ function AddKid(props) {
           </button>
         </div>
 
-        {userMsg.length !== 0 ? (
+        {/*userMsg.length !== 0 ? (
           <p
             className="paragraph u-text-left u-text-color-red 
       u-margin-bottom-small"
           >
             <i>Enter Kid's name</i>
           </p>
-        ) : null}
+        ) : null*/}
       </div>
       <div className="box-questions">
         <h3

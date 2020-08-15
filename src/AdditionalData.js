@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import firebase from "./firebase.js";
 
 function AdditionalData(props) {
@@ -58,6 +59,7 @@ function AdditionalData(props) {
     if (firebaseID === "") {
       /* adding data */
       additionalDataRef.push(additionalData);
+      toast.success("Saved successfully");
     } else {
       /* update data */
 
@@ -78,7 +80,7 @@ function AdditionalData(props) {
         </h3>
         <div>
           <div className="question">
-            <label for="ac">Was A/C On?</label>
+            <label htmlFor="ac">Was A/C On?</label>
             <input
               type="checkbox"
               name="ac"
@@ -87,7 +89,7 @@ function AdditionalData(props) {
             />
           </div>
           <div className="question">
-            <label for="nails">Kid's nails are trimmed?</label>
+            <label htmlFor="nails">Kid's nails are trimmed?</label>
             <input
               type="checkbox"
               name="nails"
@@ -96,7 +98,7 @@ function AdditionalData(props) {
             />
           </div>
           <div className="question">
-            <label for="outdoor">Outdoor Activities?</label>
+            <label htmlFor="outdoor">Outdoor Activities?</label>
             <input
               type="text"
               name="outdoor"
@@ -106,7 +108,7 @@ function AdditionalData(props) {
             />
           </div>
           <div className="question">
-            <label for="notes">Additional notes</label>
+            <label htmlFor="notes">Additional notes</label>
             <textarea
               name="notes"
               rows="4"
@@ -119,7 +121,7 @@ function AdditionalData(props) {
         </div>
         <div className="u-text-left">
           <button
-            className="btn btn-medium "
+            className={`btn btn-medium ${saveBtnDisabled ? "btn-disabled" : ""} `}
             type="submit"
             onClick={(e) => saveAdditionalData(e, additionalData)}
             disabled={saveBtnDisabled}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import ListSymptoms from "./ListSymptoms";
 import firebase from "./firebase.js";
 
@@ -43,25 +44,13 @@ function Symptoms(props) {
           rash: items[item].rash,
           itchLevel: items[item].itchLevel,
           itchTime: items[item].itchTime,
-          notes: items[item].notes
+          notes: items[item].notes,
         });
       }
 
       setExistingSymptoms(existingData);
     });
   }, [props]);
-
-  {
-    /*}    console.log(items);
-      for (let item in items) {
-        setFirebaseID(item);
-        setRash(items[item].rash);
-     //   setItchy(items[item].itchy);
-        setItchLevel(items[item].itchLevel);
-      }
-    });
-  }, [props]); */
-  }
 
   const handleChange = (e) => {
     const { name, value, checked } = e.target;
@@ -90,8 +79,17 @@ function Symptoms(props) {
     if (firebaseID === "") {
       /* adding data */
       symptomsRef.push({ rash, itchLevel, itchTime, notes });
-    } else {
-      /* update data */
+      toast.success("Symptoms saved successfully");
+
+      //initialize the questionaire values after save
+      setRash(false);
+      setItchLevel(0);
+      setItchTime("");
+      setNotes("");
+    }
+    /* update data */
+    /*else {
+      
 
       let editedData = {
         rash: rash,
@@ -102,7 +100,7 @@ function Symptoms(props) {
       let updates = {};
       updates["/" + firebaseID] = editedData;
       symptomsRef.update(updates);
-    }
+    } */
   };
 
   return (
@@ -116,20 +114,22 @@ function Symptoms(props) {
         </h3>
         <div>
           <div className="question">
-            <label for="rash">Are there any rashes?</label>
+            <label htmlFor="rash">Are there any rashes?</label>
             <input
               type="checkbox"
               name="rash"
+              id="rash"
               checked={rash}
               onChange={(e) => handleChange(e)}
             />
           </div>
 
           <div className="question">
-            <label for="itchLevel">Itch Level (scale of 0 - 10)</label>
+            <label htmlFor="itchLevel">Itch Level (scale of 0 - 10)</label>
             <input
               type="number"
               name="itchLevel"
+              id="itchLevel"
               min="0"
               max="10"
               value={itchLevel}
@@ -141,7 +141,9 @@ function Symptoms(props) {
           </div>
 
           <div className="question">
-            <label for="itchTime">What was the time when it was itchy?</label>
+            <label htmlFor="itchTime">
+              What was the time when it was itchy?
+            </label>
             <input
               type="time"
               name="itchTime"
@@ -150,7 +152,7 @@ function Symptoms(props) {
             />
           </div>
           <div className="question">
-            <label for="notes">Notes</label>
+            <label htmlFor="notes">Notes</label>
             <textarea
               name="notes"
               rows="3"
@@ -163,7 +165,9 @@ function Symptoms(props) {
 
           <div className="u-text-left">
             <button
-              className="btn btn-medium "
+              className={`btn btn-medium ${
+                saveBtnDisabled ? "btn-disabled" : ""
+              } `}
               type="submit"
               onClick={(e) => saveSymptoms(e, rash, itchLevel, itchTime, notes)}
               disabled={saveBtnDisabled}
@@ -179,11 +183,17 @@ function Symptoms(props) {
           Symptoms already added for the day
         </h3>
         <div>
-          {existingSymptoms.map((symptom, index) => (
-            <div className="box-existing-symptoms u-text-left">
-              <ListSymptoms index={index} symptom={symptom} />
-            </div>
-          ))}
+          {existingSymptoms.length > 0 ? (
+            existingSymptoms.map((symptom, index) => (
+              <div className="box-existing-symptoms u-text-left">
+                <ListSymptoms index={index} symptom={symptom} />
+              </div>
+            ))
+          ) : (
+            <h4 className="u-text-left">
+              <i>No symptoms added yet</i>
+            </h4>
+          )}
         </div>
       </div>
     </div>
