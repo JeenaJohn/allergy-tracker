@@ -10,7 +10,7 @@ function Home(props) {
           <h1 className="heading-primary  ">
             <span className="heading-primary--main">Track My Allergy</span>
           </h1>
-         
+
           <a href="/diary" className="btn btn-header header-main-button ">
             Start Tracking
           </a>
@@ -32,13 +32,17 @@ function Home(props) {
             <h3 className="heading-tertiary u-margin-bottom-small">
               Keep track of all your Allergy triggers
             </h3>
-            <p className="paragraph u-margin-bottom-medium">
+            <p className="paragraph u-margin-bottom-small">
               Knowing what triggers your allergies is the most important step
-              towards preventing flareups. 'Track My Rash' app helps in daily
-              tracking of the allergy triggers. Symptoms, food intake and
-              additional factors like weather and activities can be tracked.
-              Reports help you in identifying a pattern.
+              towards preventing flareups. 'Track My Allergy' app helps in daily
+              tracking of the allergy triggers.
             </p>
+            <p className="paragraph u-margin-bottom-small">
+              Symptoms, food intake and additional factors like weather and
+              activities can be tracked. Reports will help you in identifying a
+              pattern.
+            </p>
+
             <p className="paragraph">
               You can save upto five kid's profiles and track the allergies for
               each of them.
