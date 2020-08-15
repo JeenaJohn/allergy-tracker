@@ -1,6 +1,6 @@
 import { slide as Menu } from "react-burger-menu";
 import React from "react";
-import logo from "./resources/images/thistle_logo.svg";
+import logo from "./resources/images/sidebar_logo.svg";
 
 function Sidebar() {
   return (
