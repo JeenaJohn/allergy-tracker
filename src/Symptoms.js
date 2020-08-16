@@ -8,7 +8,6 @@ function Symptoms(props) {
   const [itchTime, setItchTime] = useState("");
   const [itchLevel, setItchLevel] = useState(0);
   const [notes, setNotes] = useState("");
-  const [firebaseID, setFirebaseID] = useState("");
 
   const [existingSymptoms, setExistingSymptoms] = useState([]);
 
@@ -75,31 +74,15 @@ function Symptoms(props) {
   const saveSymptoms = (e, rash, itchLevel, itchTime, notes) => {
     e.preventDefault();
 
-    if (firebaseID === "") {
-      /* adding data */
-      symptomsRef.push({ rash, itchLevel, itchTime, notes });
-      toast.success("Symptoms saved successfully");
+    /* adding data */
+    symptomsRef.push({ rash, itchLevel, itchTime, notes });
+    toast.success("Symptoms saved successfully");
 
-      //initialize the questionaire values after save
-      setRash(false);
-      setItchLevel(0);
-      setItchTime("");
-      setNotes("");
-    }
-    /* update data */
-    /*else {
-      
-
-      let editedData = {
-        rash: rash,
-        itchLevel: itchLevel,
-        itchTime: itchTime,
-        notes: notes,
-      };
-      let updates = {};
-      updates["/" + firebaseID] = editedData;
-      symptomsRef.update(updates);
-    } */
+    //initialize the questionaire values after save
+    setRash(false);
+    setItchLevel(0);
+    setItchTime("");
+    setNotes("");
   };
 
   return (

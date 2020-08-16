@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
 
-import { firebase, auth, provider } from "./firebase.js";
+import { auth, provider } from "./firebase.js";
 
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";

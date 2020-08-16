@@ -17,13 +17,13 @@ function ListSymptoms(props) {
     setNotes(props.symptom.notes);
   }, [props]);
 
-  const discardChanges = () => {
+  /* const discardChanges = () => {
     // setEditMode(false);
     setRash(props.symptom.rash);
     setItchLevel(props.symptom.itchLevel);
     setItchTime(props.symptom.itchTime);
     setNotes(props.symptom.notes);
-  };
+  }; */
 
   return (
     <div>
