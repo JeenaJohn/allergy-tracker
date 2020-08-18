@@ -63,7 +63,7 @@ function ReportListItem(props) {
       <div className="box-report">
         <h3
           className="heading-report-item 
-          u-text-left u-margin-bottom-very-small"
+          u-text-left u-margin-bottom-very-small u-bg-color-blue report-date"
         >
           Date: {date}
         </h3>
@@ -138,30 +138,12 @@ function ReportListItem(props) {
 
         <h3
           className="heading-report-item 
-          u-text-left u-margin-bottom-very-small u-text-underline"
+          u-text-left u-margin-top-small u-margin-bottom-small u-text-underline"
         >
           Additional Data
         </h3>
         <div>
-          <div className="report-item">
-            <label for="outdoor">Outdoor Activity:</label>
-            <input
-              type="text"
-              className="u-display-mode"
-              name="outdoor"
-              value={additionalData.outdoor}
-            />
-          </div>
-          <div className="report-item">
-            <label for="notes">Additional Notes:</label>
-            <input
-              type="text"
-              className="u-display-mode"
-              name="notes"
-              value={additionalData.notes}
-            />
-          </div>
-          <div className="report-item">
+        <div className="report-item">
             <label for="ac">A/C On?</label>
             <input
               type="checkbox"
@@ -181,6 +163,25 @@ function ReportListItem(props) {
               readOnly
             />
           </div>
+          <div className="report-item">
+            <label for="outdoor">Outdoor Activity:</label>
+            <input
+              type="text"
+              className="u-display-mode"
+              name="outdoor"
+              value={additionalData.outdoor}
+            />
+          </div>
+          <div className="report-item">
+            <label for="notes">Additional Notes:</label>
+            <input
+              type="text"
+              className="u-display-mode"
+              name="notes"
+              value={additionalData.notes}
+            />
+          </div>
+          
         </div>
       </div>
     </div>

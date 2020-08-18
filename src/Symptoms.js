@@ -118,7 +118,7 @@ function Symptoms(props) {
               onChange={(e) => handleChange(e)}
             />
             <span className="itch-level">
-              <i>(Note: 0 is for no itching and 10 is for severe itching)</i>{" "}
+              <i className="italics-text">(Note: 0 is for no itching and 10 is for severe itching)</i>{" "}
             </span>
           </div>
 

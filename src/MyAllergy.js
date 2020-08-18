@@ -117,7 +117,7 @@ function MyAllergy(props) {
           {
             /* If there are no existing kid profiles */
             kids.length === 0 ? (
-              <p className="paragraph u-margin-left">
+              <p className="paragraph u-text-left">
                 <i>No kid profiles exist. To add one, click here</i>
                 <a href="/kid" className="btn btn-medium u-margin-left ">
                   Add Kid

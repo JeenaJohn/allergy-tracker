@@ -11,17 +11,17 @@ $breakpoint arguement choices:
 - tab-land
 - big-desktop */
 
-/*1800px+  big desktops  //1rem = 16*/
+/*1800px+  big desktops  //1rem = 16px*/
 @media only screen and (min-width: 1800px) {
   html {
     font-size: 16px;
   }
 }
 
-/*1200px Tablet landscape //1 rem = 10px */
+/*1200px Tablet landscape //1 rem = 12px */
 @media only screen and (max-width: 1200px) {
   html {
-    font-size: 10px;
+    font-size: 12px;
   }
   .row {
     padding: 0 2%;
@@ -38,10 +38,10 @@ $breakpoint arguement choices:
 
 }
 
-/*900px Tablet portrait //1 rem = 9px */
+/*900px Tablet portrait //1 rem = 10px */
 @media only screen and (max-width: 900px) {
   html {
-    font-size: 9px;
+    font-size: 10px;
   }
 
   .header__text-box {
@@ -59,17 +59,17 @@ $breakpoint arguement choices:
   }
 }
 
-/*600px Phone //1 rem = 8px*/
+/*600px Phone //1 rem = 9px*/
 @media only screen and (max-width: 600px) {
   html {
-    font-size: 8px;
+    font-size: 9px;
   }
  
 }
 
 @media only screen and (max-width: 480px) {
   html {
-    font-size: 7px;
+    font-size: 8px;
   }
 }
 
