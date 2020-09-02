@@ -6,30 +6,54 @@ function Report(props) {
   const [kids, setKids] = useState([]);
 
   const [selectedKid, setSelectedKid] = useState(null);
-  const [selectedKidId, setSelectedKidId] = useState("");
+  const [selectedKidId, setSelectedKidId] = useState(null);
 
   const [entryMonth, setEntryMonth] = useState("");
 
   const kidsRef = firebase.database().ref(props.userID + "/kids");
+  const defaultKidRef = firebase.database().ref(props.userID + "/defaultKid");
 
   useEffect(() => {
-    kidsRef.on("value", (snapshot) => {
-      let items = snapshot.val();
 
-      let newState = [];
-      for (let item in items) {
-        newState.push({
-          id: item,
-          kidName: items[item].kidName,
-        });
-        if (newState.length === 1) {
-          setSelectedKidId(item);
-          setSelectedKid(items[item].kidName);
-        }
-      }
+    var defaultKid =  null;
 
-      setKids(newState);
+    /*  check if a default kid is already set */
+    defaultKidRef.on("value", (snapshot) => {
+      let item = snapshot.val();
+
+      console.log(item);
+
+       if (item != null){
+        setSelectedKidId(item.defaultKid);
+        defaultKid = item.defaultKid;
+       }
+    
     });
+
+      /*  get list of existing kids */
+      kidsRef.on("value", (snapshot) => {
+        let items = snapshot.val();
+  
+        let newState = [];
+        for (let item in items) {
+          newState.push({
+            id: item,
+            kidName: items[item].kidName,
+          });
+  
+          /* if default selection exists, get the kid name as well for displaying in heading */
+          if (defaultKid === item) {
+            setSelectedKid(items[item].kidName);
+          }
+          /* no default selection exists, make the first kid in the list as default kid*/
+          if (defaultKid === null && newState.length === 1) {
+            setSelectedKidId(item);
+            setSelectedKid(items[item].kidName);
+          }
+        }
+  
+        setKids(newState);
+      });
 
     formatDate();
   }, [props]);
@@ -89,7 +113,7 @@ function Report(props) {
               className="list-kids u-capitalize"
               onChange={(e) => handleKidSelection(e)}
             >
-              <label for={kid.id}>
+              <label htmlFor={kid.id}>
                 <input
                   type="radio"
                   id={kid.id}
