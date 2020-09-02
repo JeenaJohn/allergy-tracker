@@ -28,14 +28,22 @@ function ReportListView(props) {
 
   return (
     <div>
-      {allergies.map((allergy, index) => (
+       {/* If there is no data for the selected criteria, display "no data reported"*/}
+       {allergies.length !== 0 ? (
+      allergies.map((allergy, index) => (
         <ReportListItem
           date={allergy.date}
           symptoms={allergy.symptoms}
           food={allergy.food}
           additionalData={allergy.additionalData}
         />
-      ))}
+      ))) : (
+        <div className="box-report">
+        <h4 className="u-text-left">
+          <i>No data reported</i>
+        </h4>
+        </div>
+      )}
     </div>
   );
 }
