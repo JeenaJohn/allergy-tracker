@@ -54,24 +54,6 @@
   padding: 0.5rem;
 }
 
-/*Add allergy-details*/
-
-.diary{
- position: relative; 
- z-index: 1;
-}
-
-.overlay{
-  position: relative;
-  background-color: rgba(0, 0, 0, 0.5);
-  background-size: cover;
-  z-index: 2;
-  opacity: 0.6;
-  height: auto;
-  padding: 1rem;
-  
-}
-
 .box-questions {
   width: 60%;
   margin-left: 20%;
@@ -84,18 +66,16 @@
 
 .question {
   font-size: 1.5rem;
-  margin: 1rem 3rem; 
- 
+  margin: 1rem 3rem;
 }
 
-.itch-level{
+.itch-level {
   margin-left: 0.6rem;
 }
 
-.notes{
-  
+.notes {
   padding: 0.5rem;
-  overflow-y:scroll;
+  overflow-y: scroll;
   display: block;
   width: 100%;
 
@@ -103,7 +83,6 @@
 }
 
 .notes::-webkit-scrollbar {
- 
   width: 4px;
   height: 5px;
 }
@@ -112,23 +91,21 @@
   border: 1px solid #5e5e5e;
   border-radius: 4px;
   background-color: #5e5e5e;
-  box-shadow: 0 0 1px rgba(255,255,255,.5);
+  box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }
-
-
 
 .table {
-  border-spacing: 0 1.3rem ; /*horizontal spacing*/
+  border-spacing: 0 1.3rem; /*horizontal spacing*/
 }
 
-.td-label{
+.td-label {
   margin-left: 3rem;
 }
 
-.td-input-col{
+.td-input-col {
   width: 100%;
 }
-.td-input{
+.td-input {
   width: 90%;
 }
 
@@ -143,22 +120,20 @@
   border-radius: 1rem;
 }
 .report-item {
-   font-size: 1.6rem;
+  font-size: 1.6rem;
   margin: 0.5rem 3rem;
 }
 
-.report-date{
+.report-date {
   color: #f3fafe;
 }
 
 .box-existing-symptoms {
   width: 90%;
-  margin: 3rem 3rem; 
- 
+  margin: 3rem 3rem;
+
   padding: 1rem;
   border: 1px solid #fff;
   background-color: #f7f7f7;
   border-radius: 1rem;
 }
-
-

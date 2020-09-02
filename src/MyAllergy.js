@@ -96,7 +96,7 @@ function MyAllergy(props) {
   };
 
   return (
-    <div className="diary">
+    <div>
       <div className="u-center-text  u-padding-top-big u-margin-bottom-medium">
         <h2 className="heading-secondary bg-color-blue ">
           Daily Log
