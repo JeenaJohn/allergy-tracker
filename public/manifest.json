@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Allergy Tracker",
+  "short_name": "Allergy App",
+  "name": "Track My Allergy",
   "icons": [
     {
       "src": "favicon.ico",

@@ -45,7 +45,7 @@ function Layout(props) {
       <footer>
         <div className="u-center-text">
           <p className="paragraph">
-            Copyright &copy; 2020 TrackMyRash. All rights reserved.
+            Copyright &copy; 2020 TrackMyAllergy. All rights reserved.
           </p>
         </div>
       </footer>

@@ -24,31 +24,6 @@ body {
   color: #777777;
 }
 
-.sidebar{
-  width: 160px;
-  background-color: #9BB2D1;
-  top: 0;
-  left: 0;
-  position: fixed;
-  height: 100%;
-  overflow-x: hidden;
-  padding-top: 10rem;
-  z-index: 1;
-}
-
-/* The navigation menu links */
-.sidebar li {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #9D6C19;
-  display: block;
-}
-
-/* When you mouse over the navigation links, change their color */
-.sidebar a:hover {
-  color: #9D6C19;
-}
 
 
 .main-layout{
