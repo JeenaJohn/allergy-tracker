@@ -125,6 +125,13 @@
   margin-left: 3rem;
 }
 
+.td-input-col{
+  width: 100%;
+}
+.td-input{
+  width: 90%;
+}
+
 /*Display report*/
 .box-report {
   width: 60%;

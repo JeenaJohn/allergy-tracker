@@ -5,6 +5,9 @@ import firebase from "./firebase.js";
 
 function AddKid(props) {
   const [newKidName, setNewKidName] = useState("");
+  const [defaultChecked, setDefaultChecked] = useState(false);
+  const [firebaseID, setFirebaseID] = useState("");
+ // const [defaultKidID, setDefaultKidID] = useState("");
   // const [userMsg, setUserMsg] = useState("");
   //const [loginMsg, setLoginMsg] = useState("");
   const [kids, setKids] = useState([]);
@@ -12,9 +15,10 @@ function AddKid(props) {
   let saveBtnDisabled = props.userID == null ? true : false;
 
   const kidsRef = firebase.database().ref(props.userID + "/kids");
+  const defaultKidRef = firebase.database().ref(props.userID+ "/defaultKid");
 
   useEffect(() => {
-    /*  check if user is logged in */
+    /*  get list of existing kids */
 
     kidsRef.on("value", (snapshot) => {
       let items = snapshot.val();
@@ -29,15 +33,20 @@ function AddKid(props) {
 
       setKids(newState);
     });
+    
+
   }, [props]);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, checked } = e.target;
 
     switch (name) {
       case "kidName":
         setNewKidName(value);
         break;
+  //    case "defaultKid":
+   //     setDefaultChecked(checked);
+  //      break;
       default:
     }
   };
@@ -52,7 +61,7 @@ function AddKid(props) {
     console.log(msg);
   };*/
 
-  const save = (e, kidName) => {
+  const save = (e, kidName, defaultChecked) => {
     e.preventDefault();
 
     /* validateData(kidName); 
@@ -61,9 +70,14 @@ function AddKid(props) {
     /* save to DB only if no errors*/
     /* check to see if user entered a value */
     if (kidName.trim().length !== 0) {
-      kidsRef.push({ kidName });
+      var kidID = kidsRef.push({ kidName }).key;
+  //    if (defaultChecked) {
+  //      defaultKidRef.set({defaultKid : kidID});
+   //   }
+      
       /* clear kid name field and userMsg after save*/
       setNewKidName("");
+   //   setDefaultChecked(false);
       toast.success("Kid profile saved successfully");
     } else {
       toast.error("Kid's name is empty");
@@ -88,9 +102,7 @@ function AddKid(props) {
 
       <div className="box-questions">
         <div className="question">
-          <label for="kidName" className="kid-name-label">
-            Kid's Name
-          </label>
+          <label htmlFor="kidName">Kid's Name</label>
 
           <input
             type="text"
@@ -101,13 +113,27 @@ function AddKid(props) {
             required
           />
         </div>
+        {/*
+        <div className="question">
+          <label htmlFor="defaultChecked" className="italics-text">
+            <i>Make this my default selection</i>
+          </label>
+          <input
+            type="checkbox"
+            name="defaultChecked"
+            id="defaultChecked"
+            checked={defaultChecked}
+            onChange={(e) => handleChange(e)}
+          />
+        </div>
+        */}
         <div className="u-text-left">
           <button
             className={`btn btn-medium ${
               saveBtnDisabled ? "btn-disabled" : ""
             } `}
             type="submit"
-            onClick={(e) => save(e, newKidName)}
+            onClick={(e) => save(e, newKidName, defaultChecked)}
             disabled={saveBtnDisabled}
           >
             Save
@@ -131,7 +157,7 @@ function AddKid(props) {
           Below is the list of kids already added
         </h3>
         {kids.length > 0 ? (
-          <ol className="list-kids u-capitalize u-margin-bottom-small">
+          <ol className="list-kids u-text-left u-capitalize u-margin-bottom-small">
             {kids.map((kid, index) => (
               <li>{kid.kidName}</li>
             ))}

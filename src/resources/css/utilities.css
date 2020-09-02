@@ -76,3 +76,7 @@
 .u-bg-color-blue {
   background-image: linear-gradient(to right, #446694, #2c5080);
 }
+
+.u-display-none {
+  display: none;
+}

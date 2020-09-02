@@ -105,52 +105,70 @@ function Food(props) {
               Breakfast
             </label>
           </td>
-          <td>
+          <td className="td-input-col">
             <input
               type="text"
               name="breakfast"
+            
               maxLength="80"
               value={breakfast}
+              className="td-input"
               onChange={(e) => handleChange(e)}
             />
           </td>
         </tr>
         <tr>
           <td>
-            <label htmlFor="lunch" className="td-label">Lunch</label>
+            <label htmlFor="lunch" className="td-label">
+              Lunch
+            </label>
           </td>
-          <td>
+          <td className="td-input-col">
             <input
               type="text"
               name="lunch"
               maxLength="80"
               value={lunch}
+              className="td-input"
               onChange={(e) => handleChange(e)}
             />
           </td>
         </tr>
         <tr>
-          <td><label htmlFor="dinner" className="td-label">Dinner</label></td>
-          <td><input
-          type="text"
-          name="dinner"
-          maxLength="80"
-          value={dinner}
-          onChange={(e) => handleChange(e)}
-        /></td>
+          <td>
+            <label htmlFor="dinner" className="td-label">
+              Dinner
+            </label>
+          </td>
+          <td className="td-input-col">
+            <input
+              type="text"
+              name="dinner"
+              maxLength="80"
+              value={dinner}
+              className="td-input"
+              onChange={(e) => handleChange(e)}
+            />
+          </td>
         </tr>
         <tr>
-          <td><label htmlFor="snacks" className="td-label">Snacks</label></td>
-          <td><input
-          type="text"
-          name="snacks"
-          maxLength="80"
-          value={snacks}
-          onChange={(e) => handleChange(e)}
-        /></td>
+          <td>
+            <label htmlFor="snacks" className="td-label">
+              Snacks
+            </label>
+          </td>
+          <td className="td-input-col">
+            <input
+              type="text"
+              name="snacks"
+              maxLength="80"
+              value={snacks}
+              className="td-input"
+              onChange={(e) => handleChange(e)}
+            />
+          </td>
         </tr>
       </table>
-      
 
       <div className="u-text-left">
         <button
