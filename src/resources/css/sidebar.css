@@ -42,9 +42,8 @@
     background:#6785AE;
     padding: 3rem 0 0;
     font-size: 1.15rem;
-    box-shadow: 5px 5px 1px rgb(90, 90, 90);
+    box-shadow: -3px 0 10px 15px rgb(90, 90, 90);
    
-    
   }
   
   /* Morph shape necessary with bubble or elastic */
