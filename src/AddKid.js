@@ -80,7 +80,7 @@ function AddKid(props) {
    //   setDefaultChecked(false);
       toast.success("Kid profile saved successfully");
     } else {
-      toast.error("Kid's name is empty");
+      toast.error("Kid's name is empty.");
     }
   };
 
