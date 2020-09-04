@@ -40,7 +40,7 @@ function ReportListView(props) {
       ))) : (
         <div className="box-report">
         <h4 className="u-text-left">
-          <i>No data reported</i>
+          <i>No data reported for the selected month</i>
         </h4>
         </div>
       )}
