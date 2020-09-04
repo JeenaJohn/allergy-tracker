@@ -7,7 +7,7 @@ function Home(props) {
       {/* header nav bar and footer are in Layout.js */}
       <header className="home-page">
         <div className="header__text-box">
-          <h1 className="heading-primary  ">
+          <h1 className="heading-primary">
             <span className="heading-primary--main">Track My Allergy</span>
           </h1>
 
@@ -23,29 +23,32 @@ function Home(props) {
       <section id="section-about" className="section-about">
         <div className="u-center-text u-margin-bottom-big">
           <h2 className="heading-secondary bg-color-blue">
-            What is my pattern?
+            What is the pattern?
           </h2>
         </div>
 
         <div className="row ">
           <div className="col span-1-of-2 ">
             <h3 className="heading-tertiary u-margin-bottom-small">
-              Keep track of all your Allergy triggers
+              Keep track of all the Allergy triggers of your kids
             </h3>
             <p className="paragraph u-margin-bottom-small">
-              Knowing what triggers your allergies is the most important step
-              towards preventing flareups. 'Track My Allergy' app helps in daily
-              tracking of the allergy triggers.
+              Knowing the allergy triggers is the most important step towards
+              preventing flareups. 'Track My Allergy' app helps you to track
+              flareups as well as the possible triggers.
             </p>
-            <p className="paragraph u-margin-bottom-small">
-              Symptoms, food intake and additional factors like weather and
-              activities can be tracked. Reports will help you in identifying a
-              pattern.
-            </p>
+            <ul className="list u-margin-bottom-small u-margin-left">
+              <li> Track Symptoms.</li>
+              <li>Track food, weather, etc.</li>
+              <li>Track any activity, like soccer, swimming, painting, etc. </li>
+              <li>Get reports that help you in identifying a pattern.</li>
+            </ul>
+     
 
             <p className="paragraph">
-              You can save upto five kid's profiles and track the allergies for
-              each of them.
+              Add a profile for your kid and start tracking their allergy
+              triggers!! You can add upto five kid's profiles and track the
+              allergies separately for each of them.
             </p>
           </div>
           <div className="col span-1-of-2 ">
