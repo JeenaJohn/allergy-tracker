@@ -6,6 +6,9 @@ function ReportListItem(props) {
   const [food, setFood] = useState({});
   const [additionalData, setAdditionalData] = useState({});
   const [date, setDate] = useState("");
+  const [noSymptoms, setNoSymptoms] = useState("");
+  const [noFood, setNoFood] = useState("");
+  const [noAdditionalData, setNoAdditionalData] = useState("");
 
   function convertDate(date) {
     let datearray = date.split("-");
@@ -32,6 +35,11 @@ function ReportListItem(props) {
 
     setSymptoms(existingData);
 
+    /* for readability of report, display 'No data reported' along with the 'Symptoms' heading */
+    existingData.length === 0
+      ? setNoSymptoms("- No data reported")
+      : setNoSymptoms("");
+
     /* Food */
     let newStateFood = {};
     for (let key in props.food) {
@@ -43,6 +51,10 @@ function ReportListItem(props) {
       };
     }
     setFood(newStateFood);
+    /* for readability of report, display 'No data reported' along with the 'Food' heading */
+    Object.keys(newStateFood).length === 0
+      ? setNoFood("- No data reported")
+      : setNoFood("");
 
     /* AdditionalData */
     let newStateAdditionalData = {};
@@ -55,6 +67,10 @@ function ReportListItem(props) {
       };
     }
     setAdditionalData(newStateAdditionalData);
+    /* for readability of report, display 'No data reported' along with the 'Additional Data' heading */
+    Object.keys(newStateAdditionalData).length === 0
+      ? setNoAdditionalData("- No data reported")
+      : setNoAdditionalData("");
   }, [props]);
 
   return (
@@ -67,170 +83,133 @@ function ReportListItem(props) {
         >
           Date: {date}
         </h3>
+
         <h3
           className="heading-report-item 
-          u-text-left u-margin-bottom-very-small u-text-underline"
+          u-text-left u-margin-bottom-very-small"
         >
-          Symptoms
+          Symptoms {"  "}
+          <span className="italics-text">
+            <i>{noSymptoms}</i>
+          </span>
         </h3>
-        <div>
-          {/* If there are no symptoms saved for that date, display "no data reported"*/}
-          {symptoms.length !== 0 ? (
-            symptoms.map((symptom, index) => (
-              <div className="box-existing-symptoms">
-                <ReportListSymptoms index={index} symptom={symptom} />
-              </div>
-            ))
-          ) : (
-            <h4 className="u-text-left">
-              <i>No data reported</i>
-            </h4>
-          )}
-        </div>
+
+        {symptoms.map((symptom, index) => (
+          <div className="box-existing-symptoms">
+            <ReportListSymptoms index={index} symptom={symptom} />
+          </div>
+        ))}
 
         {/* Display Food*/}
 
         <h3
           className="heading-report-item 
-          u-text-left u-margin-bottom-very-small u-text-underline"
+          u-text-left u-margin-bottom-very-small"
         >
-          Food
+          Food {"  "}
+          <span className="italics-text">
+            <i>{noFood}</i>
+          </span>
         </h3>
-        <div>
-          {/* If there is no data for food saved for that date, display "no data reported"*/}
-          {Object.keys(food).length !== 0 ? (
-            <div>
-              <div
-                className={`${
-                  food.breakfast.length === 0 ? "u-display-none" : "report-item"
-                }`}
-              >
-                <label for="breakfast">Breakfast:</label>
-                <input
-                  type="text"
-                  className="u-display-mode"
-                  name="breakfast"
-                  maxLength="80"
-                  value={food.breakfast}
-                />
-              </div>
 
-              <div
-                className={`${
-                  food.lunch.length === 0 ? "u-display-none" : "report-item"
-                }`}
-              >
-                <label for="lunch">Lunch:</label>
-                <input
-                  type="text"
-                  className="u-display-mode"
-                  name="lunch"
-                  maxLength="80"
-                  value={food.lunch}
-                />
-              </div>
-              <div
-                className={`${
-                  food.dinner.length === 0 ? "u-display-none" : "report-item"
-                }`}
-              >
-                <label for="dinner">Dinner:</label>
-                <input
-                  type="text"
-                  className="u-display-mode"
-                  name="dinner"
-                  maxLength="80"
-                  value={food.dinner}
-                />
-              </div>
-
-              <div
-                className={`${
-                  food.snacks.length === 0 ? "u-display-none" : "report-item"
-                }`}
-              >
-                <label for="snacks">Snacks:</label>
-                <input
-                  type="text"
-                  className="u-display-mode"
-                  name="snacks"
-                  maxLength="80"
-                  value={food.snacks}
-                />
-              </div>
+        {Object.keys(food).length !== 0 ? (
+          <div>
+            <div
+              className={`${
+                food.breakfast.length === 0 ? "u-display-none" : "report-item"
+              }`}
+            >
+              Breakfast:
+              <span className="report-item-text">{food.breakfast}</span>
             </div>
-          ) : (
-            <h4 className="u-text-left">
-              <i>No data reported</i>
-            </h4>
-          )}
-        </div>
+
+            <div
+              className={`${
+                food.lunch.length === 0 ? "u-display-none" : "report-item "
+              }`}
+            >
+              Lunch:
+              <span className="report-item-text">{food.lunch}</span>
+            </div>
+            <div
+              className={`${
+                food.dinner.length === 0 ? "u-display-none" : "report-item"
+              }`}
+            >
+              Dinner:
+              <span className="report-item-text">{food.dinner}</span>
+            </div>
+
+            <div
+              className={`${
+                food.snacks.length === 0 ? "u-display-none" : "report-item"
+              }`}
+            >
+              Snacks:
+              <span className="report-item-text">{food.snacks}</span>
+            </div>
+          </div>
+        ) : (
+          <div></div>
+        )}
 
         {/* Display Additional Data*/}
 
         <h3
           className="heading-report-item 
-          u-text-left u-margin-top-small u-margin-bottom-small u-text-underline"
+          u-text-left u-margin-top-very-small u-margin-bottom-very-small"
         >
-          Additional Data
+          Additional Data {"  "}
+          <span className="italics-text">
+            <i>{noAdditionalData}</i>
+          </span>
         </h3>
-        <div>
-          {/* If there is no Additional Data saved for that date, display "no data reported"*/}
-          {Object.keys(additionalData).length !== 0 ? (
-            <div>
-              <div className={`${
-                  additionalData.ac ? "report-item" : "u-display-none" 
-                }`}>
-                <label for="ac">A/C On?</label>
-                <input
-                  type="checkbox"
-                  className="u-display-mode"
-                  name="ac"
-                  checked={additionalData.ac}
-                  readOnly
-                />
-              </div>
-              <div className={`${
-                  additionalData.nails ? "report-item" : "u-display-none" 
-                }`}>
-                <label for="nails">Nails Trimmed?</label>
-                <input
-                  type="checkbox"
-                  className="u-display-mode"
-                  name="nails"
-                  checked={additionalData.nails}
-                  readOnly
-                />
-              </div>
-              <div className={`${
-                  additionalData.outdoor.length === 0 ? "u-display-none" : "report-item"
-                }`}>
-                <label for="outdoor">Outdoor Activity:</label>
-                <input
-                  type="text"
-                  className="u-display-mode"
-                  name="outdoor"
-                  value={additionalData.outdoor}
-                />
-              </div>
-              <div className={`${
-                  additionalData.notes.length === 0 ? "u-display-none" : "report-item"
-                }`}>
-                <label for="notes">Additional Notes:</label>
-                <input
-                  type="text"
-                  className="u-display-mode"
-                  name="notes"
-                  value={additionalData.notes}
-                />
-              </div>
+        {Object.keys(additionalData).length !== 0 ? (
+          <div>
+            <div
+              className={`${
+                additionalData.ac ? "report-item" : "u-display-none"
+              }`}
+            >
+              A/C On?
+              <span className="report-item-text">
+                {additionalData.ac ? "Yes" : "No"}
+              </span>
             </div>
-          ) : (
-            <h4 className="u-text-left">
-              <i>No data reported</i>
-            </h4>
-          )}
-        </div>
+            <div
+              className={`${
+                additionalData.nails ? "report-item" : "u-display-none"
+              }`}
+            >
+              Nails Trimmed?
+              <span className="report-item-text">
+                {additionalData.nails ? "Yes" : "No"}
+              </span>
+            </div>
+            <div
+              className={`${
+                additionalData.outdoor.length === 0
+                  ? "u-display-none"
+                  : "report-item"
+              }`}
+            >
+              Outdoor Activity:
+              <span className="report-item-text">{additionalData.outdoor}</span>
+            </div>
+            <div
+              className={`${
+                additionalData.notes.length === 0
+                  ? "u-display-none"
+                  : "report-item"
+              }`}
+            >
+              Additional Notes:
+              <span className="report-item-text">{additionalData.notes}</span>
+            </div>
+          </div>
+        ) : (
+          <div></div>
+        )}
       </div>
     </div>
   );

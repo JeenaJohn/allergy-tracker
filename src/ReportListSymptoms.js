@@ -20,62 +20,32 @@ function ReportListSymptoms(props) {
   return (
     <div>
       <div className="report-item">
-        <label for="rash">Rashes?</label>
-        <input
-          className="u-display-mode"
-          type="checkbox"
-          name="rash"
-          checked={rash}
-          readOnly
-        />
+        Rashes?
+        <span className="report-item-text">{rash ? "Yes" : "No"}</span>
       </div>
       <div className="report-item">
         {itchLevel > 5 ? (
           <mark>
-            <label for="itchLevel">Itch Level (scale of 0 - 10):</label>
-            <input
-              className="u-display-mode"
-              type="number"
-              name="itchLevel"
-              value={itchLevel}
-              readOnly
-            />
+            Itch Level:
+            <span className="report-item-text">{itchLevel}</span>
           </mark>
         ) : (
           <div>
-            <label for="itchLevel">Itch Level (scale of 0 - 10):</label>
-            <input
-              className="u-display-mode"
-              type="number"
-              name="itchLevel"
-              value={itchLevel}
-              readOnly
-            />
+         Itch Level:
+            <span className="report-item-text">{itchLevel}</span>
           </div>
         )}
       </div>
 
       <div className="report-item">
-        <label for="itchTime">Time when it was itchy?</label>
-        <input
-          className="u-display-mode"
-          type="time"
-          name="itchTime"
-          value={itchTime}
-          readOnly
-        />
+    
+        Time when it was itchy?
+            <span className="report-item-text">{itchTime}</span>
       </div>
       {notes.trim().length !== 0 ? (
         <div className="report-item">
-          <label for="notes">Notes</label>
-          <textarea
-            name="notes"
-            rows="3"
-            maxLength="200"
-            className="u-display-mode notes"
-            value={notes}
-            readOnly
-          />
+           Notes
+            <span className="report-item-text">{notes}</span>
         </div>
       ) : null}
     </div>

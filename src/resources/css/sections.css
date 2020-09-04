@@ -2,13 +2,13 @@
   background-color: #f7f7f7;
   /*  background-color:#e6e1e1; */
 
-  color: #777777;
+  color: rgb(15,15,15);
 }
 
 .section-about {
   background-color: #e6e1e1;
   padding: 8rem 4rem;
-  color: #777777;
+  color: rgb(15,15,15);
   height: 100vh;
 }
 
@@ -120,8 +120,13 @@
   border-radius: 1rem;
 }
 .report-item {
-  font-size: 1.6rem;
+  font-size: 1.9rem;
   margin: 0.5rem 3rem;
+}
+
+
+.report-item-text{
+ margin-left: 1rem;
 }
 
 .report-date {

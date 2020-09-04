@@ -10,29 +10,18 @@ html {
   /* This defines what 1rem is*/
   /*1 rem = 12px;  */
   font-size: 12px;
-
   text-rendering: optimizeLegibility;
 }
 
 body {
   box-sizing: border-box;
-
-  font-family:  "Roboto", sans-serif;
+  font-family: "Roboto", sans-serif;
   /*font-size: 10px; */
   font-weight: 400, 700;
   line-height: 1.7;
-  color: #777777;
+  color: rgb(15, 15, 15);
 }
 
-
-
-.main-layout{
- /* margin-left: 160px; */
-}
-
-footer{
-  color: #777777;
- 
-
-  
+footer {
+  color: rgb(15,15,15);
 }

@@ -29,6 +29,10 @@
   margin-bottom: 8rem !important;
 }
 
+.u-margin-top-very-small {
+  margin-top: 1rem !important;
+}
+
 .u-margin-top-small {
   margin-top: 2rem !important;
 }

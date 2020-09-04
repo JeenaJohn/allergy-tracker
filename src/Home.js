@@ -23,7 +23,7 @@ function Home(props) {
       <section id="section-about" className="section-about">
         <div className="u-center-text u-margin-bottom-big">
           <h2 className="heading-secondary bg-color-blue">
-            What is my pattern!!?
+            What is my pattern?
           </h2>
         </div>
 
