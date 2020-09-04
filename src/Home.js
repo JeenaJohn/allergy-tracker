@@ -27,12 +27,12 @@ function Home(props) {
           </h2>
         </div>
 
-        <div className="row ">
+        <div className="row u-margin-left">
           <div className="col span-1-of-2 ">
-            <h3 className="heading-tertiary u-margin-bottom-small">
+            <h3 className="heading-tertiary u-margin-bottom-small ">
               Keep track of all the Allergy triggers of your kids
             </h3>
-            <p className="paragraph u-margin-bottom-small">
+            <p className="paragraph u-margin-bottom-small ">
               Knowing the allergy triggers is the most important step towards
               preventing flareups. 'Track My Allergy' app helps you to track
               flareups as well as the possible triggers.

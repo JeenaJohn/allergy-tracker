@@ -3,14 +3,14 @@ header.home-page {
       linear,
       left top,
       left bottom,
-      from(rgba(0, 0, 0, 0.7)),
-      to(rgba(0, 0, 0, 0.7))
+      from(rgba(0, 0, 0, 0.5)),
+      to(rgba(0, 0, 0, 0.6))
     ),
     url(../images/header_img.jpg);
   background-image: linear-gradient(
       to right,
-      rgba(0, 0, 0, 0.7),
-      rgba(0, 0, 0, 0.8)
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.6)
     ),
     url(../images/header_img.jpg);
   background-size: cover;
