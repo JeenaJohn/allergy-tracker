@@ -11,7 +11,7 @@
   color: #f3fafe;
 
   padding: 1.5rem 2.4rem;
-  border-radius: 8rem;
+  border-radius: 2rem;
   font-size: 2.2rem;
 }
 
@@ -21,7 +21,7 @@
   background-color: #9D6C19;
   color: #f3fafe;
   padding: 0.8rem 1.1rem;
-  border-radius: 5rem;
+  border-radius: 1.2rem;
   font-size: 1.6rem;
 }
 
@@ -29,7 +29,7 @@
   background-color: #9D6C19;
   color: #f3fafe;
   padding: 0.5rem 0.7rem;
-  border-radius: 3rem;
+  border-radius: 1rem;
   font-size: 1.2rem;
 }
 
@@ -48,7 +48,7 @@
   background-color: transparent;
   color: #f3fafe;
   padding: 0.8rem 1.7rem;
-  border-radius: 6rem;
+  border-radius: 1.2rem;
   font-size: 1.1rem;
   border: 1px solid #9D6C19;
 
