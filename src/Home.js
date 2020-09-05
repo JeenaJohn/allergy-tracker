@@ -8,14 +8,14 @@ function Home(props) {
 
       <section id="section-home" className="section-home">
         <div className="row u-margin-left u-margin-top-huge u-margin-bottom-medium">
-          <div className="col span-1-of-2 ">
-            <div className="header__text-box ">
+          <div className="col span-1-of-2 u-text-left">
+            
               <h1 className="heading-primary ">
                 <span className="heading-primary--main">Track My Allergy</span>
               </h1>
 
               <h3 className="heading-tertiary">
-                Keep track of all the flareups and allergy triggers of your kids
+                Track the allergy symptoms and triggers of your kids
               </h3>
 
               <a
@@ -24,7 +24,7 @@ function Home(props) {
               >
                 Start Tracking
               </a>
-            </div>
+            
           </div>
           <div className="col span-1-of-2 ">
             <p className="paragraph">
@@ -40,7 +40,7 @@ function Home(props) {
           <p className="paragraph u-margin-bottom-medium">
             Knowing the allergy triggers is the most important step towards
             preventing flareups. 'Track My Allergy' app helps you to track
-            flareups as well as the possible triggers.
+            symptoms as well as the possible triggers.
           </p>
           <ul className="list u-margin-bottom-medium u-margin-left">
             <li> Track Symptoms.</li>

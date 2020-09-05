@@ -20,8 +20,7 @@ function MyAllergy(props) {
   const defaultKidRef = firebase.database().ref(props.userID + "/defaultKid");
 
   useEffect(() => {
-
-    var defaultKid =  null;
+    var defaultKid = null;
 
     /*  check if a default kid is already set */
     defaultKidRef.on("value", (snapshot) => {
@@ -29,13 +28,11 @@ function MyAllergy(props) {
 
       console.log(item);
 
-       if (item != null){
+      if (item != null) {
         setSelectedKidId(item.defaultKid);
         defaultKid = item.defaultKid;
-       }
-    
+      }
     });
-
 
     /*  get list of existing kids */
     kidsRef.on("value", (snapshot) => {
@@ -61,7 +58,7 @@ function MyAllergy(props) {
 
       setKids(newState);
     });
-    
+
     formatDate(today);
   }, [props]);
 
@@ -152,14 +149,9 @@ function MyAllergy(props) {
             ) : null
           }
         </div>
-        <div className="u-text-left">
-          <h3
-            className="heading-tertiary 
-          u-margin-bottom-small"
-          >
-            Date
-          </h3>
-
+        <div className="u-text-left u-margin-bottom-small">
+         
+          <label htmlFor="entryDate" className="heading-tertiary u-margin-right">Date</label>
           <input
             type="date"
             name="entryDate"

@@ -154,7 +154,7 @@ function AddKid(props) {
           className="heading-tertiary 
           u-text-left u-margin-bottom-small"
         >
-          Below is the list of kids already added
+          List of kids already added
         </h3>
         {kids.length > 0 ? (
           <ol className="list-kids u-text-left u-capitalize u-margin-bottom-small">
