@@ -1,20 +1,29 @@
 .section-list-data {
   background-color: #f7f7f7;
   /*  background-color:#e6e1e1; */
-
-  color: rgb(15,15,15);
 }
 
-.section-about {
-  background-color: #e6e1e1;
+.section-home {
+  background-color: #f7f7f7;
   padding: 8rem 4rem;
-  color: rgb(15,15,15);
   height: 100%;
 }
 
 .home-page-img {
   width: 100%;
   height: 30rem;
+}
+
+.box-app-details {
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  padding: 5rem;
+  border: 1px solid #fff;
+  background-color: #e6e1e1; 
+
+  border-radius: 1rem;
 }
 
 .section-choose-kid {

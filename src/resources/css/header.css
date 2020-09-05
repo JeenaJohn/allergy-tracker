@@ -1,4 +1,4 @@
-header.home-page {
+/*header.home-page {
   background-image: -webkit-gradient(
       linear,
       left top,
@@ -18,16 +18,14 @@ header.home-page {
   background-attachment: fixed;
   height: 100vh;
   color: #f3fafe;
-}
-
-
+}*/
 
 header nav {
   position: absolute;
   height: 6rem;
-  top:0rem;
+  top: 0rem;
   width: 100%;
-  background-color: #9BB2D1;
+  background-color: #9bb2d1;
 }
 
 .header__logo-box {
@@ -47,23 +45,21 @@ header nav {
   color: #fff;
   height: 6rem;
   text-align: right;
- 
 }
 
-.login_button{
+.login_button {
   margin-top: 1rem;
 }
 
-
-
 .header__text-box {
-  position: absolute;
-  top: 25%;
-  margin-left: 25%;
-  width: 50%;
-  text-align: center;
+  width: 100%;
+  text-align: left;
+  padding-left: 8rem;
+ /*  border: 1px solid #fff;
+ background-color: #e6e1e1; */
+ 
 }
 
-.header-main-button{
+.header-main-button {
   margin-right: 3rem;
 }

@@ -31,7 +31,7 @@ function Layout(props) {
             ) : (
               <div className="login_button">
                 <button className="btn btn-medium" onClick={props.login}>
-                  LogIn with Google
+                  Login with Google
                 </button>
               </div>
             )}
