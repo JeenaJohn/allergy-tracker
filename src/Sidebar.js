@@ -16,7 +16,7 @@ function Sidebar() {
         Add Kid
       </a>
       <a id="diary" className="menu-item" href="/diary">
-        Daily Log
+        Diary
       </a>
       <a id="report" className="menu-item" href="/report">
         Report
