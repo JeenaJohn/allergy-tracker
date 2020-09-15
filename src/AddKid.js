@@ -7,7 +7,7 @@ function AddKid(props) {
   const [newKidName, setNewKidName] = useState("");
   const [defaultChecked, setDefaultChecked] = useState(false);
   const [firebaseID, setFirebaseID] = useState("");
- // const [defaultKidID, setDefaultKidID] = useState("");
+  // const [defaultKidID, setDefaultKidID] = useState("");
   // const [userMsg, setUserMsg] = useState("");
   //const [loginMsg, setLoginMsg] = useState("");
   const [kids, setKids] = useState([]);
@@ -15,7 +15,7 @@ function AddKid(props) {
   let saveBtnDisabled = props.userID == null ? true : false;
 
   const kidsRef = firebase.database().ref(props.userID + "/kids");
-  const defaultKidRef = firebase.database().ref(props.userID+ "/defaultKid");
+  const defaultKidRef = firebase.database().ref(props.userID + "/defaultKid");
 
   useEffect(() => {
     /*  get list of existing kids */
@@ -33,8 +33,6 @@ function AddKid(props) {
 
       setKids(newState);
     });
-    
-
   }, [props]);
 
   const handleChange = (e) => {
@@ -44,40 +42,27 @@ function AddKid(props) {
       case "kidName":
         setNewKidName(value);
         break;
-  //    case "defaultKid":
-   //     setDefaultChecked(checked);
-  //      break;
+      //    case "defaultKid":
+      //     setDefaultChecked(checked);
+      //      break;
       default:
     }
   };
 
-  /*const validateData = (kidName) => {
-    let msg = "";
-    console.log(kidName.trim());
-    if (kidName.length === 0) {
-      msg = "Enter kid's name";
-    }
-    setUserMsg(msg);
-    console.log(msg);
-  };*/
-
   const save = (e, kidName, defaultChecked) => {
     e.preventDefault();
-
-    /* validateData(kidName); 
-    console.log(userMsg); */
 
     /* save to DB only if no errors*/
     /* check to see if user entered a value */
     if (kidName.trim().length !== 0) {
       var kidID = kidsRef.push({ kidName }).key;
-  //    if (defaultChecked) {
-  //      defaultKidRef.set({defaultKid : kidID});
-   //   }
-      
+      //    if (defaultChecked) {
+      //      defaultKidRef.set({defaultKid : kidID});
+      //   }
+
       /* clear kid name field and userMsg after save*/
       setNewKidName("");
-   //   setDefaultChecked(false);
+      //   setDefaultChecked(false);
       toast.success("Kid profile saved successfully");
     } else {
       toast.error("Kid's name is empty.");
@@ -100,7 +85,10 @@ function AddKid(props) {
         ) : null}
       </div>
 
-      <div className="box-questions">
+      <form
+        className="box-questions"
+        onSubmit={(e) => save(e, newKidName, defaultChecked)}
+      >
         <div className="question">
           <label htmlFor="kidName">Kid's Name</label>
 
@@ -133,7 +121,6 @@ function AddKid(props) {
               saveBtnDisabled ? "btn-disabled" : ""
             } `}
             type="submit"
-            onClick={(e) => save(e, newKidName, defaultChecked)}
             disabled={saveBtnDisabled}
           >
             Save
@@ -148,7 +135,7 @@ function AddKid(props) {
             <i>Enter Kid's name</i>
           </p>
         ) : null*/}
-      </div>
+      </form>
       <div className="box-questions">
         <h3
           className="heading-tertiary 
