@@ -128,6 +128,12 @@
   background-color: #e6e1e1;
   border-radius: 1rem;
 }
+
+.report-align-text{
+    text-align: left;
+    padding-left: 2rem;
+}
+
 .report-item {
   font-size: 1.9rem;
   margin: 0.5rem 3rem;

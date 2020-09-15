@@ -113,10 +113,10 @@ function ReportListItem(props) {
         </h3>
 
         {Object.keys(food).length !== 0 ? (
-          <div>
+          <div className="report-align-text">
             <div
               className={`${
-                food.breakfast.length === 0 ? "u-display-none" : "report-item"
+                food.breakfast.length === 0 ? "u-display-none" : "report-item "
               }`}
             >
               Breakfast:
@@ -165,7 +165,7 @@ function ReportListItem(props) {
           </span>
         </h3>
         {Object.keys(additionalData).length !== 0 ? (
-          <div>
+          <div className="report-align-text">
             <div
               className={`${
                 additionalData.ac ? "report-item" : "u-display-none"
@@ -208,7 +208,7 @@ function ReportListItem(props) {
             </div>
           </div>
         ) : (
-          <div></div>
+          null
         )}
       </div>
     </div>
