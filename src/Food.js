@@ -98,6 +98,7 @@ function Food(props) {
       >
         Let's track Food
       </h3>
+      <form onSubmit={(e) => saveFood(e, breakfast, lunch, dinner, snacks)}>
       <table className="table">
         <tr>
           <td>
@@ -171,15 +172,17 @@ function Food(props) {
       </table>
 
       <div className="u-text-left">
+
         <button
           className={`btn btn-medium ${saveBtnDisabled ? "btn-disabled" : ""} `}
           type="submit"
-          onClick={(e) => saveFood(e, breakfast, lunch, dinner, snacks)}
+          
           disabled={saveBtnDisabled}
         >
           Save
         </button>
       </div>
+      </form>
     </div>
   );
 }

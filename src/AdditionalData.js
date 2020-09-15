@@ -70,14 +70,14 @@ function AdditionalData(props) {
   };
 
   return (
-    <div>
-      <div className="box-questions">
-        <h3
-          className="heading-tertiary 
+    <div className="box-questions">
+      <h3
+        className="heading-tertiary 
           u-text-left u-margin-bottom-small"
-        >
-          Some more data to track
-        </h3>
+      >
+        Some more data to track
+      </h3>
+      <form onSubmit={(e) => saveAdditionalData(e, additionalData)}>
         <div>
           <div className="question">
             <label htmlFor="ac">Was A/C On?</label>
@@ -121,15 +121,16 @@ function AdditionalData(props) {
         </div>
         <div className="u-text-left">
           <button
-            className={`btn btn-medium ${saveBtnDisabled ? "btn-disabled" : ""} `}
+            className={`btn btn-medium ${
+              saveBtnDisabled ? "btn-disabled" : ""
+            } `}
             type="submit"
-            onClick={(e) => saveAdditionalData(e, additionalData)}
             disabled={saveBtnDisabled}
           >
             Save
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }

@@ -86,7 +86,7 @@ function Symptoms(props) {
   };
 
   return (
-    <div>
+    
       <div className="box-questions">
         <h3
           className="heading-tertiary 
@@ -158,6 +158,7 @@ function Symptoms(props) {
             </button>
           </div>
         </div>
+        
         <h3
           className="heading-tertiary 
           u-text-left  u-margin-top-medium u-margin-bottom-small"
@@ -178,7 +179,7 @@ function Symptoms(props) {
           )}
         </div>
       </div>
-    </div>
+    
   );
 }
 
