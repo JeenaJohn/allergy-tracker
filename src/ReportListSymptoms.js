@@ -38,9 +38,14 @@ function ReportListSymptoms(props) {
       </div>
 
       <div className="report-item">
-    
-        Time when it was itchy?
-            <span className="report-item-text">{itchTime}</span>
+        <label for="itchTime">Time when it was itchy?</label>
+        <input
+          className="u-display-mode"
+          type="time"
+          name="itchTime"
+          value={itchTime}
+          readOnly
+        />
       </div>
       {notes.trim().length !== 0 ? (
         <div className="report-item">
