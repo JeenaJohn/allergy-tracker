@@ -76,7 +76,7 @@ function Symptoms(props) {
 
     /* adding data */
     symptomsRef.push({ rash, itchLevel, itchTime, notes });
-    toast.success("Symptoms saved successfully");
+    toast.success("Symptoms saved successfully. See list below.");
 
     //initialize the questionaire values after save
     setRash(false);
@@ -94,7 +94,7 @@ function Symptoms(props) {
         >
           Let's track Symptoms through out the day
         </h3>
-        <div>
+        <form onSubmit={(e) => saveSymptoms(e, rash, itchLevel, itchTime, notes)}>
           <div className="question">
             <label htmlFor="rash">Are there any rashes?</label>
             <input
@@ -150,14 +150,13 @@ function Symptoms(props) {
               className={`btn btn-medium ${
                 saveBtnDisabled ? "btn-disabled" : ""
               } `}
-              type="submit"
-              onClick={(e) => saveSymptoms(e, rash, itchLevel, itchTime, notes)}
+              type="submit"           
               disabled={saveBtnDisabled}
             >
               Save
             </button>
           </div>
-        </div>
+        </form>
         
         <h3
           className="heading-tertiary 
