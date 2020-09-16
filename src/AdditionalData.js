@@ -11,7 +11,7 @@ function AdditionalData(props) {
   });
   const [firebaseID, setFirebaseID] = useState("");
 
-  let saveBtnDisabled = props.userID == null ? true : false;
+  let saveBtnDisabled = ((props.userID == null) || (props.kidId == null)) ? true : false;
 
   const additionalDataRef = firebase
     .database()

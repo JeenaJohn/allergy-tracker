@@ -9,7 +9,7 @@ function Food(props) {
   const [snacks, setSnacks] = useState("");
   const [firebaseID, setFirebaseID] = useState("");
 
-  let saveBtnDisabled = props.userID == null ? true : false;
+  let saveBtnDisabled = ((props.userID == null) || (props.kidId == null)) ? true : false;
 
   const foodRef = firebase
     .database()
