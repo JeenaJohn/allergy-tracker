@@ -11,7 +11,7 @@ function Symptoms(props) {
 
   const [existingSymptoms, setExistingSymptoms] = useState([]);
 
-  let saveBtnDisabled = props.userID == null ? true : false;
+  let saveBtnDisabled = ((props.userID == null) || (props.kidId == null)) ? true : false;
 
   const symptomsRef = firebase
     .database()
