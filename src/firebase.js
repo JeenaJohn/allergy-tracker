@@ -1,15 +1,16 @@
 import firebase from 'firebase';
 
  // Your web app's Firebase configuration
-var firebaseConfig = {
-    apiKey: "AIzaSyAhWVyi0Ab9gnbtvzVfY-HmfebbDoNpen0",
-    authDomain: "allergytracker-64a69.firebaseapp.com",
-    databaseURL: "https://allergytracker-64a69.firebaseio.com",
-    projectId: "allergytracker-64a69",
-    storageBucket: "allergytracker-64a69.appspot.com",
-    messagingSenderId: "885493888818",
-    appId: "1:885493888818:web:f94797bb2625213aad892b"
-  };
+ const firebaseConfig = {
+  apiKey: "AIzaSyCckQtsCJXW3Hcoprw12_U8IaC7mEdoNQs",
+  authDomain: "trackmyallergy.firebaseapp.com",
+  databaseURL: "https://trackmyallergy.firebaseio.com",
+  projectId: "trackmyallergy",
+  storageBucket: "trackmyallergy.appspot.com",
+  messagingSenderId: "1063371669384",
+  appId: "1:1063371669384:web:34aec930c45560ecc1043d",
+  measurementId: "G-8GNLQFJKC4"
+};
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
