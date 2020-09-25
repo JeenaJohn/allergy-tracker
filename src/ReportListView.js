@@ -4,6 +4,7 @@ import ReportListItem from "./ReportListItem";
 
 function ReportListView(props) {
   const [allergies, setAllergies] = useState([]);
+  const [graphData, setGraphData] = useState([]);
   const dbRef = firebase
     .database()
     .ref(props.userID + "/" + props.kidId + "/" + props.date_yyyy_mm);
@@ -14,7 +15,9 @@ function ReportListView(props) {
       items = snapshot.val();
 
       let newState = [];
+      /* initialize data for D3 bar chart*/
       let newGraphData = [];
+
       for (let date in items) {
         newState.push({
           date: date,
@@ -22,21 +25,25 @@ function ReportListView(props) {
           food: items[date].food,
           additionalData: items[date].additionalData,
         });
+
+        /* compute data for D3 bar chart. For a day, if there are a list of symptoms
+        then find the maximum value for ItchLevel to display on the bar chart. */
+
         let symptomsArray = Object.entries(items[date].symptoms);
         console.log(items[date].symptoms);
         console.log(symptomsArray);
-         let maxItch = Math.max(
-          ...symptomsArray.map(entry => {
-          console.log(entry[1].itchLevel);
+        let maxItch = Math.max(
+          ...symptomsArray.map((entry) => {
+            console.log(entry[1].itchLevel);
             return entry[1].itchLevel;
-            
-          
-        }))
+          })
+        );
         console.log(maxItch);
 
-        newGraphData.push({date:date,itchLevel:maxItch});
+        newGraphData.push({ date: date, itchLevel: maxItch });
       }
       setAllergies(newState);
+      setGraphData(newGraphData);
       console.log(newState);
       console.log(newGraphData);
     });
@@ -44,20 +51,21 @@ function ReportListView(props) {
 
   return (
     <div>
-       {/* If there is no data for the selected criteria, display "no data reported"*/}
-       {allergies.length !== 0 ? (
-      allergies.map((allergy, index) => (
-        <ReportListItem
-          date={allergy.date}
-          symptoms={allergy.symptoms}
-          food={allergy.food}
-          additionalData={allergy.additionalData}
-        />
-      ))) : (
+      {/* If there is no data for the selected criteria, display "no data reported"*/}
+      {allergies.length !== 0 ? (
+        allergies.map((allergy, index) => (
+          <ReportListItem
+            date={allergy.date}
+            symptoms={allergy.symptoms}
+            food={allergy.food}
+            additionalData={allergy.additionalData}
+          />
+        ))
+      ) : (
         <div className="box-report">
-        <h4 className="u-text-left">
-          <i>No data reported for the selected month</i>
-        </h4>
+          <h4 className="u-text-left">
+            <i>No data reported for the selected month</i>
+          </h4>
         </div>
       )}
     </div>
