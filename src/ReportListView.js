@@ -14,6 +14,7 @@ function ReportListView(props) {
       items = snapshot.val();
 
       let newState = [];
+      let newGraphData = [];
       for (let date in items) {
         newState.push({
           date: date,
@@ -21,8 +22,23 @@ function ReportListView(props) {
           food: items[date].food,
           additionalData: items[date].additionalData,
         });
+        let symptomsArray = Object.entries(items[date].symptoms);
+        console.log(items[date].symptoms);
+        console.log(symptomsArray);
+         let maxItch = Math.max(
+          ...symptomsArray.map(entry => {
+          console.log(entry[1].itchLevel);
+            return entry[1].itchLevel;
+            
+          
+        }))
+        console.log(maxItch);
+
+        newGraphData.push({date:date,itchLevel:maxItch});
       }
       setAllergies(newState);
+      console.log(newState);
+      console.log(newGraphData);
     });
   }, [props]);
 
