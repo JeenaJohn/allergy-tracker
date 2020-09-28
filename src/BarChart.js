@@ -7,29 +7,40 @@ function BarChart(props) {
   const getDaysInMonth = (month, year) => {
     var date = new Date(year, month, 1);
     var days = [];
+   
 
     while (date.getMonth() === month) {
       let dd = date.getDate();
       let date_output = month + "-" + dd + "-" + year;
       let dd1, month1;
+      let itchLevel = 0;
 
       dd1 = dd;
       if (dd < 10) {
         dd1 = "0" + dd;
       }
-      
+
       month1 = month;
       if (month < 10) {
         month1 = "0" + month;
       }
       let date_yyyy_mm_dd = year + "-" + month1 + "-" + dd1;
 
-      console.log(date_yyyy_mm_dd);
-
       let itchLevelForDay = props.graphData.filter(
         (graph) => graph.date === date_yyyy_mm_dd
       );
-      let itchLevel = itchLevelForDay.map((itch) => itch.itchLevel);
+    
+  
+      if (itchLevelForDay.length !=0) {
+        itchLevel = itchLevelForDay[0].itchLevel;
+      }
+      
+
+      
+      // itchLevel = itchLevelForDay.map((itch) => {
+      //   console.log(itch);
+      //   return itch.itchLevel});
+
       days.push({ day: `${date_output}`, itch: itchLevel });
       date.setDate(date.getDate() + 1);
     }
@@ -41,7 +52,7 @@ function BarChart(props) {
   const renderD3 = (dataset) => {
     const svg = select(d3Element.current)
       .attr("class", "graph-svg-component")
-      .attr("viewBox", "0 0 800 600");
+      .attr("viewBox", "0 0 800 500");
 
     const titleText = "Allergy Symptoms for the month";
     const xAxisLabelText = "Days";

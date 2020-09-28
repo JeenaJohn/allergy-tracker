@@ -29,17 +29,17 @@ function ReportListView(props) {
 
         /* compute data for D3 bar chart. For a day, if there are a list of symptoms
         then find the maximum value for ItchLevel to display on the bar chart. */
+        if (items[date].symptoms != null) {
+          let symptomsArray = Object.entries(items[date].symptoms);
 
-        let symptomsArray = Object.entries(items[date].symptoms);
-       
-        let maxItch = Math.max(
-          ...symptomsArray.map((entry) => {
-            return entry[1].itchLevel;
-          })
-        );
-     
+          let maxItch = Math.max(
+            ...symptomsArray.map((entry) => {
+              return entry[1].itchLevel;
+            })
+          );
 
-        newGraphData.push({ date: date, itchLevel: maxItch });
+          newGraphData.push({ date: date, itchLevel: maxItch });
+        }
       }
       setAllergies(newState);
       setGraphData(newGraphData);
@@ -52,9 +52,7 @@ function ReportListView(props) {
   return (
     <div>
       {/* Bar Chart for the report data */}
-        <BarChart 
-      date_yyyy_mm ={props.date_yyyy_mm}
-      graphData = {graphData}/>
+      <BarChart date_yyyy_mm={props.date_yyyy_mm} graphData={graphData} />
 
       {/* If there is no data for the selected criteria, display "no data reported"*/}
       {allergies.length !== 0 ? (
@@ -73,7 +71,6 @@ function ReportListView(props) {
           </h4>
         </div>
       )}
-    
     </div>
   );
 }
