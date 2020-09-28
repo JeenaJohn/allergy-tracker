@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import firebase from "./firebase.js";
 import ReportListItem from "./ReportListItem";
+import BarChart from "./BarChart";
 
 function ReportListView(props) {
   const [allergies, setAllergies] = useState([]);
@@ -30,20 +31,19 @@ function ReportListView(props) {
         then find the maximum value for ItchLevel to display on the bar chart. */
 
         let symptomsArray = Object.entries(items[date].symptoms);
-        console.log(items[date].symptoms);
-        console.log(symptomsArray);
+       
         let maxItch = Math.max(
           ...symptomsArray.map((entry) => {
-            console.log(entry[1].itchLevel);
             return entry[1].itchLevel;
           })
         );
-        console.log(maxItch);
+     
 
         newGraphData.push({ date: date, itchLevel: maxItch });
       }
       setAllergies(newState);
       setGraphData(newGraphData);
+      console.log(props.date_yyyy_mm);
       console.log(newState);
       console.log(newGraphData);
     });
@@ -51,6 +51,11 @@ function ReportListView(props) {
 
   return (
     <div>
+      {/* Bar Chart for the report data */}
+        <BarChart 
+      date_yyyy_mm ={props.date_yyyy_mm}
+      graphData = {graphData}/>
+
       {/* If there is no data for the selected criteria, display "no data reported"*/}
       {allergies.length !== 0 ? (
         allergies.map((allergy, index) => (
@@ -68,6 +73,7 @@ function ReportListView(props) {
           </h4>
         </div>
       )}
+    
     </div>
   );
 }
