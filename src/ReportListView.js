@@ -51,8 +51,10 @@ function ReportListView(props) {
 
   return (
     <div>
-      {/* Bar Chart for the report data */}
-      <BarChart date_yyyy_mm={props.date_yyyy_mm} graphData={graphData} />
+      <div className="box-report">
+        {/* Bar Chart for the report data */}
+        <BarChart date_yyyy_mm={props.date_yyyy_mm} graphData={graphData} />
+      </div>
 
       {/* If there is no data for the selected criteria, display "no data reported"*/}
       {allergies.length !== 0 ? (

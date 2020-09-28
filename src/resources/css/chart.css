@@ -1,3 +1,19 @@
+
+.chart-svg-component{
+    width: 80rem;
+    height: 60rem;
+}
+
 .d3-chart{
-    text-align: center;
+  
+    width: 70rem;
+    height: 60rem;
+}
+
+.d3-title{
+    font-size: 1.9rem;
+}
+
+.axis-label{
+    font-size: 1.5rem;
 }

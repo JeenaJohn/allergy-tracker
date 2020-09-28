@@ -50,9 +50,9 @@ function BarChart(props) {
   };
 
   const renderD3 = (dataset) => {
-    const svg = select(d3Element.current)
-      .attr("class", "graph-svg-component")
-      .attr("viewBox", "0 0 800 500");
+    const svg = select(d3Element.current);
+    //  .attr("class", "chart-svg-component");
+    //  .attr("viewBox", "0 0 800 500");
 
     const titleText = "Allergy Symptoms for the month";
     const xAxisLabelText = "Days";
@@ -142,7 +142,7 @@ function BarChart(props) {
 
   return (
     <div className="d3-chart">
-      <svg ref={d3Element} width="800" height="600"></svg>
+      <svg ref={d3Element} width="850" height="500"></svg>
     </div>
   );
 }
