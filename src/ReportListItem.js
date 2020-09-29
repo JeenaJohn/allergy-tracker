@@ -10,14 +10,14 @@ function ReportListItem(props) {
   const [noFood, setNoFood] = useState("");
   const [noAdditionalData, setNoAdditionalData] = useState("");
 
-  function convertDate(date) {
+  function formatDate(date) {
     let datearray = date.split("-");
     let newdate = datearray[1] + "-" + datearray[2] + "-" + datearray[0];
     setDate(newdate);
   }
 
   useEffect(() => {
-    convertDate(props.date);
+    formatDate(props.date);
 
     /* Symptoms - There can be multiple entries for symptoms for the day*/
     /* component ReportListSymptoms will be used to list the symptoms*/

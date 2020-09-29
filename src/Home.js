@@ -1,5 +1,6 @@
 import React from "react";
 import home_page from "./resources/images/home_pg_img.svg";
+import visual_data from "./resources/images/visual_data.svg";
 
 function Home(props) {
   return (
@@ -9,22 +10,20 @@ function Home(props) {
       <section id="section-home" className="section-home">
         <div className="row u-margin-left u-margin-top-huge u-margin-bottom-medium">
           <div className="col span-1-of-2 u-text-left">
-            
-              <h1 className="heading-primary ">
-                <span className="heading-primary--main">Track My Allergy</span>
-              </h1>
+            <h1 className="heading-primary ">
+              <span className="heading-primary--main">Track My Allergy</span>
+            </h1>
 
-              <h3 className="heading-tertiary">
-                Track the allergy symptoms and triggers of your kids
-              </h3>
+            <h2 className="heading-secondary">
+              Track the Allergy Symptoms and Allergy Triggers of your Kids
+            </h2>
 
-              <a
-                href="/diary"
-                className="btn btn-header u-margin-top-very-small "
-              >
-                Start Tracking
-              </a>
-            
+            <a
+              href="/diary"
+              className="btn btn-header u-margin-top-very-small "
+            >
+              Start Tracking
+            </a>
           </div>
           <div className="col span-1-of-2 ">
             <p className="paragraph">
@@ -48,6 +47,14 @@ function Home(props) {
             <li>Track any activity, like soccer, swimming, painting, etc. </li>
             <li>Get reports that help you in identifying a pattern.</li>
           </ul>
+
+          <p className="paragraph u-margin-bottom-medium">
+            <img
+              src={visual_data}
+              alt="Visual Data"
+              className="visual-data-img"
+            />
+          </p>
 
           <p className="paragraph">
             Add a profile for your kid and start tracking their allergy

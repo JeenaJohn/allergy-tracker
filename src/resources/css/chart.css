@@ -1,0 +1,45 @@
+.box-report-chart {
+  width: 100%;
+  height: auto;
+
+  //margin-left: 5%;
+  margin-bottom: 3rem;
+  padding: 3rem;
+  overflow-x: scroll;
+
+  background-color: hotpink;
+ 
+ 
+
+}
+.chart-svg-component {
+  
+}
+
+.chart-container{
+    width: 100%;
+    height: auto;
+  
+
+}
+
+.d3-chart {
+
+  height: 50rem;
+  width: 80rem;
+  background-color: blue;
+
+}
+
+.d3-title {
+  font-size: 1.9rem;
+}
+
+.axis-label {
+  font-size: 1.6rem;
+}
+
+.axis-tick-text{
+    font-size: 1.2rem;
+}
+
