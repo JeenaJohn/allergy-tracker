@@ -34,8 +34,6 @@ $breakpoint arguement choices:
     width: 80%;
     margin-left: 10%;
   }
-
-
 }
 
 /*900px Tablet portrait //1 rem = 10px */
@@ -49,20 +47,18 @@ $breakpoint arguement choices:
     margin-left: 32.5%;
   }
 
-  .header-main-button{
+  .header-main-button {
     margin-bottom: 2rem;
     margin-right: 0rem;
   }
-  
-  .sidebar-logo { 
+
+  .sidebar-logo {
     height: 8rem;
   }
 
   .d3-chart {
-
     height: 40rem;
     width: 70rem;
-  
   }
 }
 
@@ -73,12 +69,9 @@ $breakpoint arguement choices:
   }
 
   .d3-chart {
-
     height: 35rem;
     width: 58rem;
-  
   }
- 
 }
 
 @media only screen and (max-width: 480px) {
@@ -87,17 +80,7 @@ $breakpoint arguement choices:
   }
 
   .d3-chart {
-
     height: 35rem;
     width: 50rem;
-  
   }
 }
-
-
-
-
-
-
-
-
