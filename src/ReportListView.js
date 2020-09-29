@@ -43,15 +43,12 @@ function ReportListView(props) {
       }
       setAllergies(newState);
       setGraphData(newGraphData);
-      console.log(props.date_yyyy_mm);
-      console.log(newState);
-      console.log(newGraphData);
     });
   }, [props]);
 
   return (
     <div>
-      <div className="box-report">
+      <div className="box-report-chart">
         {/* Bar Chart for the report data */}
         <BarChart date_yyyy_mm={props.date_yyyy_mm} graphData={graphData} />
       </div>

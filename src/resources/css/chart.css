@@ -1,19 +1,38 @@
+.box-report-chart {
+  width: 100%;
+  height: auto;
+  //margin-left: 5%;
+  margin-bottom: 4rem;
+  padding: 7rem;
+  overflow-x: scroll;
+ 
 
-.chart-svg-component{
-    width: 80rem;
-    height: 60rem;
 }
-
-.d3-chart{
+.chart-svg-component {
   
-    width: 70rem;
-    height: 60rem;
 }
 
-.d3-title{
-    font-size: 1.9rem;
+.chart-container{
+    width: 100%;
+  height: auto;
 }
 
-.axis-label{
-    font-size: 1.5rem;
+.d3-chart {
+  width: 60rem;
+  height: 40rem;
+  
+
 }
+
+.d3-title {
+  font-size: 1.9rem;
+}
+
+.axis-label {
+  font-size: 1.6rem;
+}
+
+.axis-tick-text{
+    font-size: 1.2rem;
+}
+

@@ -1,13 +1,14 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { select, scaleLinear, scaleBand, axisLeft, axisBottom } from "d3";
 
 function BarChart(props) {
   const d3Element = useRef(null);
+  // const [dataset, setDataset] = useState([]);
+  let dataset = [];
 
   const getDaysInMonth = (month, year) => {
-    var date = new Date(year, month, 1);
-    var days = [];
-   
+    let date = new Date(year, month, 1);
+    let days = [];
 
     while (date.getMonth() === month) {
       let dd = date.getDate();
@@ -29,39 +30,69 @@ function BarChart(props) {
       let itchLevelForDay = props.graphData.filter(
         (graph) => graph.date === date_yyyy_mm_dd
       );
-    
-  
-      if (itchLevelForDay.length !=0) {
+
+      if (itchLevelForDay.length !== 0) {
         itchLevel = itchLevelForDay[0].itchLevel;
       }
-      
-
-      
-      // itchLevel = itchLevelForDay.map((itch) => {
-      //   console.log(itch);
-      //   return itch.itchLevel});
 
       days.push({ day: `${date_output}`, itch: itchLevel });
       date.setDate(date.getDate() + 1);
     }
-
-    console.log(days);
+    //setDataset(days);
     return days;
   };
 
-  const renderD3 = (dataset) => {
-    const svg = select(d3Element.current);
-    //  .attr("class", "chart-svg-component");
-    //  .attr("viewBox", "0 0 800 500");
+  const responsiveD3 = (svg) => {
+    const resize = () => {
+      const w = parseInt(container.style("width"));
+      svg.attr("width", w);
+      svg.attr("height", Math.round(w / aspect));
+    };
 
-    const titleText = "Allergy Symptoms for the month";
-    const xAxisLabelText = "Days";
-    const yAxisLabelText = "Itch Level";
+    const container = select("#div-for-chart"),
+      width = parseInt(svg.style("width"), 10),
+      height = parseInt(svg.style("height"), 10),
+      aspect = width / height;
+
+      console.log(width);
+      console.log(height);
+      console.log(aspect);
+      console.log(container.attr("id"));
+
+      
+
+    // set viewBox attribute to the initial size
+    // control scaling with preserveAspectRatio
+    // resize svg on inital page load
+    svg
+      .attr("viewBox", `0 0 ${width} ${height}`)
+      .attr("preserveAspectRatio", "xMinYMid")
+      .call(resize);
+
+    // add a listener so the chart will be resized
+    // when the window resizes
+
+    select(window).on("resize." + container.attr("id"), resize);
+  };
+
+  const renderD3 = (dataset) => {
+    const svg = select(d3Element.current)
+    .attr("class", "d3-chart")
+      // .attr("width", 800)
+      // .attr("height", 650)
+      .call(responsiveD3);
 
     const width = +svg.attr("width");
     const height = +svg.attr("height");
 
-    const margin = { top: 50, right: 20, bottom: 100, left: 80 };
+    console.log(width);
+    console.log(height);
+
+    const titleText = "Allergy Symptoms for the month";
+    //const xAxisLabelText = "Days";
+    const yAxisLabelText = "Itch Level";
+
+    const margin = { top: 50, right: 20, bottom: 100, left: 60 };
 
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
@@ -91,6 +122,7 @@ function BarChart(props) {
     xAxisG
       .selectAll("text")
       .style("text-anchor", "end")
+      .attr("class", "axis-tick-text")
       .attr("dx", "-.8em")
       .attr("dy", ".15em")
       .attr("transform", function (d) {
@@ -133,16 +165,20 @@ function BarChart(props) {
 
   useEffect(() => {
     let yyyy_mm = props.date_yyyy_mm.split("-");
-    console.log(typeof props.date_yyyy_mm);
-    console.log(yyyy_mm);
-    console.log(props.graphData);
-    const dataset = getDaysInMonth(+yyyy_mm[1], +yyyy_mm[0]);
+    dataset = getDaysInMonth(+yyyy_mm[1], +yyyy_mm[0]);
     renderD3(dataset);
-  });
+    // Add an event listener that run the function when dimension change
+    //  window.addEventListener("resize", renderD3(dataset));
+
+    // // this will clean up the event every time the component is re-rendered
+    // return () => {
+    //   window.removeEventListener("resize", renderD3);
+    // };
+  }, [props]);
 
   return (
-    <div className="d3-chart">
-      <svg ref={d3Element} width="850" height="500"></svg>
+    <div id="div-for-chart" className="chart-container">
+      <svg ref={d3Element}></svg>
     </div>
   );
 }
