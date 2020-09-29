@@ -42,51 +42,54 @@ function BarChart(props) {
     return days;
   };
 
-  const responsiveD3 = (svg) => {
-    const resize = () => {
-      const w = parseInt(container.style("width"));
-      svg.attr("width", w);
-      svg.attr("height", Math.round(w / aspect));
-    };
+  // const responsiveD3 = (svg) => {
+  //   const resize = () => {
+  //     const w = parseInt(container.style("width"));
+  //     svg.attr("width", w);
+  //     svg.attr("height", Math.round(w / aspect));
+  //   };
 
-    const container = select("#div-for-chart"),
-      width = parseInt(svg.style("width"), 10),
-      height = parseInt(svg.style("height"), 10),
-      aspect = width / height;
+  //   const container = select("#div-for-chart"),
+  //     width = parseInt(svg.style("width"), 10),
+  //     height = parseInt(svg.style("height"), 10),
+  //     aspect = width / height;
 
-      console.log(width);
-      console.log(height);
-      console.log(aspect);
-      console.log(container.attr("id"));
+  //   console.log(`Svg style width ${width}`);
+  //   console.log(`Svg style height ${height}`);
+  //   console.log(aspect);
+  //   const svgwidth = +svg.attr("width");
+  //   const svgheight = +svg.attr("height");
 
-      
+  //   console.log(`Svg attr width ${svgwidth}`);
+  //   console.log(`Svg attr height ${svgheight}`);
 
-    // set viewBox attribute to the initial size
-    // control scaling with preserveAspectRatio
-    // resize svg on inital page load
-    svg
-      .attr("viewBox", `0 0 ${width} ${height}`)
-      .attr("preserveAspectRatio", "xMinYMid")
-      .call(resize);
+  //   // set viewBox attribute to the initial size
+  //   // control scaling with preserveAspectRatio
+  //   // resize svg on inital page load
+  //   //svg.attr("viewBox", `0 0 ${width} ${height}`);
+  //   //  .attr("preserveAspectRatio", "xMinYMid")
+  //   //  .call(resize);
 
-    // add a listener so the chart will be resized
-    // when the window resizes
+  //   // add a listener so the chart will be resized
+  //   // when the window resizes
 
-    select(window).on("resize." + container.attr("id"), resize);
-  };
+  //   // select(window).on("resize." + container.attr("id"), resize);
+  // };
 
   const renderD3 = (dataset) => {
-    const svg = select(d3Element.current)
-    .attr("class", "d3-chart")
-      // .attr("width", 800)
-      // .attr("height", 650)
-      .call(responsiveD3);
+    const svg = select(d3Element.current).attr("class", "d3-chart");
+    // .call(responsiveD3);
 
-    const width = +svg.attr("width");
-    const height = +svg.attr("height");
+    const width = parseInt(svg.style("width"), 10),
+      height = parseInt(svg.style("height"), 10);
 
-    console.log(width);
-    console.log(height);
+    svg.attr("viewBox", `0 0 ${width} ${height}`);
+
+    svg.attr("width", width);
+    svg.attr("height", height);
+
+    // console.log(`in render Svg attr width ${width}`);
+    // console.log(` in render Svg attr height ${height}`);
 
     const titleText = "Allergy Symptoms for the month";
     //const xAxisLabelText = "Days";

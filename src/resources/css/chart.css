@@ -1,10 +1,14 @@
 .box-report-chart {
   width: 100%;
   height: auto;
+
   //margin-left: 5%;
-  margin-bottom: 4rem;
-  padding: 7rem;
+  margin-bottom: 3rem;
+  padding: 3rem;
   overflow-x: scroll;
+
+  background-color: hotpink;
+ 
  
 
 }
@@ -14,13 +18,16 @@
 
 .chart-container{
     width: 100%;
-  height: auto;
+    height: auto;
+  
+
 }
 
 .d3-chart {
-  width: 60rem;
-  height: 40rem;
-  
+
+  height: 50rem;
+  width: 80rem;
+  background-color: blue;
 
 }
 
