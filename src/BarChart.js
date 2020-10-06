@@ -7,12 +7,14 @@ function BarChart(props) {
   let dataset = [];
 
   const getDaysInMonth = (month, year) => {
-    let date = new Date(year, month, 1);
+
+    //month in Date object starts at 0. Hence subtracting the month from props by 1
+    let date = new Date(year, month-1, 1);
     let days = [];
 
-    while (date.getMonth() === month) {
+    while (date.getMonth() === month-1) {
       let dd = date.getDate();
-      let date_output = month + "-" + dd + "-" + year;
+      let date_output = month + "-" + dd;
       let dd1, month1;
       let itchLevel = 0;
 
@@ -77,7 +79,9 @@ function BarChart(props) {
   // };
 
   const renderD3 = (dataset) => {
-    const svg = select(d3Element.current).attr("class", "d3-chart");
+    const svg = select(d3Element.current)
+    .append('svg')
+    .attr("class", "d3-chart");
     // .call(responsiveD3);
 
     const width = parseInt(svg.style("width"), 10),
@@ -169,6 +173,8 @@ function BarChart(props) {
   useEffect(() => {
     let yyyy_mm = props.date_yyyy_mm.split("-");
     dataset = getDaysInMonth(+yyyy_mm[1], +yyyy_mm[0]);
+    // for re-rendering data, remove the element and create again
+    select('svg').remove();
     renderD3(dataset);
     // Add an event listener that run the function when dimension change
     //  window.addEventListener("resize", renderD3(dataset));
@@ -180,8 +186,8 @@ function BarChart(props) {
   }, [props]);
 
   return (
-    <div id="div-for-chart" className="chart-container">
-      <svg ref={d3Element}></svg>
+    <div id="div-for-chart" ref={d3Element} className="chart-container">
+    
     </div>
   );
 }
