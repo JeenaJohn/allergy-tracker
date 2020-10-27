@@ -34,6 +34,6 @@ describe("Add Kid component", () => {
   test("Input field to choose month exists ", () => {
     const monthInput = screen.getByTestId("month-selector");
     expect(monthInput).toBeInTheDocument();
-  });downloads
-
+  });
+T
 });
