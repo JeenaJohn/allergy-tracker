@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
-import firebase from "./firebase.js";
+import firebase from "./firebase";
 
 function AddKid(props) {
   const [newKidName, setNewKidName] = useState("");
@@ -15,14 +15,14 @@ function AddKid(props) {
   let saveBtnDisabled = props.userID == null ? true : false;
 
   const kidsRef = firebase.database().ref(props.userID + "/kids");
-  const defaultKidRef = firebase.database().ref(props.userID + "/defaultKid");
+  //const defaultKidRef = firebase.database().ref(props.userID + "/defaultKid");
 
   useEffect(() => {
     /*  get list of existing kids */
 
     kidsRef.on("value", (snapshot) => {
+  
       let items = snapshot.val();
-
       let newState = [];
       for (let item in items) {
         newState.push({
@@ -146,7 +146,7 @@ function AddKid(props) {
         {kids.length > 0 ? (
           <ol className="list-kids u-text-left u-capitalize u-margin-bottom-small">
             {kids.map((kid, index) => (
-              <li>{kid.kidName}</li>
+              <li key={kid.id}>{kid.kidName}</li>
             ))}
           </ol>
         ) : (

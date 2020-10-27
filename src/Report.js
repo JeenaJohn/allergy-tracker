@@ -21,8 +21,6 @@ function Report(props) {
     defaultKidRef.on("value", (snapshot) => {
       let item = snapshot.val();
 
-      console.log(item);
-
        if (item != null){
         setSelectedKidId(item.defaultKid);
         defaultKid = item.defaultKid;
@@ -109,9 +107,9 @@ function Report(props) {
         </h3>
         <div className="u-margin-bottom-small">
           {kids.map((kid, index) => (
-            <div
+            <div key={kid.id}
               className="list-kids u-capitalize"
-              onChange={(e) => handleKidSelection(e)}
+              
             >
               <label htmlFor={kid.id}>
                 <input
@@ -121,6 +119,7 @@ function Report(props) {
                   value={kid.kidName}
                   className="radio-btn"
                   checked={selectedKidId === kid.id}
+                  onChange={(e) => handleKidSelection(e)}
                 />
                 {kid.kidName}
               </label>
@@ -153,6 +152,7 @@ function Report(props) {
             value={entryMonth}
             onChange={(e) => handleEntryMonth(e)}
             required
+            data-testid="month-selector"
           />
         </div>
       </div>
