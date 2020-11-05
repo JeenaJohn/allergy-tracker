@@ -44,15 +44,8 @@ function App() {
     <Router>
       <div className="main-layout">
         <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
+        autoClose={3000}
+        hideProgressBar={true}
         />
         <Layout
           user={user}
