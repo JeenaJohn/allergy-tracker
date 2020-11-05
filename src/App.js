@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
-
 import { auth, provider } from "./firebase.js";
 
 import "./App.css";
@@ -44,7 +43,17 @@ function App() {
   return (
     <Router>
       <div className="main-layout">
-        <ToastContainer />
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
         <Layout
           user={user}
           userID={userID}
