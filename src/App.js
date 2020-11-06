@@ -7,7 +7,7 @@ import { auth, provider } from "./firebase.js";
 
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
-import Layout from "./Layout";
+import {Layout} from "./Layout";
 import Home from "./Home";
 import AddKid from "./AddKid";
 import MyAllergy from "./MyAllergy";
