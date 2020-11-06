@@ -4,13 +4,13 @@ import React, { useEffect } from "react";
 import Sidebar from "./Sidebar";
 
 type UserProp = {
-  uid: string;
-  displayName: string;
+  uid: string|null;
+  displayName: string|null;
 };
 
 type LayoutProps = {
   user: UserProp;
-  userID: string;
+  userID: string|null;
   login: () => void;
   logout: () => void;
   stateChanged: () => void;
