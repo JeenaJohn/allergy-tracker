@@ -3,10 +3,10 @@ import { toast } from "react-toastify";
 import firebase from "./firebase.js";
 
 type AdditionalDataProps = {
-  userID: string;
-  kidId: string;
-  date: Date;
-  date_yyyy_mm: string;
+  userID: string | null;
+  kidId: string | null;
+  date: string | null;
+  date_yyyy_mm: string | null;
 };
 
 type TAdditionalData = {

@@ -4,10 +4,10 @@ import ListSymptoms from "./ListSymptoms";
 import firebase from "./firebase.js";
 
 type SymptomsProps = {
-  userID: string;
-  kidId: string;
-  date: Date;
-  date_yyyy_mm: string;
+  userID: string | null;
+  kidId: string | null;
+  date: string | null;
+  date_yyyy_mm: string | null;
 };
 
 type TExistingSymptoms = {
