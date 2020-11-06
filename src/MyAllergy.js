@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-import Symptoms from "./Symptoms";
-import Food from "./Food";
-import AdditionalData from "./AdditionalData";
+import {Symptoms} from "./Symptoms.tsx";
+import {Food} from "./Food.tsx";
+import {AdditionalData} from "./AdditionalData.tsx";
 import firebase from "./firebase.js";
 
 function MyAllergy(props) {
