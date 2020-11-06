@@ -75,19 +75,23 @@ export const MyAllergy: React.FC<MyAllergyProps> = (props) => {
 
   const formatDate = (date_input: Date) => {
     let date_output;
-    let date_output_yyyy_mm;
-    let dd: any = date_input.getDate();
+    let date_output_yyyy_mm, dd_str, mm_str;
+    let dd = date_input.getDate();
 
-    let mm: any = date_input.getMonth() + 1;
+    let mm = date_input.getMonth() + 1;
     let yyyy = date_input.getFullYear();
+    
+    mm_str = mm;
+    dd_str = dd;
+
     if (dd < 10) {
-      dd = "0" + dd;
+      dd_str = "0" + dd;
     }
     if (mm < 10) {
-      mm = "0" + mm;
+      mm_str = "0" + mm;
     }
-    date_output = yyyy + "-" + mm + "-" + dd;
-    date_output_yyyy_mm = yyyy + "-" + mm;
+    date_output = yyyy + "-" +  mm_str + "-" + dd_str;
+    date_output_yyyy_mm = yyyy + "-" +  mm_str;
     setEntryDate(date_output);
     setEntryMonth(date_output_yyyy_mm);
   };

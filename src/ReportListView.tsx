@@ -1,18 +1,58 @@
 import React, { useState, useEffect } from "react";
 import firebase from "./firebase.js";
 import ReportListItem from "./ReportListItem";
-import BarChart from "./BarChart";
+import { BarChart } from "./BarChart";
 
-function ReportListView(props) {
-  const [allergies, setAllergies] = useState([]);
-  const [graphData, setGraphData] = useState([]);
+type ReportViewProps = {
+  userID: string | null;
+  kidId: string | null;
+  date_yyyy_mm: string;
+};
+
+type TSymptoms = {
+  id: string;
+  rash: boolean;
+  itchLevel: number;
+  itchTime: string;
+  notes: string;
+};
+
+type TAdditionalData = {
+  outdoor: string;
+  notes: string;
+  ac: boolean;
+  nails: boolean;
+};
+
+type TFood = {
+  breakfast: string;
+  lunch: string;
+  dinner: string;
+  snacks: string;
+};
+
+type TAllergies = {
+  date: string;
+  symptoms: TSymptoms[];
+  food: TFood;
+  additionalData: TAdditionalData;
+};
+
+type TGraphData = {
+  date: string;
+  itchLevel: number;
+};
+
+export const ReportListView: React.FC<ReportViewProps> = (props) => {
+  const [allergies, setAllergies] = useState<TAllergies[]>([]);
+  const [graphData, setGraphData] = useState<TGraphData[]>([]);
   const dbRef = firebase
     .database()
     .ref(props.userID + "/" + props.kidId + "/" + props.date_yyyy_mm);
 
   useEffect(() => {
     dbRef.on("value", (snapshot) => {
-      let items = {};
+      let items:any = {};
       items = snapshot.val();
 
       let newState = [];
@@ -33,7 +73,7 @@ function ReportListView(props) {
           let symptomsArray = Object.entries(items[date].symptoms);
 
           let maxItch = Math.max(
-            ...symptomsArray.map((entry) => {
+            ...symptomsArray.map((entry:any) => {
               return entry[1].itchLevel;
             })
           );
@@ -74,6 +114,4 @@ function ReportListView(props) {
       )}
     </div>
   );
-}
-
-export default ReportListView;
+};

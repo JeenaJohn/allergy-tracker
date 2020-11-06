@@ -1,81 +1,91 @@
 import React, { useState, useEffect } from "react";
 import firebase from "./firebase.js";
-import ReportListView from "./ReportListView";
+import {ReportListView} from "./ReportListView";
 
-function Report(props) {
-  const [kids, setKids] = useState([]);
+type ReportProps = {
+  userID: string | null;
+};
 
-  const [selectedKid, setSelectedKid] = useState(null);
-  const [selectedKidId, setSelectedKidId] = useState(null);
+type TKids = {
+  id: string;
+  kidName: string;
+};
 
-  const [entryMonth, setEntryMonth] = useState("");
+export const Report: React.FC<ReportProps> = (props) => {
+  const [kids, setKids] = useState<TKids[]>([]);
+
+  const [selectedKid, setSelectedKid] = useState<string>("");
+  const [selectedKidId, setSelectedKidId] = useState<string>("");
+
+  const [entryMonth, setEntryMonth] =useState<string>("");
 
   const kidsRef = firebase.database().ref(props.userID + "/kids");
   const defaultKidRef = firebase.database().ref(props.userID + "/defaultKid");
 
   useEffect(() => {
-
-    var defaultKid =  null;
+    var defaultKid: string | null = null;
 
     /*  check if a default kid is already set */
     defaultKidRef.on("value", (snapshot) => {
       let item = snapshot.val();
 
-       if (item != null){
+      if (item != null) {
         setSelectedKidId(item.defaultKid);
         defaultKid = item.defaultKid;
-       }
-    
+      }
     });
 
-      /*  get list of existing kids */
-      kidsRef.on("value", (snapshot) => {
-        let items = snapshot.val();
-  
-        let newState = [];
-        for (let item in items) {
-          newState.push({
-            id: item,
-            kidName: items[item].kidName,
-          });
-  
-          /* if default selection exists, get the kid name as well for displaying in heading */
-          if (defaultKid === item) {
-            setSelectedKid(items[item].kidName);
-          }
-          /* no default selection exists, make the first kid in the list as default kid*/
-          if (defaultKid === null && newState.length === 1) {
-            setSelectedKidId(item);
-            setSelectedKid(items[item].kidName);
-          }
+    /*  get list of existing kids */
+    kidsRef.on("value", (snapshot) => {
+      let items = snapshot.val();
+
+      let newState = [];
+      for (let item in items) {
+        newState.push({
+          id: item,
+          kidName: items[item].kidName,
+        });
+
+        /* if default selection exists, get the kid name as well for displaying in heading */
+        if (defaultKid === item) {
+          setSelectedKid(items[item].kidName);
         }
-  
-        setKids(newState);
-      });
+        /* no default selection exists, make the first kid in the list as default kid*/
+        if (defaultKid === null && newState.length === 1) {
+          setSelectedKidId(item);
+          setSelectedKid(items[item].kidName);
+        }
+      }
+
+      setKids(newState);
+    });
 
     formatDate();
   }, [props]);
 
   const formatDate = () => {
+    let mm_str;
     let today = new Date();
 
     let mm = today.getMonth() + 1;
     let yyyy = today.getFullYear();
 
-    if (mm < 10) {
-      mm = "0" + mm;
-    }
-    today = yyyy + "-" + mm;
+    mm_str = mm;
 
-    setEntryMonth(today);
+    if (mm < 10) {
+      mm_str = "0" + mm;
+    }
+    let today_month = yyyy + "-" + mm_str;
+
+    setEntryMonth(today_month);
   };
 
-  const handleKidSelection = (e) => {
+  const handleKidSelection = (e:React.ChangeEvent<any>) => {
     setSelectedKid(e.target.value);
     setSelectedKidId(e.target.id);
   };
 
-  const handleEntryMonth = (e) => {
+  const handleEntryMonth = (e:React.ChangeEvent<any>) => {
     setEntryMonth(e.target.value);
   };
 
@@ -89,7 +99,7 @@ function Report(props) {
           ) : null}
         </h2>
       </div>
-      
+
       {props.userID === null ? (
         <p
           className="paragraph u-center-text u-text-color-red 
@@ -107,10 +117,7 @@ function Report(props) {
         </h3>
         <div className="u-margin-bottom-small">
           {kids.map((kid, index) => (
-            <div key={kid.id}
-              className="list-kids u-capitalize"
-              
-            >
+            <div key={kid.id} className="list-kids u-capitalize">
               <label htmlFor={kid.id}>
                 <input
                   type="radio"
@@ -166,6 +173,4 @@ function Report(props) {
       ) : null}
     </div>
   );
-}
-
-export default Report;
+};

@@ -1,18 +1,27 @@
 import React, { useRef, useState, useEffect } from "react";
 import { select, scaleLinear, scaleBand, axisLeft, axisBottom } from "d3";
 
-function BarChart(props) {
+type TGraphData = {
+  date: string;
+  itchLevel: number;
+};
+
+type BarChartProps = {
+  date_yyyy_mm: string ;
+  graphData: TGraphData[];
+};
+
+export const BarChart: React.FC<BarChartProps> = (props) => {
   const d3Element = useRef(null);
   // const [dataset, setDataset] = useState([]);
   let dataset = [];
 
-  const getDaysInMonth = (month, year) => {
-
+  const getDaysInMonth = (month: any, year:any) => {
     //month in Date object starts at 0. Hence subtracting the month from props by 1
-    let date = new Date(year, month-1, 1);
+    let date = new Date(year, month - 1, 1);
     let days = [];
 
-    while (date.getMonth() === month-1) {
+    while (date.getMonth() === month - 1) {
       let dd = date.getDate();
       let date_output = month + "-" + dd;
       let dd1, month1;
@@ -78,10 +87,10 @@ function BarChart(props) {
   //   // select(window).on("resize." + container.attr("id"), resize);
   // };
 
-  const renderD3 = (dataset) => {
+  const renderD3 = (dataset:any) => {
     const svg = select(d3Element.current)
-    .append('svg')
-    .attr("class", "d3-chart");
+      .append("svg")
+      .attr("class", "d3-chart");
     // .call(responsiveD3);
 
     const width = parseInt(svg.style("width"), 10),
@@ -104,8 +113,8 @@ function BarChart(props) {
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
 
-    const xValue = (d) => d.day;
-    const yValue = (d) => d.itch;
+    const xValue = (d:any) => d.day;
+    const yValue = (d:any) => d.itch;
 
     const xScale = scaleBand()
       .domain(dataset.map(xValue))
@@ -117,7 +126,7 @@ function BarChart(props) {
     const xAxis = axisBottom(xScale);
     const yAxis = axisLeft(yScale);
 
-    const g = svg
+    const g:any = svg
       .append("g")
       .attr("transform", `translate(${margin.left},${margin.top})`);
 
@@ -132,7 +141,7 @@ function BarChart(props) {
       .attr("class", "axis-tick-text")
       .attr("dx", "-.8em")
       .attr("dy", ".15em")
-      .attr("transform", function (d) {
+      .attr("transform", function (d:any) {
         return "rotate(-65)";
       });
     // xAxisG
@@ -157,10 +166,10 @@ function BarChart(props) {
       .data(dataset)
       .enter()
       .append("rect")
-      .attr("x", (d) => xScale(xValue(d)))
-      .attr("y", (d) => yScale(yValue(d)))
+      .attr("x", (d:any) => xScale(xValue(d)))
+      .attr("y", (d:any) => yScale(yValue(d)))
       .attr("width", xScale.bandwidth())
-      .attr("height", (d) => innerHeight - yScale(yValue(d)))
+      .attr("height", (d:any) => innerHeight - yScale(yValue(d)))
       .attr("fill", "#9D6C19");
 
     g.append("text")
@@ -171,10 +180,11 @@ function BarChart(props) {
   };
 
   useEffect(() => {
+    
     let yyyy_mm = props.date_yyyy_mm.split("-");
     dataset = getDaysInMonth(+yyyy_mm[1], +yyyy_mm[0]);
     // for re-rendering data, remove the element and create again
-    select('svg').remove();
+    select("svg").remove();
     renderD3(dataset);
     // Add an event listener that run the function when dimension change
     //  window.addEventListener("resize", renderD3(dataset));
@@ -186,10 +196,6 @@ function BarChart(props) {
   }, [props]);
 
   return (
-    <div id="div-for-chart" ref={d3Element} className="chart-container">
-    
-    </div>
+    <div id="div-for-chart" ref={d3Element} className="chart-container"></div>
   );
-}
-
-export default BarChart;
+};

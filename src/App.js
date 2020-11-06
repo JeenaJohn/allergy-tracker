@@ -11,7 +11,7 @@ import {Layout} from "./Layout.tsx";
 import {Home} from "./Home.tsx";
 import {AddKid} from "./AddKid.tsx";
 import {MyAllergy} from "./MyAllergy.tsx";
-import Report from "./Report";
+import {Report} from "./Report.tsx";
 
 function App() {
   const [user, setUser] = useState(null);
