@@ -2,20 +2,19 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
-
 import { auth, provider } from "./firebase.js";
 
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
-import {Layout} from "./Layout.tsx";
-import {Home} from "./Home.tsx";
-import {AddKid} from "./AddKid.tsx";
-import {MyAllergy} from "./MyAllergy.tsx";
-import {Report} from "./Report.tsx";
+import { Layout } from "./Layout";
+import { Home } from "./Home";
+import { AddKid } from "./AddKid";
+import { MyAllergy } from "./MyAllergy";
+import { Report } from "./Report";
 
 function App() {
-  const [user, setUser] = useState(null);
-  const [userID, setUserID] = useState(null);
+  const [user, setUser] = useState<firebase.User | null>(null);
+  const [userID, setUserID] = useState<string | null>(null);
 
   const logout = () => {
     auth.signOut().then(() => {
@@ -26,7 +25,7 @@ function App() {
 
   const login = () => {
     auth.signInWithPopup(provider).then((result) => {
-      const user = result.user;
+      const user: any = result.user;
       setUser(user);
       setUserID(user.uid);
     });
@@ -68,6 +67,6 @@ function App() {
       </div>
     </Router>
   );
-}
+};
 
 export default App;

@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import AddKid from "../AddKid";
+import {AddKid} from "../AddKid";
 
 
 jest.mock("../firebase", () => {

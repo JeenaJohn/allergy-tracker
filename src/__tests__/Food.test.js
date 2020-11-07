@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Food from '../Food'
+import {Food} from '../Food'
 
 describe("Food section renders properly", () => {
     test("Heading has Let's track Food", () => {

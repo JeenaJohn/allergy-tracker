@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import Report from "../Report";
+import {Report} from "../Report";
 
 
 jest.mock("../firebase", () => {

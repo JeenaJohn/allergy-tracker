@@ -3,13 +3,13 @@ import React, { useEffect } from "react";
 //import logo from "./resources/images/logo.png";
 import Sidebar from "./Sidebar";
 
-type UserProp = {
-  uid: string|null;
-  displayName: string|null;
-};
+// type UserProp = {
+//   uid: string|null;
+//   displayName: string|null;
+// };
 
 type LayoutProps = {
-  user: UserProp;
+  user: any;
   userID: string|null;
   login: () => void;
   logout: () => void;
