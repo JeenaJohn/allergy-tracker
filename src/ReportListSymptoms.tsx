@@ -1,6 +1,18 @@
 import React, { useState, useEffect } from "react";
 
-function ReportListSymptoms(props) {
+type TSymptoms = {
+  rash: boolean;
+  itchLevel: number;
+  itchTime: string;
+  notes: string;
+};
+
+type ReportListSymptomsProps = {
+  index:number,
+  symptom: TSymptoms;
+};
+
+export const ReportListSymptoms: React.FC<ReportListSymptomsProps> = (props) => {
   //const [editMode, setEditMode] = useState(false);
 
   const [rash, setRash] = useState(props.symptom.rash);
@@ -38,7 +50,7 @@ function ReportListSymptoms(props) {
       </div>
 
       <div className="report-item">
-        <label for="itchTime">Time when it was itchy?</label>
+        <label htmlFor="itchTime">Time when it was itchy?</label>
         <input
           className="u-display-mode"
           type="time"
@@ -57,4 +69,4 @@ function ReportListSymptoms(props) {
   );
 }
 
-export default ReportListSymptoms;
+
