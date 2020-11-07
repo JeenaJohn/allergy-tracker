@@ -9,7 +9,7 @@ type TSymptoms = {
 };
 
 type ListSymptomsProps = {
-  index:number,
+  index: number;
   symptom: TSymptoms;
 };
 
