@@ -1,16 +1,62 @@
 import React, { useState, useEffect } from "react";
 import ReportListSymptoms from "./ReportListSymptoms";
 
-function ReportListItem(props) {
-  const [symptoms, setSymptoms] = useState([]);
-  const [food, setFood] = useState({});
-  const [additionalData, setAdditionalData] = useState({});
+type TSymptoms = {
+  rash: boolean;
+  itchLevel: number;
+  itchTime: string;
+  notes: string;
+};
+
+type TFood = {
+  breakfast: string;
+  lunch: string;
+  dinner: string;
+  snacks: string;
+};
+
+type TFoodDB = {
+  [key: string]: TFood;
+};
+
+type TAdditionalData = {
+  outdoor: string;
+  notes: string;
+  ac: boolean;
+  nails: boolean;
+};
+
+type TAdditionalDataDB = {
+  [key: string]: TAdditionalData;
+};
+
+type ReportItemProps = {
+  date: string;
+  symptoms: TSymptoms[];
+  food: TFoodDB;
+  additionalData: TAdditionalDataDB;
+};
+
+export const ReportListItem: React.FC<ReportItemProps> = (props) => {
+  const [symptoms, setSymptoms] = useState<TSymptoms[]>([]);
+  const [food, setFood] = useState<TFood>({
+    breakfast: "",
+    lunch: "",
+    dinner: "",
+    snacks: "",
+  });
+  const [additionalData, setAdditionalData] = useState<TAdditionalData>({
+    outdoor: "",
+    notes: "",
+    ac: false,
+    nails: false,
+  });
   const [date, setDate] = useState("");
   const [noSymptoms, setNoSymptoms] = useState("");
   const [noFood, setNoFood] = useState("");
   const [noAdditionalData, setNoAdditionalData] = useState("");
 
-  function formatDate(date) {
+  function formatDate(date: string) {
     let datearray = date.split("-");
     let newdate = datearray[1] + "-" + datearray[2] + "-" + datearray[0];
     setDate(newdate);
@@ -41,7 +87,12 @@ function ReportListItem(props) {
       : setNoSymptoms("");
 
     /* Food */
-    let newStateFood = {};
+    let newStateFood: TFood = {
+      breakfast: "",
+      lunch: "",
+      dinner: "",
+      snacks: "",
+    };
     for (let key in props.food) {
       newStateFood = {
         breakfast: props.food[key].breakfast,
@@ -57,7 +108,12 @@ function ReportListItem(props) {
       : setNoFood("");
 
     /* AdditionalData */
-    let newStateAdditionalData = {};
+    let newStateAdditionalData: TAdditionalData = {
+      outdoor: "",
+      notes: "",
+      ac: false,
+      nails: false,
+    };
     for (let key in props.additionalData) {
       newStateAdditionalData = {
         outdoor: props.additionalData[key].outdoor,
@@ -207,12 +263,8 @@ function ReportListItem(props) {
               <span className="report-item-text">{additionalData.notes}</span>
             </div>
           </div>
-        ) : (
-          null
-        )}
+        ) : null}
       </div>
     </div>
   );
-}
-
-export default ReportListItem;
+};

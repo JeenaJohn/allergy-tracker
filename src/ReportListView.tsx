@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import firebase from "./firebase.js";
-import ReportListItem from "./ReportListItem";
+import {ReportListItem} from "./ReportListItem";
 import { BarChart } from "./BarChart";
 
 type ReportViewProps = {
@@ -10,12 +10,13 @@ type ReportViewProps = {
 };
 
 type TSymptoms = {
-  id: string;
   rash: boolean;
   itchLevel: number;
   itchTime: string;
   notes: string;
 };
+
+
 
 type TAdditionalData = {
   outdoor: string;
@@ -24,6 +25,12 @@ type TAdditionalData = {
   nails: boolean;
 };
 
+type TAdditionalDataDB = {
+  [key: string]: TAdditionalData;
+};
+
+
+
 type TFood = {
   breakfast: string;
   lunch: string;
@@ -31,11 +38,15 @@ type TFood = {
   snacks: string;
 };
 
+type TFoodDB = {
+  [key: string]: TFood;
+};
+
 type TAllergies = {
   date: string;
   symptoms: TSymptoms[];
-  food: TFood;
-  additionalData: TAdditionalData;
+  food: TFoodDB;
+  additionalData: TAdditionalDataDB;
 };
 
 type TGraphData = {
