@@ -109,8 +109,8 @@ function Food(props) {
           <td className="td-input-col">
             <input
               type="text"
+              id="breakfast"
               name="breakfast"
-            
               maxLength="80"
               value={breakfast}
               className="td-input"
@@ -128,6 +128,7 @@ function Food(props) {
             <input
               type="text"
               name="lunch"
+              id="lunch"
               maxLength="80"
               value={lunch}
               className="td-input"
@@ -145,6 +146,7 @@ function Food(props) {
             <input
               type="text"
               name="dinner"
+              id="dinner"
               maxLength="80"
               value={dinner}
               className="td-input"
@@ -162,6 +164,7 @@ function Food(props) {
             <input
               type="text"
               name="snacks"
+              id="snacks"
               maxLength="80"
               value={snacks}
               className="td-input"

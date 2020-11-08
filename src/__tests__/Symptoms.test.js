@@ -1,41 +1,41 @@
 import React from "react";
 import { render, screen, cleanup } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import Symptoms from "../Symptoms";
 
 
-const handleChange = jest.fn();
+
 
 jest.mock("../ListSymptoms", () => {
   const ListSymptoms = () => <div />;
   return ListSymptoms;
 });
 
-jest.mock("../firebase", () => {
-  const data = {
-    1: { rash: true, itchLevel: "2", itchTime: "20:00", notes: "Itchy" },
-    2: { rash: false, itchLevel: "8", itchTime: "12:00", notes: "Itchy" },
-  };
+// jest.mock("../firebase", () => {
+//     const data = {
+//       1: { rash: true, itchLevel: "2", itchTime: "20:00", notes: "Itchy" },
+//       2: { rash: false, itchLevel: "8", itchTime: "12:00", notes: "Itchy" },
+//     };
+  
+//     const snapshot = {
+//       val: () => data,
+//       exportVal: () => data,
+//       exists: jest.fn(() => true),
+//     };
+  
+//     const returnVal = {
+//       database: jest.fn().mockReturnValue({
+//         ref: jest.fn().mockReturnThis(),
+//         on: jest.fn((eventType, callback) => callback(snapshot)),
+//       }),
+//     };
+  
+//     return returnVal;
+//   });
 
-  const snapshot = {
-    val: () => data,
-    exportVal: () => data,
-    exists: jest.fn(() => true),
-  };
-
-  const returnVal = {
-    database: jest.fn().mockReturnValue({
-      ref: jest.fn().mockReturnThis(),
-      on: jest.fn((eventType, callback) => callback(snapshot)),
-    }),
-  };
-
-  return returnVal;
-});
 
 describe("Symptoms component", () => {
   beforeEach(() => {
-    render(<Symptoms handleChange={handleChange}/>);
+    render(<Symptoms/>);
   });
 
   afterEach(cleanup);
@@ -52,8 +52,8 @@ describe("Symptoms component", () => {
   });
 
   test("Input checkbox for Itch Level exists", () => {
-    const checkbox = screen.getByLabelText("Itch Level (scale of 0 - 10)");
-    expect(checkbox).toBeInTheDocument();
+    const input = screen.getByLabelText("Itch Level (scale of 0 - 10)");
+    expect(input).toBeInTheDocument();
   });
 
   test("Input element for entering time exists", () => {
