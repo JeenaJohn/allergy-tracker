@@ -48,7 +48,7 @@ describe("Food section renders properly", () => {
     userEvent.click(screen.getByText("Save"));
   });
 
-  test("Existing entry for breakfast exists", () => {
+  test("Existing entry for breakfast is displayed correctly", () => {
     const input = screen.getByLabelText("Breakfast");
     expect(input).toBeInTheDocument();
     expect(input.value).toBe("Oats");
@@ -61,7 +61,7 @@ describe("Food section renders properly", () => {
     userEvent.click(screen.getByText("Save"));
   });
 
-  test("Existing entry for lunch exists", () => {
+  test("Existing entry for lunch is displayed correctly", () => {
     const input = screen.getByLabelText("Lunch");
     expect(input).toBeInTheDocument();
     expect(input.value).toBe("Rice");
@@ -74,7 +74,7 @@ describe("Food section renders properly", () => {
     userEvent.click(screen.getByText("Save"));
   });
 
-  test("Existing entry for dinner exists", () => {
+  test("Existing entry for dinner is displayed correctly", () => {
     const input = screen.getByLabelText("Dinner");
     expect(input).toBeInTheDocument();
     expect(input.value).toBe("Sandwich");
@@ -87,7 +87,7 @@ describe("Food section renders properly", () => {
     userEvent.click(screen.getByText("Save"));
   });
 
-  test("Existing entry for snacks exists", () => {
+  test("Existing entry for snacks is displayed correctly", () => {
     const input = screen.getByLabelText("Snacks");
     expect(input).toBeInTheDocument();
     expect(input.value).toBe("Banana");
