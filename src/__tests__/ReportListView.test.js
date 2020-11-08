@@ -1,72 +1,79 @@
-// import React from "react";
-// import { render, screen, cleanup } from "@testing-library/react";
-// import ReportListView from "../ReportListView";
-
-// const key = 1;
-// const symptom = {id:1, rash: true, itchLevel: "2", itchTime: "20:00", notes: "I feel Itchy" };
+import React from "react";
+import { render, screen, cleanup } from "@testing-library/react";
+import ReportListView from "../ReportListView";
 
 
-// jest.mock("../ReportListItem", () => {
-//   const ReportListItem = () => <div />;
-//   return ReportListItem;
-// });
+jest.mock("../ReportListItem", () => {
+  const ReportListItem = () => <div />;
+  return ReportListItem;
+});
 
-// jest.mock("../BarChart", () => {
-//   const BarChart = () => <div />;
-//   return BarChart;
-// });
+jest.mock("../BarChart", () => {
+  const BarChart = () => <div />;
+  return BarChart;
+});
 
-// jest.mock("../firebase", () => {
-//     const data = {
-//       1: { rash: true, itchLevel: "2", itchTime: "20:00", notes: "Itchy" },
-//       2: { rash: false, itchLevel: "8", itchTime: "12:00", notes: "Itchy" },
-//     };
-  
-//     const snapshot = {
-//       val: () => data,
-//       exportVal: () => data,
-//       exists: jest.fn(() => true),
-//     };
-  
-//     const returnVal = {
-//       database: jest.fn().mockReturnValue({
-//         ref: jest.fn().mockReturnThis(),
-//         on: jest.fn((eventType, callback) => callback(snapshot)),
-//       }),
-//     };
-  
-//     return returnVal;
-//   });
+jest.mock("../firebase", () => {
+  // const data = {
+  //   "2020-09-17": {
+  //     symptoms: [
+  //       {
+  //         id: 1,
+  //         rash: true,
+  //         itchLevel: "2",
+  //         itchTime: "20:00",
+  //         notes: "Itchy",
+  //       },
+  //       {
+  //         id: 2,
+  //         rash: false,
+  //         itchLevel: "8",
+  //         itchTime: "12:00",
+  //         notes: "Itchy",
+  //       },
+  //     ],
+  //     food: {
+  //       breakfast: "Oats",
+  //       lunch: "Rice",
+  //       dinner: "Sandwich",
+  //       snacks: "Banana",
+  //     },
+  //     additionalData: {
+  //       ac: true,
+  //       nails: true,
+  //       outdoor: "playground",
+  //       notes: "Itchy",
+  //     },
+  //   },
+  // };
+ /* for testing no reported data scenario*/
+  const data = {};
 
-// describe("ReportListView component renders properly", () => {
-//   beforeEach(() => {
-//     render(<ReportListView />);
-//   });
+  const snapshot = {
+    val: () => data,
+    exportVal: () => data,
+    exists: jest.fn(() => true),
+  };
 
-//   afterEach(cleanup);
+  const returnVal = {
+    database: jest.fn().mockReturnValue({
+      ref: jest.fn().mockReturnThis(),
+      on: jest.fn((eventType, callback) => callback(snapshot)),
+    }),
+  };
 
+  return returnVal;
+});
 
-//   test("Rashes displays the correct value", () => {
-//     const checkbox = screen.getByText("Rashes?");
-//     expect(checkbox).toBeTruthy();
-//   });
+describe("ReportListView component renders properly", () => {
+  beforeEach(() => {
+    render(<ReportListView />);
+  });
 
-//   test("Itch Level exists and displays the correct value", () => {
-//     expect(screen.getByText("Itch Level:")).toBeInTheDocument();
-//     expect(screen.getByText("2")).toBeInTheDocument();
-//   });
+  afterEach(cleanup);
 
-//   test("Time exists and displays the correct value", () => {
-//    expect(screen.getByText("Time when it was itchy?")).toBeInTheDocument();
-//    // expect(screen.getByText(/20:00/)).toBeInTheDocument();
-//   });
+  test("If there is no data reported for the month, user message is displayed", () => {
+    expect(screen.getByText("No data reported for the selected month")).toBeInTheDocument();
+  });
 
-//   test("Notes exists and displays the correct value", () => {
-//     expect(screen.getByText("Notes")).toBeInTheDocument();
-//     expect(screen.getByText("I feel Itchy")).toBeInTheDocument();
-//   });
-
-
-
-
-// });
+});
