@@ -108,8 +108,7 @@ function Report(props) {
         <div className="u-margin-bottom-small">
           {kids.map((kid, index) => (
             <div key={kid.id}
-              className="list-kids u-capitalize"
-              
+              className="list-kids u-capitalize"            
             >
               <label htmlFor={kid.id}>
                 <input

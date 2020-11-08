@@ -35,7 +35,6 @@ function MyAllergy(props) {
     /*  get list of existing kids */
     kidsRef.on("value", (snapshot) => {
       let items = snapshot.val();
-      console.log(items);
 
       let newState = [];
       for (let item in items) {
@@ -120,9 +119,9 @@ function MyAllergy(props) {
           {kids.map((kid, index) => (
             <div
               className="list-kids u-capitalize"
-              onChange={(e) => handleKidSelection(e)}
+              key={kid.id}     
             >
-              <label htmlFor={kid.id}>
+              <label htmlFor={kid.id} >
                 <input
                   type="radio"
                   id={kid.id}
@@ -130,6 +129,7 @@ function MyAllergy(props) {
                   value={kid.kidName}
                   className="radio-btn"
                   checked={selectedKidId === kid.id}
+                  onChange={(e) => handleKidSelection(e)}
                 />
                 {kid.kidName}
               </label>

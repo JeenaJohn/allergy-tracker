@@ -1,7 +1,11 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, cleanup } from "@testing-library/react";
 import Report from "../Report";
 
+jest.mock("../ReportListView", () => {
+  const ReportListView = () => <div />;
+  return ReportListView;
+});
 
 jest.mock("../firebase", () => {
   const data = { 1: { kidName: "Kid1" }, 2: { kidName: "Kid2" } };
@@ -21,10 +25,12 @@ jest.mock("../firebase", () => {
   return returnVal;
 });
 
-describe("Report Component", () => {
+describe("Report Component renders properly", () => {
   beforeEach(() => {
     render(<Report />);
   });
+
+  afterEach(cleanup);
 
   test("Already existing kids are displayed ", () => {
     expect(screen.getByText("Kid1")).toBeInTheDocument();
