@@ -167,7 +167,7 @@ function Symptoms(props) {
       <div>
         {existingSymptoms.length > 0 ? (
           existingSymptoms.map((symptom, index) => (
-            <div className="box-existing-symptoms u-text-left">
+            <div className="box-existing-symptoms u-text-left" key={symptom.id}>
               <ListSymptoms key={symptom.id} symptom={symptom} />
             </div>
           ))

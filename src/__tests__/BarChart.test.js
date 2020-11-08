@@ -2,39 +2,22 @@ import React from "react";
 import { render, screen, cleanup } from "@testing-library/react";
 import BarChart from "../BarChart";
 
-// const key = 1;
-// const symptom = {id:1, rash: true, itchLevel: "2", itchTime: "20:00", notes: "I feel Itchy" };
+const date_yyyy_mm = "2020-09";
+const graphData = [
+  { date: "2020-09-17", itchLevel: 2 },
+  { date: "2020-09-02", itchLevel: 5 },
+];
 
+describe("Barchart renders properly", () => {
+  beforeEach(() => {
+    render(<BarChart date_yyyy_mm={date_yyyy_mm} graphData={graphData} />);
+  });
 
-// describe("List Symptoms component", () => {
-//   beforeEach(() => {
-//     render(<BarChart/>);
-//   });
+  afterEach(cleanup);
 
-//   afterEach(cleanup);
-
-
-//   test("Rashes displays the correct value", () => {
-//     const checkbox = screen.getByText("Rashes?");
-//     expect(checkbox).toBeTruthy();
-//   });
-
-//   test("Itch Level exists and displays the correct value", () => {
-//     expect(screen.getByText("Itch Level:")).toBeInTheDocument();
-//     expect(screen.getByText("2")).toBeInTheDocument();
-//   });
-
-//   test("Time exists and displays the correct value", () => {
-//    expect(screen.getByText("Time when it was itchy?")).toBeInTheDocument();
-//    // expect(screen.getByText(/20:00/)).toBeInTheDocument();
-//   });
-
-//   test("Notes exists and displays the correct value", () => {
-//     expect(screen.getByText("Notes")).toBeInTheDocument();
-//     expect(screen.getByText("I feel Itchy")).toBeInTheDocument();
-//   });
-
-
-
-
-// });
+  test("BarChart title is displayed correctly", () => {
+    expect(
+      screen.getByText("Allergy Symptoms for the month")
+    ).toBeInTheDocument();
+  });
+});
