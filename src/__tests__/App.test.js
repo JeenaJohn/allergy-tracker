@@ -3,10 +3,10 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event'
 import { createMemoryHistory } from 'history'
 import { Router } from 'react-router-dom'
-import App from './App';
+import App from '../App';
 
 describe("Testing Routes", () => {
-  test.skip('renders App - Home page', () => {
+  test('renders App - Home page', () => {
     const { getByText } = render(<App/>);
     expect(screen.getByText("Start Tracking")).toBeInTheDocument()
     //screen.debug();

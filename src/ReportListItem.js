@@ -96,7 +96,7 @@ function ReportListItem(props) {
 
         {symptoms.map((symptom, index) => (
           <div className="box-existing-symptoms">
-            <ReportListSymptoms index={index} symptom={symptom} />
+            <ReportListSymptoms key={symptom.id} symptom={symptom} />
           </div>
         ))}
 

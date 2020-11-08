@@ -26,8 +26,6 @@ function MyAllergy(props) {
     defaultKidRef.on("value", (snapshot) => {
       let item = snapshot.val();
 
-      console.log(item);
-
       if (item != null) {
         setSelectedKidId(item.defaultKid);
         defaultKid = item.defaultKid;
@@ -37,6 +35,7 @@ function MyAllergy(props) {
     /*  get list of existing kids */
     kidsRef.on("value", (snapshot) => {
       let items = snapshot.val();
+      console.log(items);
 
       let newState = [];
       for (let item in items) {

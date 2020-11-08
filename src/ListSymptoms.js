@@ -28,7 +28,7 @@ function ListSymptoms(props) {
   return (
     <div>
       <div className="report-item">
-        <label for="rash">Rashes?</label>
+        <label htmlFor="rash">Rashes?</label>
         <input
           className="u-display-mode"
           type="checkbox"
@@ -39,7 +39,7 @@ function ListSymptoms(props) {
       </div>
 
       <div className="report-item">
-        <label for="itchLevel">Itch Level:</label>
+        <label htmlFor="itchLevel">Itch Level:</label>
         <input
           className="u-display-mode"
           type="number"
@@ -50,7 +50,7 @@ function ListSymptoms(props) {
       </div>
 
       <div className="report-item">
-        <label for="itchTime">Time when it was itchy?</label>
+        <label htmlFor="itchTime">Time when it was itchy?</label>
         <input
           className="u-display-mode"
           type="time"
@@ -61,7 +61,7 @@ function ListSymptoms(props) {
       </div>
       {notes.trim().length !== 0 ? (
         <div className="report-item">
-          <label for="notes">Notes</label>
+          <label htmlFor="notes">Notes</label>
           <textarea
             name="notes"
             rows="3"

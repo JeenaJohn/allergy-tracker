@@ -27,9 +27,14 @@ describe("Add Kid component", () => {
     render(<AddKid />);
   });
 
-  test("Already existing kids are displayed ", () => {
+  test("Existing kids are displayed ", () => {
     expect(screen.getByText("Kid1")).toBeInTheDocument();
     expect(screen.getByText("Kid2")).toBeInTheDocument();
+  });
+
+  test("'Save' button exists", () => {
+    const button = screen.getByRole("button", { name: "Save" });
+    expect(button).toBeInTheDocument();
   });
 
   test("Input field to add new kid exists ", () => {
@@ -37,6 +42,15 @@ describe("Add Kid component", () => {
     expect(input).toBeInTheDocument();
     userEvent.type(input, "Test kidname");
     userEvent.click(screen.getByText("Save"));
+  });
+
+  
+  test("Error msg is displayed while saving kid's name as empty ", async () => {
+    const input = screen.getByRole("textbox");
+    userEvent.type(input, "    ");
+    userEvent.click(screen.getByText("Save"));
+  //  expect(await element(by.id("toast"))).toBeVisible();
+   // expect(await screen.findByText("Kid's name is empty.")).toBeInTheDocument();
   });
 
 });

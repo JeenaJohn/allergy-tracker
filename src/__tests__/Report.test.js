@@ -21,7 +21,7 @@ jest.mock("../firebase", () => {
   return returnVal;
 });
 
-describe("Add Kid component", () => {
+describe("Report Component", () => {
   beforeEach(() => {
     render(<Report />);
   });
@@ -35,5 +35,5 @@ describe("Add Kid component", () => {
     const monthInput = screen.getByTestId("month-selector");
     expect(monthInput).toBeInTheDocument();
   });
-T
+
 });
