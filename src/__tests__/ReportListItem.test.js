@@ -1,46 +1,15 @@
 // import React from "react";
 // import { render, screen, cleanup } from "@testing-library/react";
-// import ReportListView from "../ReportListView";
+// import ReportListItem from "../ReportListItem";
 
 // const key = 1;
 // const symptom = {id:1, rash: true, itchLevel: "2", itchTime: "20:00", notes: "I feel Itchy" };
 
 
-// jest.mock("../ReportListItem", () => {
-//   const ReportListItem = () => <div />;
-//   return ReportListItem;
-// });
-
-// jest.mock("../BarChart", () => {
-//   const BarChart = () => <div />;
-//   return BarChart;
-// });
-
-// jest.mock("../firebase", () => {
-//     const data = {
-//       1: { rash: true, itchLevel: "2", itchTime: "20:00", notes: "Itchy" },
-//       2: { rash: false, itchLevel: "8", itchTime: "12:00", notes: "Itchy" },
-//     };
-  
-//     const snapshot = {
-//       val: () => data,
-//       exportVal: () => data,
-//       exists: jest.fn(() => true),
-//     };
-  
-//     const returnVal = {
-//       database: jest.fn().mockReturnValue({
-//         ref: jest.fn().mockReturnThis(),
-//         on: jest.fn((eventType, callback) => callback(snapshot)),
-//       }),
-//     };
-  
-//     return returnVal;
-//   });
-
-// describe("ReportListView component renders properly", () => {
+// describe("List Symptoms component", () => {
 //   beforeEach(() => {
-//     render(<ReportListView />);
+//     render(<ReportListItem key={key}
+//     symptom={symptom}/>);
 //   });
 
 //   afterEach(cleanup);

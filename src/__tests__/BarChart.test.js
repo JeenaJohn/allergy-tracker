@@ -1,41 +1,40 @@
 import React from "react";
 import { render, screen, cleanup } from "@testing-library/react";
-import ReportListSymptoms from "../ReportListSymptoms";
+import BarChart from "../BarChart";
 
-const key = 1;
-const symptom = {id:1, rash: true, itchLevel: "2", itchTime: "20:00", notes: "I feel Itchy" };
-
-
-describe("List Symptoms component", () => {
-  beforeEach(() => {
-    render(<ReportListSymptoms key={key}
-    symptom={symptom}/>);
-  });
-
-  afterEach(cleanup);
+// const key = 1;
+// const symptom = {id:1, rash: true, itchLevel: "2", itchTime: "20:00", notes: "I feel Itchy" };
 
 
-  test("Rashes displays the correct value", () => {
-    const checkbox = screen.getByText("Rashes?");
-    expect(checkbox).toBeTruthy();
-  });
+// describe("List Symptoms component", () => {
+//   beforeEach(() => {
+//     render(<BarChart/>);
+//   });
 
-  test("Itch Level exists and displays the correct value", () => {
-    expect(screen.getByText("Itch Level:")).toBeInTheDocument();
-    expect(screen.getByText("2")).toBeInTheDocument();
-  });
+//   afterEach(cleanup);
 
-  test("Time exists and displays the correct value", () => {
-   expect(screen.getByText("Time when it was itchy?")).toBeInTheDocument();
-   // expect(screen.getByText(/20:00/)).toBeInTheDocument();
-  });
 
-  test("Notes exists and displays the correct value", () => {
-    expect(screen.getByText("Notes")).toBeInTheDocument();
-    expect(screen.getByText("I feel Itchy")).toBeInTheDocument();
-  });
+//   test("Rashes displays the correct value", () => {
+//     const checkbox = screen.getByText("Rashes?");
+//     expect(checkbox).toBeTruthy();
+//   });
 
+//   test("Itch Level exists and displays the correct value", () => {
+//     expect(screen.getByText("Itch Level:")).toBeInTheDocument();
+//     expect(screen.getByText("2")).toBeInTheDocument();
+//   });
+
+//   test("Time exists and displays the correct value", () => {
+//    expect(screen.getByText("Time when it was itchy?")).toBeInTheDocument();
+//    // expect(screen.getByText(/20:00/)).toBeInTheDocument();
+//   });
+
+//   test("Notes exists and displays the correct value", () => {
+//     expect(screen.getByText("Notes")).toBeInTheDocument();
+//     expect(screen.getByText("I feel Itchy")).toBeInTheDocument();
+//   });
 
 
 
-});
+
+// });
