@@ -100,6 +100,7 @@ function Food(props) {
       </h3>
       <form onSubmit={(e) => saveFood(e, breakfast, lunch, dinner, snacks)}>
       <table className="table">
+        <tbody>
         <tr>
           <td>
             <label htmlFor="breakfast" className="td-label">
@@ -172,6 +173,7 @@ function Food(props) {
             />
           </td>
         </tr>
+        </tbody>
       </table>
 
       <div className="u-text-left">
