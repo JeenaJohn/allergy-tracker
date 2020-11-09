@@ -93,7 +93,7 @@ function MyAllergy(props) {
   return (
     <div>
       <div className="u-center-text  u-padding-top-big u-margin-bottom-medium">
-        <h2 className="heading-secondary bg-color-blue ">
+        <h2 data-testid="diary-header" className="heading-secondary bg-color-blue ">
           Diary
           {selectedKid != null ? (
             <span className="u-capitalize"> - {selectedKid} </span>
