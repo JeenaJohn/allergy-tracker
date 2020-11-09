@@ -56,17 +56,15 @@ describe("ReportListItem component renders properly", () => {
 
   test("Entry for snacks exists", () => {
     expect(screen.getByText("Snacks:")).toBeInTheDocument();
-    expect(screen.getByText( "Banana")).toBeInTheDocument();
+    expect(screen.getByText("Banana")).toBeInTheDocument();
   });
 
   test("Entry for A/C exists", () => {
     expect(screen.getByText("A/C On?")).toBeInTheDocument();
-   
   });
 
   test("Entry for Nails exists", () => {
     expect(screen.getByText("Nails Trimmed?")).toBeInTheDocument();
-   
   });
 
   test("Entry for Outdoor Activity exists", () => {
@@ -76,8 +74,6 @@ describe("ReportListItem component renders properly", () => {
 
   test("Entry for notes exists", () => {
     expect(screen.getByText("Additional Notes:")).toBeInTheDocument();
-    expect(screen.getByText( "Itchy")).toBeInTheDocument();
+    expect(screen.getByText("Itchy")).toBeInTheDocument();
   });
-
-
 });

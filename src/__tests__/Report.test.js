@@ -41,5 +41,4 @@ describe("Report Component renders properly", () => {
     const monthInput = screen.getByTestId("month-selector");
     expect(monthInput).toBeInTheDocument();
   });
-
 });

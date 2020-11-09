@@ -5,14 +5,13 @@ import { createMemoryHistory } from "history";
 import { BrowserRouter } from "react-router-dom";
 import App from "../App";
 
-const renderWithRouter = (ui, { route = '/' } = {}) => {
-  window.history.pushState({}, 'Test page', route)
+const renderWithRouter = (ui, { route = "/" } = {}) => {
+  window.history.pushState({}, "Test page", route);
 
-  return render(ui, { wrapper: BrowserRouter })
-}
+  return render(ui, { wrapper: BrowserRouter });
+};
 
 describe("App component renders properly", () => {
-
   afterEach(cleanup);
 
   test("renders App - Home page", () => {
@@ -21,35 +20,30 @@ describe("App component renders properly", () => {
   });
 
   test("Default route renders properly", () => {
-    const route = '/';
-    renderWithRouter(<App />,{ route });
+    const route = "/";
+    renderWithRouter(<App />, { route });
     const button = screen.getByText("Start Tracking");
-    expect(button).toBeInTheDocument();;
+    expect(button).toBeInTheDocument();
   });
 
   test("Kid route renders properly", () => {
-  
-    const route = '/kid';
-    renderWithRouter(<App />,{ route });
+    const route = "/kid";
+    renderWithRouter(<App />, { route });
     const header = screen.getByText("Add Kid Profile");
-    expect(header).toBeInTheDocument();;
+    expect(header).toBeInTheDocument();
   });
 
   test("Diary route renders properly", () => {
-  
-    const route = '/diary';
-    renderWithRouter(<App />,{ route });
+    const route = "/diary";
+    renderWithRouter(<App />, { route });
     const header = screen.getByTestId("diary-header");
-    expect(header).toBeInTheDocument();;
+    expect(header).toBeInTheDocument();
   });
 
   test("Report route renders properly", () => {
-  
-    const route = '/report';
-    renderWithRouter(<App />,{ route });
+    const route = "/report";
+    renderWithRouter(<App />, { route });
     const header = screen.getByTestId("report-header");
-    expect(header).toBeInTheDocument();;
+    expect(header).toBeInTheDocument();
   });
-    
- 
 });

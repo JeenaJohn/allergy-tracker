@@ -3,40 +3,36 @@ import { render, screen, cleanup } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Symptoms from "../Symptoms";
 
-
-
-
 jest.mock("../ListSymptoms", () => {
   const ListSymptoms = () => <div />;
   return ListSymptoms;
 });
 
 jest.mock("../firebase", () => {
-    const data = {
-      1: { rash: true, itchLevel: "2", itchTime: "20:00", notes: "Itchy" },
-      2: { rash: false, itchLevel: "8", itchTime: "12:00", notes: "Itchy" },
-    };
-  
-    const snapshot = {
-      val: () => data,
-      exportVal: () => data,
-      exists: jest.fn(() => true),
-    };
-  
-    const returnVal = {
-      database: jest.fn().mockReturnValue({
-        ref: jest.fn().mockReturnThis(),
-        on: jest.fn((eventType, callback) => callback(snapshot)),
-      }),
-    };
-  
-    return returnVal;
-  });
+  const data = {
+    1: { rash: true, itchLevel: "2", itchTime: "20:00", notes: "Itchy" },
+    2: { rash: false, itchLevel: "8", itchTime: "12:00", notes: "Itchy" },
+  };
 
+  const snapshot = {
+    val: () => data,
+    exportVal: () => data,
+    exists: jest.fn(() => true),
+  };
+
+  const returnVal = {
+    database: jest.fn().mockReturnValue({
+      ref: jest.fn().mockReturnThis(),
+      on: jest.fn((eventType, callback) => callback(snapshot)),
+    }),
+  };
+
+  return returnVal;
+});
 
 describe("Symptoms component renders properly", () => {
   beforeEach(() => {
-    render(<Symptoms/>);
+    render(<Symptoms />);
   });
 
   afterEach(cleanup);
@@ -73,7 +69,6 @@ describe("Symptoms component renders properly", () => {
     expect(input).toBeInTheDocument();
     // userEvent.type(input, "Some notes");
     // userEvent.click(screen.getByText("Save"));
-
   });
 
   test("'Save' button exists", () => {

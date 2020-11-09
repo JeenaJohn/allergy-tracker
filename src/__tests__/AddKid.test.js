@@ -3,7 +3,6 @@ import { render, screen, cleanup } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import AddKid from "../AddKid";
 
-
 jest.mock("../firebase", () => {
   const data = { 1: { kidName: "Kid1" }, 2: { kidName: "Kid2" } };
   const snapshot = {
@@ -44,13 +43,11 @@ describe("Add Kid component", () => {
     userEvent.click(screen.getByText("Save"));
   });
 
-  
   test("Error msg is displayed while saving kid's name as empty ", async () => {
     const input = screen.getByRole("textbox");
     userEvent.type(input, "    ");
     userEvent.click(screen.getByText("Save"));
-  //  expect(await element(by.id("toast"))).toBeVisible();
-   // expect(await screen.findByText("Kid's name is empty.")).toBeInTheDocument();
+    //  expect(await element(by.id("toast"))).toBeVisible();
+    // expect(await screen.findByText("Kid's name is empty.")).toBeInTheDocument();
   });
-
 });

@@ -1,7 +1,8 @@
 import React from "react";
-import { render, screen, cleanup } from "@testing-library/react";
+import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import AdditionalData from "../AdditionalData";
+
 
 jest.mock("../firebase", () => {
   const data = {
@@ -18,6 +19,7 @@ jest.mock("../firebase", () => {
     database: jest.fn().mockReturnValue({
       ref: jest.fn().mockReturnThis(),
       on: jest.fn((eventType, callback) => callback(snapshot)),
+      update: jest.fn()
     }),
   };
 

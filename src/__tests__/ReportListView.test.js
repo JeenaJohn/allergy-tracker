@@ -5,12 +5,12 @@ import ReportListItem from "../ReportListItem";
 import BarChart from "../BarChart";
 
 jest.mock("../ReportListItem", () => {
-  const ReportListItem = jest.fn(() => <div/>);
+  const ReportListItem = jest.fn(() => <div />);
   return ReportListItem;
 });
 
 jest.mock("../BarChart", () => {
-  const BarChart = jest.fn(() => <div/>);;
+  const BarChart = jest.fn(() => <div />);
   return BarChart;
 });
 
@@ -73,10 +73,6 @@ describe("ReportListView component renders properly", () => {
 
   afterEach(cleanup);
 
-  test("ReportListItem component is called", () => {
-    expect(ReportListItem).toHaveBeenCalled();
-  });
-  
   test("BarChart component is called", () => {
     expect(BarChart).toHaveBeenCalled();
   });

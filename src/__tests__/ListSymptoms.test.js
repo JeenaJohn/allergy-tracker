@@ -3,17 +3,20 @@ import { render, screen, cleanup } from "@testing-library/react";
 import ListSymptoms from "../ListSymptoms";
 
 const key = 1;
-const symptom = {id:1, rash: true, itchLevel: "2", itchTime: "20:00", notes: "Itchy" };
-
+const symptom = {
+  id: 1,
+  rash: true,
+  itchLevel: "2",
+  itchTime: "20:00",
+  notes: "Itchy",
+};
 
 describe("List Symptoms component", () => {
   beforeEach(() => {
-    render(<ListSymptoms key={key}
-    symptom={symptom}/>);
+    render(<ListSymptoms key={key} symptom={symptom} />);
   });
 
   afterEach(cleanup);
-
 
   test("Rashes displays the correct value", () => {
     const checkbox = screen.getByRole("checkbox");
@@ -22,7 +25,7 @@ describe("List Symptoms component", () => {
 
   test("Itch Level displays the correct value", () => {
     const input = screen.getByRole("spinbutton");
-    expect(input.value).toBe("2");  
+    expect(input.value).toBe("2");
   });
 
   // test("Time displays the correct value", () => {
@@ -35,6 +38,4 @@ describe("List Symptoms component", () => {
     const input = screen.getByRole("textbox");
     expect(input.value).toBe("Itchy");
   });
-
-
 });
