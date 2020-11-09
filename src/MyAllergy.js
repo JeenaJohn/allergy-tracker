@@ -26,8 +26,6 @@ function MyAllergy(props) {
     defaultKidRef.on("value", (snapshot) => {
       let item = snapshot.val();
 
-      console.log(item);
-
       if (item != null) {
         setSelectedKidId(item.defaultKid);
         defaultKid = item.defaultKid;
@@ -95,7 +93,7 @@ function MyAllergy(props) {
   return (
     <div>
       <div className="u-center-text  u-padding-top-big u-margin-bottom-medium">
-        <h2 className="heading-secondary bg-color-blue ">
+        <h2 data-testid="diary-header" className="heading-secondary bg-color-blue ">
           Diary
           {selectedKid != null ? (
             <span className="u-capitalize"> - {selectedKid} </span>
@@ -121,9 +119,9 @@ function MyAllergy(props) {
           {kids.map((kid, index) => (
             <div
               className="list-kids u-capitalize"
-              onChange={(e) => handleKidSelection(e)}
+              key={kid.id}     
             >
-              <label htmlFor={kid.id}>
+              <label htmlFor={kid.id} >
                 <input
                   type="radio"
                   id={kid.id}
@@ -131,6 +129,7 @@ function MyAllergy(props) {
                   value={kid.kidName}
                   className="radio-btn"
                   checked={selectedKidId === kid.id}
+                  onChange={(e) => handleKidSelection(e)}
                 />
                 {kid.kidName}
               </label>

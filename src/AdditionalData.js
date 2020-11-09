@@ -11,7 +11,8 @@ function AdditionalData(props) {
   });
   const [firebaseID, setFirebaseID] = useState("");
 
-  let saveBtnDisabled = ((props.userID == null) || (props.kidId == null)) ? true : false;
+  let saveBtnDisabled =
+    props.userID == null || props.kidId == null ? true : false;
 
   const additionalDataRef = firebase
     .database()
@@ -84,6 +85,7 @@ function AdditionalData(props) {
             <input
               type="checkbox"
               name="ac"
+              id="ac"
               checked={additionalData.ac}
               onChange={(e) => handleChange(e)}
             />
@@ -93,6 +95,7 @@ function AdditionalData(props) {
             <input
               type="checkbox"
               name="nails"
+              id="nails"
               checked={additionalData.nails}
               onChange={(e) => handleChange(e)}
             />
@@ -102,6 +105,7 @@ function AdditionalData(props) {
             <input
               type="text"
               name="outdoor"
+              id="outdoor"
               maxLength="100"
               value={additionalData.outdoor}
               onChange={(e) => handleChange(e)}
@@ -111,6 +115,7 @@ function AdditionalData(props) {
             <label htmlFor="notes">Additional notes</label>
             <textarea
               name="notes"
+              id="notes"
               rows="4"
               maxLength="200"
               className="notes"

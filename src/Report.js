@@ -82,7 +82,7 @@ function Report(props) {
   return (
     <div>
       <div className="u-center-text u-padding-top-big  u-margin-bottom-medium">
-        <h2 className="heading-secondary bg-color-blue ">
+        <h2 data-testid="report-header" className="heading-secondary bg-color-blue ">
           Report
           {selectedKid != null ? (
             <span className="u-capitalize"> - {selectedKid} </span>
@@ -108,8 +108,7 @@ function Report(props) {
         <div className="u-margin-bottom-small">
           {kids.map((kid, index) => (
             <div key={kid.id}
-              className="list-kids u-capitalize"
-              
+              className="list-kids u-capitalize"            
             >
               <label htmlFor={kid.id}>
                 <input

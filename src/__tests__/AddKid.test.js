@@ -1,8 +1,7 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, cleanup } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import AddKid from "../AddKid";
-
 
 jest.mock("../firebase", () => {
   const data = { 1: { kidName: "Kid1" }, 2: { kidName: "Kid2" } };
@@ -27,9 +26,14 @@ describe("Add Kid component", () => {
     render(<AddKid />);
   });
 
-  test("Already existing kids are displayed ", () => {
+  test("Existing kids are displayed ", () => {
     expect(screen.getByText("Kid1")).toBeInTheDocument();
     expect(screen.getByText("Kid2")).toBeInTheDocument();
+  });
+
+  test("'Save' button exists", () => {
+    const button = screen.getByRole("button", { name: "Save" });
+    expect(button).toBeInTheDocument();
   });
 
   test("Input field to add new kid exists ", () => {
@@ -39,4 +43,11 @@ describe("Add Kid component", () => {
     userEvent.click(screen.getByText("Save"));
   });
 
+  test("Error msg is displayed while saving kid's name as empty ", async () => {
+    const input = screen.getByRole("textbox");
+    userEvent.type(input, "    ");
+    userEvent.click(screen.getByText("Save"));
+    //  expect(await element(by.id("toast"))).toBeVisible();
+    // expect(await screen.findByText("Kid's name is empty.")).toBeInTheDocument();
+  });
 });

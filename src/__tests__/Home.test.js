@@ -1,13 +1,9 @@
 import React from "react";
-import {
-  render,
-  screen
-} from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Home from "../Home";
 
 describe("Home component", () => {
-
   beforeEach(() => {
     render(<Home />);
   });
@@ -23,7 +19,6 @@ describe("Home component", () => {
   });
 
   test("Clicking 'Start Tracking' ", () => {
-  
     const link = screen.getByText("Start Tracking");
     expect(link.href).toContain("/diary");
     userEvent.click(link);

@@ -59,6 +59,7 @@ function ReportListView(props) {
       {allergies.length !== 0 ? (
         allergies.map((allergy, index) => (
           <ReportListItem
+            key={index}
             date={allergy.date}
             symptoms={allergy.symptoms}
             food={allergy.food}
