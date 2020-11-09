@@ -43,7 +43,6 @@ describe("Food section renders properly", () => {
   test("Input element for entering breakfast exists", () => {
     const input = screen.getByLabelText("Breakfast");
     expect(input).toBeInTheDocument();
-    expect(input.value).toBe("Oats");
     userEvent.type(input, "Eggs");
     userEvent.click(screen.getByText("Save"));
   });

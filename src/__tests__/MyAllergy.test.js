@@ -2,22 +2,24 @@ import React from "react";
 import { render, screen, cleanup } from "@testing-library/react";
 
 import MyAllergy from "../MyAllergy";
+import Symptoms from "../Symptoms";
+import Food from "../Food";
+import AdditionalData from "../AdditionalData";
 
 jest.mock("../Symptoms", () => {
-  const Symptoms = () => <div />;
+  const Symptoms = jest.fn(() => <div />);
   return Symptoms;
 });
 
 jest.mock("../Food", () => {
-  const Food = () => <div />;
+  const Food = jest.fn(() => <div />);
   return Food;
 });
 
 jest.mock("../AdditionalData", () => {
-  const AdditionalData = () => <div />;
+  const AdditionalData = jest.fn(() => <div />);
   return AdditionalData;
 });
-
 
 jest.mock("../firebase", () => {
   const data = { 1: { kidName: "Kid1" }, 2: { kidName: "Kid2" } };
@@ -40,23 +42,29 @@ jest.mock("../firebase", () => {
 describe("Diary component renders properly", () => {
   beforeEach(() => {
     render(<MyAllergy />);
-    
   });
 
   afterEach(cleanup);
 
-
-   test("List of kids are displayed ", () => {
+  test("List of kids are displayed ", () => {
     expect(screen.getByText("Kid1")).toBeInTheDocument();
     expect(screen.getByText("Kid2")).toBeInTheDocument();
-   });
+  });
 
   test("Input field to select Date exists ", () => {
     const input = screen.getByText("Date");
     expect(input).toBeInTheDocument();
-  
   });
 
-  
+  test("Symptoms component is called", () => {
+    expect(Symptoms).toHaveBeenCalled();
+  });
 
+  test("Food component is called", () => {
+    expect(Food).toHaveBeenCalled();
+  });
+
+  test("AdditionalData component is called", () => {
+    expect(AdditionalData).toHaveBeenCalled();
+  });
 });
