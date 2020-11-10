@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, cleanup } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Home from "../Home";
 
@@ -7,6 +7,8 @@ describe("Home component", () => {
   beforeEach(() => {
     render(<Home />);
   });
+
+  afterEach(cleanup);
 
   test("Heading has Track My Allergy", () => {
     const heading = screen.getByText("Track My Allergy");
