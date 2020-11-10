@@ -11,7 +11,7 @@ const symptom = {
   notes: "I feel Itchy",
 };
 
-describe("List Symptoms component", () => {
+describe("ReportListSymptoms component renders properly", () => {
   beforeEach(() => {
     render(<ReportListSymptoms key={key} symptom={symptom} />);
   });

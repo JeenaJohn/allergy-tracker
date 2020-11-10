@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, cleanup } from "@testing-library/react";
 
 import Sidebar from "../Sidebar";
 
@@ -7,6 +7,8 @@ describe("Sidebar component", () => {
   beforeEach(() => {
     render(<Sidebar />);
   });
+
+  afterEach(cleanup);
 
   test("Link to 'Home' exists' ", () => {
     const link = screen.getByText("Home");

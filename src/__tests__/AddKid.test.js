@@ -26,6 +26,8 @@ describe("Add Kid component", () => {
     render(<AddKid />);
   });
 
+  afterEach(cleanup);
+
   test("Existing kids are displayed ", () => {
     expect(screen.getByText("Kid1")).toBeInTheDocument();
     expect(screen.getByText("Kid2")).toBeInTheDocument();
