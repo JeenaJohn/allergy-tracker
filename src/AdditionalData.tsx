@@ -2,8 +2,22 @@ import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import firebase from "./firebase.js";
 
-function AdditionalData(props) {
-  const [additionalData, setAdditionalData] = useState({
+type AdditionalDataProps = {
+  userID: string | null;
+  kidId: string | null;
+  date: string | null;
+  date_yyyy_mm: string | null;
+};
+
+type TAdditionalData = {
+  outdoor:string,
+  notes:string,
+  ac: boolean,
+  nails: boolean,
+};
+
+export const  AdditionalData:React.FC<AdditionalDataProps> = (props) => {
+  const [additionalData, setAdditionalData] = useState<TAdditionalData>({
     outdoor: "",
     notes: "",
     ac: false,
@@ -46,7 +60,7 @@ function AdditionalData(props) {
     });
   }, [props]);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<any>) => {
     const { name, value, type, checked } = e.target;
 
     type === "checkbox"
@@ -54,7 +68,7 @@ function AdditionalData(props) {
       : setAdditionalData({ ...additionalData, [name]: value });
   };
 
-  const saveAdditionalData = (e, additionalData) => {
+  const saveAdditionalData = (e:React.FormEvent<HTMLFormElement>, additionalData:TAdditionalData) => {
     e.preventDefault();
 
     if (firebaseID === "") {
@@ -64,7 +78,7 @@ function AdditionalData(props) {
     } else {
       /* update data */
 
-      let updates = {};
+      let updates: any = {};
       updates["/" + firebaseID] = additionalData;
       additionalDataRef.update(updates);
     }
@@ -106,7 +120,7 @@ function AdditionalData(props) {
               type="text"
               name="outdoor"
               id="outdoor"
-              maxLength="100"
+              maxLength={100}
               value={additionalData.outdoor}
               onChange={(e) => handleChange(e)}
             />
@@ -116,8 +130,8 @@ function AdditionalData(props) {
             <textarea
               name="notes"
               id="notes"
-              rows="4"
-              maxLength="200"
+              rows={4}
+              maxLength={200}
               className="notes"
               value={additionalData.notes}
               onChange={(e) => handleChange(e)}
@@ -140,4 +154,4 @@ function AdditionalData(props) {
   );
 }
 
-export default AdditionalData;
+

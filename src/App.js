@@ -6,11 +6,11 @@ import { auth, provider } from "./firebase.js";
 
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
-import Layout from "./Layout";
-import Home from "./Home";
-import AddKid from "./AddKid";
-import MyAllergy from "./MyAllergy";
-import Report from "./Report";
+import { Layout } from "./Layout.tsx";
+import { Home } from "./Home.tsx";
+import { AddKid } from "./AddKid.tsx";
+import { MyAllergy } from "./MyAllergy.tsx";
+import { Report } from "./Report.tsx";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -70,6 +70,6 @@ function App() {
       </div>
     </Router>
   );
-}
+};
 
 export default App;

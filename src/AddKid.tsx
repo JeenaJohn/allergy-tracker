@@ -3,14 +3,23 @@ import { toast } from "react-toastify";
 
 import firebase from "./firebase";
 
-function AddKid(props) {
-  const [newKidName, setNewKidName] = useState("");
+type AddKidProps = {
+  userID:string|null;
+};
+
+type TKids = {
+  id: string;
+  kidName:string;
+};
+
+export const AddKid: React.FC<AddKidProps> = (props) => {
+  const [newKidName, setNewKidName] = useState<string>("");
   const [defaultChecked, setDefaultChecked] = useState(false);
   const [firebaseID, setFirebaseID] = useState("");
   // const [defaultKidID, setDefaultKidID] = useState("");
   // const [userMsg, setUserMsg] = useState("");
   //const [loginMsg, setLoginMsg] = useState("");
-  const [kids, setKids] = useState([]);
+  const [kids, setKids] = useState<TKids[]>([]);
 
   let saveBtnDisabled = props.userID == null ? true : false;
 
@@ -35,7 +44,7 @@ function AddKid(props) {
     });
   }, [props]);
 
-  const handleChange = (e) => {
+  const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, checked } = e.target;
 
     switch (name) {
@@ -49,7 +58,7 @@ function AddKid(props) {
     }
   };
 
-  const save = (e, kidName, defaultChecked) => {
+  const save = (e:React.FormEvent<HTMLFormElement>, kidName:string, defaultChecked:boolean) => {
     e.preventDefault();
 
     /* save to DB only if no errors*/
@@ -97,7 +106,7 @@ function AddKid(props) {
             name="kidName"
             className="kid-name-input"
             value={newKidName}
-            onChange={(e) => handleChange(e)}
+            onChange={(e:React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
             required
           />
         </div>
@@ -157,6 +166,6 @@ function AddKid(props) {
       </div>
     </div>
   );
-}
+};
 
-export default AddKid;
+

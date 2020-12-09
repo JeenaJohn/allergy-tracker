@@ -1,15 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import ListSymptoms from "./ListSymptoms";
+import {ListSymptoms} from "./ListSymptoms";
 import firebase from "./firebase.js";
 
-function Symptoms(props) {
-  const [rash, setRash] = useState(false);
-  const [itchTime, setItchTime] = useState("");
-  const [itchLevel, setItchLevel] = useState(0);
-  const [notes, setNotes] = useState("");
+type SymptomsProps = {
+  userID: string | null;
+  kidId: string | null;
+  date: string | null;
+  date_yyyy_mm: string | null;
+};
 
-  const [existingSymptoms, setExistingSymptoms] = useState([]);
+type TExistingSymptoms = {
+   id: string,
+  rash: boolean,
+  itchLevel: number,
+  itchTime: string,
+  notes: string,
+};
+
+export const Symptoms: React.FC<SymptomsProps> = (props) => {
+  const [rash, setRash] = useState<boolean>(false);
+  const [itchTime, setItchTime] = useState<string>("");
+  const [itchLevel, setItchLevel] = useState<any>(0);
+  const [notes, setNotes] = useState<string>("");
+
+  const [existingSymptoms, setExistingSymptoms] = useState<TExistingSymptoms[]>([]);
 
   let saveBtnDisabled =
     props.userID == null || props.kidId == null ? true : false;
@@ -47,12 +62,13 @@ function Symptoms(props) {
           notes: items[item].notes,
         });
       }
+
       setExistingSymptoms(existingData);
     });
   }, [props]);
 
-  const handleChange = (e) => {
-    const { name, value, checked } = e.target;
+  const handleChange = (e:React.ChangeEvent<any>) => {
+    const { name, value, checked } = e.currentTarget;
 
     switch (name) {
       case "rash":
@@ -71,7 +87,7 @@ function Symptoms(props) {
     }
   };
 
-  const saveSymptoms = (e, rash, itchLevel, itchTime, notes) => {
+  const saveSymptoms = (e:React.FormEvent<HTMLFormElement>, rash:boolean, itchLevel:number, itchTime:string, notes:string) => {
     e.preventDefault();
 
     /* adding data */
@@ -126,7 +142,6 @@ function Symptoms(props) {
         <div className="question">
           <label htmlFor="itchTime">What was the time when it was itchy?</label>
           <input
-            id="itchTime"
             type="time"
             name="itchTime"
             value={itchTime}
@@ -137,8 +152,8 @@ function Symptoms(props) {
           <label htmlFor="notes">Notes</label>
           <textarea
             name="notes"
-            rows="3"
-            maxLength="200"
+            rows={3}
+            maxLength={200}
             className="notes"
             value={notes}
             onChange={(e) => handleChange(e)}
@@ -167,8 +182,8 @@ function Symptoms(props) {
       <div>
         {existingSymptoms.length > 0 ? (
           existingSymptoms.map((symptom, index) => (
-            <div className="box-existing-symptoms u-text-left" key={symptom.id}>
-              <ListSymptoms key={symptom.id} symptom={symptom} />
+            <div className="box-existing-symptoms u-text-left">
+              <ListSymptoms index={index} symptom={symptom} />
             </div>
           ))
         ) : (
@@ -179,6 +194,4 @@ function Symptoms(props) {
       </div>
     </div>
   );
-}
-
-export default Symptoms;
+};

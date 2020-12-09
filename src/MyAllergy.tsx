@@ -1,18 +1,29 @@
 import React, { useState, useEffect } from "react";
 
-import Symptoms from "./Symptoms";
-import Food from "./Food";
-import AdditionalData from "./AdditionalData";
+import { Symptoms } from "./Symptoms";
+import { Food } from "./Food";
+import { AdditionalData } from "./AdditionalData";
 import firebase from "./firebase.js";
 
-function MyAllergy(props) {
-  const [kids, setKids] = useState([]);
+type MyAllergyProps = {
+  userID: string | null;
+};
 
-  const [selectedKid, setSelectedKid] = useState(null);
-  const [selectedKidId, setSelectedKidId] = useState(null);
+type TKids = {
+  id: string;
+  kidName: string;
+};
 
-  const [entryDate, setEntryDate] = useState("");
-  const [entryMonth, setEntryMonth] = useState("");
+
+
+export const MyAllergy: React.FC<MyAllergyProps> = (props) => {
+  const [kids, setKids] = useState<TKids[]>([]);
+
+  const [selectedKid, setSelectedKid] = useState<string>("");
+  const [selectedKidId, setSelectedKidId] = useState<string>("");
+
+  const [entryDate, setEntryDate] = useState<string>("");
+  const [entryMonth, setEntryMonth] = useState<string>("");
 
   let today = new Date();
 
@@ -20,7 +31,7 @@ function MyAllergy(props) {
   const defaultKidRef = firebase.database().ref(props.userID + "/defaultKid");
 
   useEffect(() => {
-    var defaultKid = null;
+    var defaultKid: string | null = null;
 
     /*  check if a default kid is already set */
     defaultKidRef.on("value", (snapshot) => {
@@ -60,31 +71,35 @@ function MyAllergy(props) {
     formatDate(today);
   }, [props]);
 
-  const formatDate = (date_input) => {
+  const formatDate = (date_input: Date) => {
     let date_output;
-    let date_output_yyyy_mm;
+    let date_output_yyyy_mm, dd_str, mm_str;
     let dd = date_input.getDate();
 
     let mm = date_input.getMonth() + 1;
     let yyyy = date_input.getFullYear();
+    
+    mm_str = mm;
+    dd_str = dd;
+
     if (dd < 10) {
-      dd = "0" + dd;
+      dd_str = "0" + dd;
     }
     if (mm < 10) {
-      mm = "0" + mm;
+      mm_str = "0" + mm;
     }
-    date_output = yyyy + "-" + mm + "-" + dd;
-    date_output_yyyy_mm = yyyy + "-" + mm;
+    date_output = yyyy + "-" +  mm_str + "-" + dd_str;
+    date_output_yyyy_mm = yyyy + "-" +  mm_str;
     setEntryDate(date_output);
     setEntryMonth(date_output_yyyy_mm);
   };
 
-  const handleKidSelection = (e) => {
+  const handleKidSelection = (e:React.ChangeEvent<any>) => {
     setSelectedKid(e.target.value);
     setSelectedKidId(e.target.id);
   };
 
-  const handleEntryDate = (e) => {
+  const handleEntryDate = (e:React.ChangeEvent<any>) => {
     //sets entry date and entry month
     setEntryDate(e.target.value);
     setEntryMonth(e.target.value.substring(0, 7));
@@ -95,7 +110,7 @@ function MyAllergy(props) {
       <div className="u-center-text  u-padding-top-big u-margin-bottom-medium">
         <h2 data-testid="diary-header" className="heading-secondary bg-color-blue ">
           Diary
-          {selectedKid != null ? (
+          {selectedKid !== "" ? (
             <span className="u-capitalize"> - {selectedKid} </span>
           ) : null}
         </h2>
@@ -149,8 +164,12 @@ function MyAllergy(props) {
           }
         </div>
         <div className="u-text-left u-margin-bottom-small">
-         
-          <label htmlFor="entryDate" className="heading-tertiary u-margin-right">Date</label>
+          <label
+            htmlFor="entryDate"
+            className="heading-tertiary u-margin-right"
+          >
+            Date
+          </label>
           <input
             type="date"
             name="entryDate"
@@ -183,6 +202,4 @@ function MyAllergy(props) {
       />
     </div>
   );
-}
-
-export default MyAllergy;
+};

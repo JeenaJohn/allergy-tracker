@@ -3,7 +3,20 @@ import React, { useEffect } from "react";
 //import logo from "./resources/images/logo.png";
 import Sidebar from "./Sidebar";
 
-function Layout(props) {
+// type UserProp = {
+//   uid: string|null;
+//   displayName: string|null;
+// };
+
+type LayoutProps = {
+  user: any;
+  userID: string|null;
+  login: () => void;
+  logout: () => void;
+  stateChanged: () => void;
+};
+
+export const Layout: React.FC<LayoutProps> = (props) => {
   useEffect(() => {
     props.stateChanged();
   });
@@ -51,6 +64,6 @@ function Layout(props) {
       </footer>
     </div>
   );
-}
+};
 
-export default Layout;
+

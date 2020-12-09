@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen, cleanup } from "@testing-library/react";
 
-import Sidebar from "../Sidebar";
+import {Sidebar} from "../Sidebar";
 
 describe("Sidebar component", () => {
   beforeEach(() => {

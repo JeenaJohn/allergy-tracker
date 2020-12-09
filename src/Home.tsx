@@ -2,7 +2,11 @@ import React from "react";
 import home_page from "./resources/images/home_pg_img.svg";
 import visual_data from "./resources/images/visual_data.svg";
 
-function Home(props) {
+type HomeProps = {
+  userID: string | null;
+};
+
+export const Home: React.FC<HomeProps> = (props) => {
   return (
     <div>
       {/* header nav bar and footer are in Layout.js */}
@@ -65,6 +69,4 @@ function Home(props) {
       </section>
     </div>
   );
-}
-
-export default Home;
+};

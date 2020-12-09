@@ -1,18 +1,69 @@
 import React, { useState, useEffect } from "react";
 import firebase from "./firebase.js";
-import ReportListItem from "./ReportListItem";
-import BarChart from "./BarChart";
+import {ReportListItem} from "./ReportListItem";
+import { BarChart } from "./BarChart";
 
-function ReportListView(props) {
-  const [allergies, setAllergies] = useState([]);
-  const [graphData, setGraphData] = useState([]);
+type ReportViewProps = {
+  userID: string | null;
+  kidId: string | null;
+  date_yyyy_mm: string;
+};
+
+type TSymptoms = {
+  rash: boolean;
+  itchLevel: number;
+  itchTime: string;
+  notes: string;
+};
+
+
+
+type TAdditionalData = {
+  outdoor: string;
+  notes: string;
+  ac: boolean;
+  nails: boolean;
+};
+
+type TAdditionalDataDB = {
+  [key: string]: TAdditionalData;
+};
+
+
+
+type TFood = {
+  breakfast: string;
+  lunch: string;
+  dinner: string;
+  snacks: string;
+};
+
+type TFoodDB = {
+  [key: string]: TFood;
+};
+
+type TAllergies = {
+  date: string;
+  symptoms: TSymptoms[];
+  food: TFoodDB;
+  additionalData: TAdditionalDataDB;
+};
+
+type TGraphData = {
+  date: string;
+  itchLevel: number;
+};
+
+export const ReportListView: React.FC<ReportViewProps> = (props) => {
+  const [allergies, setAllergies] = useState<TAllergies[]>([]);
+  const [graphData, setGraphData] = useState<TGraphData[]>([]);
   const dbRef = firebase
     .database()
     .ref(props.userID + "/" + props.kidId + "/" + props.date_yyyy_mm);
 
   useEffect(() => {
     dbRef.on("value", (snapshot) => {
-      let items = {};
+      let items:any = {};
       items = snapshot.val();
 
       let newState = [];
@@ -33,7 +84,7 @@ function ReportListView(props) {
           let symptomsArray = Object.entries(items[date].symptoms);
 
           let maxItch = Math.max(
-            ...symptomsArray.map((entry) => {
+            ...symptomsArray.map((entry:any) => {
               return entry[1].itchLevel;
             })
           );
@@ -75,6 +126,4 @@ function ReportListView(props) {
       )}
     </div>
   );
-}
-
-export default ReportListView;
+};

@@ -1,6 +1,19 @@
 import React, { useState, useEffect } from "react";
 
-function ListSymptoms(props) {
+type TSymptoms = {
+  id: string;
+  rash: boolean;
+  itchLevel: number;
+  itchTime: string;
+  notes: string;
+};
+
+type ListSymptomsProps = {
+  index: number;
+  symptom: TSymptoms;
+};
+
+export const ListSymptoms: React.FC<ListSymptomsProps> = (props) => {
   //const [editMode, setEditMode] = useState(false);
 
   const [rash, setRash] = useState(props.symptom.rash);
@@ -64,8 +77,8 @@ function ListSymptoms(props) {
           <label htmlFor="notes">Notes</label>
           <textarea
             name="notes"
-            rows="3"
-            maxLength="200"
+            rows={3}
+            maxLength={200}
             className="u-display-mode notes"
             value={notes}
             readOnly
@@ -74,6 +87,4 @@ function ListSymptoms(props) {
       ) : null}
     </div>
   );
-}
-
-export default ListSymptoms;
+};
