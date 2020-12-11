@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 
 type TSymptoms = {
-  rash: boolean;
-  itchLevel: number;
-  itchTime: string;
-  notes: string;
+  id: string,
+  rash: boolean,
+  itchLevel: number,
+  itchTime: string,
+  notes: string,
 };
 
 type ReportListSymptomsProps = {
-  index:number,
-  symptom: TSymptoms;
+  key: string,
+  symptom: TSymptoms,
 };
 
 export const ReportListSymptoms: React.FC<ReportListSymptomsProps> = (props) => {
