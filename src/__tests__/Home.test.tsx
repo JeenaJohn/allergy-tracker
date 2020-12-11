@@ -5,7 +5,7 @@ import {Home} from "../Home";
 
 describe("Home component", () => {
   beforeEach(() => {
-    render(<Home />);
+    render(<Home userID={null} />);
   });
 
   afterEach(cleanup);
@@ -21,7 +21,7 @@ describe("Home component", () => {
   });
 
   test("Clicking 'Start Tracking' ", () => {
-    const link = screen.getByText("Start Tracking");
+    const link: HTMLLinkElement = screen.getByText("Start Tracking") as HTMLLinkElement;
     expect(link.href).toContain("/diary");
     userEvent.click(link);
   });
