@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
-import firebase from "./firebase";
+import firebase from "../../firebase";
 
 type AddKidProps = {
   userID:string|null;

@@ -1,10 +1,10 @@
 import React from "react";
 import { render, screen, cleanup } from "@testing-library/react";
 
-import MyAllergy from "../MyAllergy";
-import Symptoms from "../Symptoms";
-import Food from "../Food";
-import AdditionalData from "../AdditionalData";
+import MyAllergy from "../components/Diary/MyAllergy";
+import Symptoms from "../components/Diary/Symptoms";
+import Food from "../components/Diary/Food";
+import AdditionalData from "../components/Diary/AdditionalData";
 
 jest.mock("../Symptoms", () => {
   const Symptoms = jest.fn(() => <div />);

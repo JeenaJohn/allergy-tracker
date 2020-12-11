@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
+import firebase from "../../firebase.js";
+import {ReportListView} from "./ReportListView";
 
-import { Symptoms } from "./Symptoms";
-import { Food } from "./Food";
-import { AdditionalData } from "./AdditionalData";
-import firebase from "./firebase.js";
-
-type MyAllergyProps = {
+type ReportProps = {
   userID: string | null;
 };
 
@@ -14,18 +11,13 @@ type TKids = {
   kidName: string;
 };
 
-
-
-export const MyAllergy: React.FC<MyAllergyProps> = (props) => {
+export const Report: React.FC<ReportProps> = (props) => {
   const [kids, setKids] = useState<TKids[]>([]);
 
   const [selectedKid, setSelectedKid] = useState<string>("");
   const [selectedKidId, setSelectedKidId] = useState<string>("");
 
-  const [entryDate, setEntryDate] = useState<string>("");
-  const [entryMonth, setEntryMonth] = useState<string>("");
-
-  let today = new Date();
+  const [entryMonth, setEntryMonth] =useState<string>("");
 
   const kidsRef = firebase.database().ref(props.userID + "/kids");
   const defaultKidRef = firebase.database().ref(props.userID + "/defaultKid");
@@ -68,30 +60,24 @@ export const MyAllergy: React.FC<MyAllergyProps> = (props) => {
       setKids(newState);
     });
 
-    formatDate(today);
+    formatDate();
   }, [props]);
 
-  const formatDate = (date_input: Date) => {
-    let date_output;
-    let date_output_yyyy_mm, dd_str, mm_str;
-    let dd = date_input.getDate();
+  const formatDate = () => {
+    let mm_str;
+    let today = new Date();
 
-    let mm = date_input.getMonth() + 1;
-    let yyyy = date_input.getFullYear();
-    
+    let mm = today.getMonth() + 1;
+    let yyyy = today.getFullYear();
+
     mm_str = mm;
-    dd_str = dd;
 
-    if (dd < 10) {
-      dd_str = "0" + dd;
-    }
     if (mm < 10) {
       mm_str = "0" + mm;
     }
-    date_output = yyyy + "-" +  mm_str + "-" + dd_str;
-    date_output_yyyy_mm = yyyy + "-" +  mm_str;
-    setEntryDate(date_output);
-    setEntryMonth(date_output_yyyy_mm);
+    let today_month = yyyy + "-" + mm_str;
+
+    setEntryMonth(today_month);
   };
 
   const handleKidSelection = (e:React.ChangeEvent<any>) => {
@@ -99,22 +85,21 @@ export const MyAllergy: React.FC<MyAllergyProps> = (props) => {
     setSelectedKidId(e.target.id);
   };
 
-  const handleEntryDate = (e:React.ChangeEvent<any>) => {
-    //sets entry date and entry month
-    setEntryDate(e.target.value);
-    setEntryMonth(e.target.value.substring(0, 7));
+  const handleEntryMonth = (e:React.ChangeEvent<any>) => {
+    setEntryMonth(e.target.value);
   };
 
   return (
     <div>
-      <div className="u-center-text  u-padding-top-big u-margin-bottom-medium">
-        <h2 data-testid="diary-header" className="heading-secondary bg-color-blue ">
-          Diary
-          {selectedKid !== "" ? (
+      <div className="u-center-text u-padding-top-big  u-margin-bottom-medium">
+        <h2 data-testid="report-header" className="heading-secondary bg-color-blue ">
+          Report
+          {selectedKid != null ? (
             <span className="u-capitalize"> - {selectedKid} </span>
           ) : null}
         </h2>
       </div>
+
       {props.userID === null ? (
         <p
           className="paragraph u-center-text u-text-color-red 
@@ -132,11 +117,10 @@ export const MyAllergy: React.FC<MyAllergyProps> = (props) => {
         </h3>
         <div className="u-margin-bottom-small">
           {kids.map((kid, index) => (
-            <div
-              className="list-kids u-capitalize"
-              key={kid.id}     
+            <div key={kid.id}
+              className="list-kids u-capitalize"            
             >
-              <label htmlFor={kid.id} >
+              <label htmlFor={kid.id}>
                 <input
                   type="radio"
                   id={kid.id}
@@ -163,43 +147,32 @@ export const MyAllergy: React.FC<MyAllergyProps> = (props) => {
             ) : null
           }
         </div>
-        <div className="u-text-left u-margin-bottom-small">
-          <label
-            htmlFor="entryDate"
-            className="heading-tertiary u-margin-right"
+        <div className="u-text-left">
+          <h3
+            className="heading-tertiary 
+          u-margin-bottom-small"
           >
-            Date
-          </label>
+            Choose Month
+          </h3>
+
           <input
-            type="date"
-            name="entryDate"
-            value={entryDate}
-            onChange={(e) => handleEntryDate(e)}
+            type="month"
+            name="entryMonth"
+            value={entryMonth}
+            onChange={(e) => handleEntryMonth(e)}
             required
+            data-testid="month-selector"
           />
         </div>
       </div>
 
-      <Symptoms
-        userID={props.userID}
-        kidId={selectedKidId}
-        date={entryDate}
-        date_yyyy_mm={entryMonth}
-      />
-
-      <Food
-        userID={props.userID}
-        kidId={selectedKidId}
-        date={entryDate}
-        date_yyyy_mm={entryMonth}
-      />
-
-      <AdditionalData
-        userID={props.userID}
-        kidId={selectedKidId}
-        date={entryDate}
-        date_yyyy_mm={entryMonth}
-      />
+      {selectedKid != null ? (
+        <ReportListView
+          userID={props.userID}
+          kidId={selectedKidId}
+          date_yyyy_mm={entryMonth}
+        />
+      ) : null}
     </div>
   );
 };
