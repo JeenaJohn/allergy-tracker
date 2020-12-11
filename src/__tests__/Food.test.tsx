@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen, cleanup } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import {Food} from "../Food";
+import {Food} from "../components/Diary/Food";
 
 jest.mock("../firebase", () => {
   const data = {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import firebase from './firebase.js';
+import firebase from '../../firebase.js';
 
 type FoodProps = {
   userID: string | null;

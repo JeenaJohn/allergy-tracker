@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import {ListSymptoms} from "./ListSymptoms";
-import firebase from "./firebase.js";
+import firebase from "../../firebase.js";
 
 type SymptomsProps = {
   userID: string | null;

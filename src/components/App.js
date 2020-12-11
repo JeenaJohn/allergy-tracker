@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
-import { auth, provider } from "./firebase.js";
+import { auth, provider } from "../firebase.js";
 
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
 import { Layout } from "./Layout.tsx";
-import { Home } from "./Home.tsx";
-import { AddKid } from "./AddKid.tsx";
-import { MyAllergy } from "./MyAllergy.tsx";
-import { Report } from "./Report.tsx";
+import { Home } from "./Home/Home.tsx";
+import { AddKid } from "./AddKid/AddKid.tsx";
+import { MyAllergy } from "./Diary/MyAllergy.tsx";
+import { Report } from "./Report/Report.tsx";
 
 function App() {
   const [user, setUser] = useState(null);
