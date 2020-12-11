@@ -4,7 +4,7 @@ import { ToastContainer } from "react-toastify";
 
 import { auth, provider } from "../firebase.js";
 
-import "./App.css";
+import "../App.css";
 import "react-toastify/dist/ReactToastify.css";
 import { Layout } from "./Layout.tsx";
 import { Home } from "./Home/Home.tsx";

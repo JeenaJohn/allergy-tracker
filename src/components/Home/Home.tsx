@@ -1,6 +1,6 @@
 import React from "react";
-import home_page from "./resources/images/home_pg_img.svg";
-import visual_data from "./resources/images/visual_data.svg";
+import home_page from "../../resources/images/home_pg_img.svg";
+import visual_data from "../../resources/images/visual_data.svg";
 
 type HomeProps = {
   userID: string | null;
