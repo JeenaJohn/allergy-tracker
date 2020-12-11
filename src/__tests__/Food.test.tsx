@@ -31,7 +31,10 @@ jest.mock("../firebase", () => {
 
 describe("Food section renders properly", () => {
   beforeEach(() => {
-    render(<Food />);
+    render(<Food userID={null}
+      kidId={null}
+      date={null}
+      date_yyyy_mm={null}/>);
   });
 
   afterEach(cleanup);
