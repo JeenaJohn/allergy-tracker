@@ -4,54 +4,55 @@ import {ReportListItem} from "./ReportListItem";
 import { BarChart } from "./BarChart";
 
 type ReportViewProps = {
-  userID: string | null;
-  kidId: string | null;
-  date_yyyy_mm: string;
+  userID: string | null,
+  kidId: string | null,
+  date_yyyy_mm: string,
 };
 
 type TSymptoms = {
-  rash: boolean;
-  itchLevel: number;
-  itchTime: string;
-  notes: string;
+  id: string,
+  rash: boolean,
+  itchLevel: number,
+  itchTime: string,
+  notes: string,
 };
 
 
 
 type TAdditionalData = {
-  outdoor: string;
-  notes: string;
-  ac: boolean;
-  nails: boolean;
+  outdoor: string,
+  notes: string,
+  ac: boolean,
+  nails: boolean,
 };
 
 type TAdditionalDataDB = {
-  [key: string]: TAdditionalData;
+  [key: string]: TAdditionalData,
 };
 
 
 
 type TFood = {
-  breakfast: string;
-  lunch: string;
-  dinner: string;
-  snacks: string;
+  breakfast: string,
+  lunch: string,
+  dinner: string,
+  snacks: string,
 };
 
 type TFoodDB = {
-  [key: string]: TFood;
+  [key: string]: TFood,
 };
 
 type TAllergies = {
-  date: string;
-  symptoms: TSymptoms[];
-  food: TFoodDB;
-  additionalData: TAdditionalDataDB;
+  date: string,
+  symptoms: TSymptoms[],
+  food: TFoodDB,
+  additionalData: TAdditionalDataDB,
 };
 
 type TGraphData = {
-  date: string;
-  itchLevel: number;
+  date: string,
+  itchLevel: number,
 };
 
 export const ReportListView: React.FC<ReportViewProps> = (props) => {
