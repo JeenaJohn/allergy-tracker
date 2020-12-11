@@ -123,6 +123,7 @@ export const Food: React.FC<FoodProps> = (props) => {
             <td className="td-input-col">
               <input
                 type="text"
+                id="breakfast"
                 name="breakfast"
                 maxLength={80}
                 value={breakfast}
@@ -140,6 +141,7 @@ export const Food: React.FC<FoodProps> = (props) => {
             <td className="td-input-col">
               <input
                 type="text"
+                id="lunch"
                 name="lunch"
                 maxLength={80}
                 value={lunch}
@@ -157,6 +159,7 @@ export const Food: React.FC<FoodProps> = (props) => {
             <td className="td-input-col">
               <input
                 type="text"
+                id="dinner"
                 name="dinner"
                 maxLength={80}
                 value={dinner}
@@ -174,6 +177,7 @@ export const Food: React.FC<FoodProps> = (props) => {
             <td className="td-input-col">
               <input
                 type="text"
+                id="snacks"
                 name="snacks"
                 maxLength={80}
                 value={snacks}
