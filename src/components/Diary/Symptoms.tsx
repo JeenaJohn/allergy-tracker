@@ -192,7 +192,7 @@ export const Symptoms: React.FC<SymptomsProps> = (props) => {
       <div>
         {existingSymptoms.length > 0 ? (
           existingSymptoms.map((symptom, index) => (
-            <div className='box-existing-symptoms u-text-left'>
+            <div key={symptom.id} className='box-existing-symptoms u-text-left'>
               <ListSymptoms key={symptom.id} symptom={symptom} />
             </div>
           ))
