@@ -23,7 +23,7 @@ jest.mock("../../firebase", () => {
 
 describe("Add Kid component", () => {
   beforeEach(() => {
-    render(<AddKid />);
+    render(<AddKid userID={null}/>);
   });
 
   afterEach(cleanup);
