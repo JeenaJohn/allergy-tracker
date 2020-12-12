@@ -18,14 +18,14 @@ jest.mock("../../firebase", () => {
     "2020-09-17": {
       symptoms: [
         {
-          id: 1,
+          id: "1",
           rash: true,
           itchLevel: "2",
           itchTime: "20:00",
           notes: "Itchy",
         },
         {
-          id: 2,
+          id: "2",
           rash: false,
           itchLevel: "8",
           itchTime: "12:00",

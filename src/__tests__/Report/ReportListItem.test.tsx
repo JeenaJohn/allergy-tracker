@@ -21,14 +21,14 @@ const symptoms = [
 ];
 
 const food = {
-  1: { breakfast: 'Oats', lunch: 'Rice', dinner: 'Sandwich', snacks: 'Banana' },
+  '1': { breakfast: 'Oats', lunch: 'Rice', dinner: 'Sandwich', snacks: 'Banana' },
 };
 
 const additionalData = {
-  1: { ac: true, nails: true, outdoor: 'playground', notes: 'Itchy' },
+  '1': { ac: true, nails: true, outdoor: 'playground', notes: 'Itchy' },
 };
 
-jest.mock('../ReportListSymptoms', () => {
+jest.mock('../../components/Report/ReportListSymptoms', () => {
   const ReportListSymptoms = () => <div />;
   return ReportListSymptoms;
 });
