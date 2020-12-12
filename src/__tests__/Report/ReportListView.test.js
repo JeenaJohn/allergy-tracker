@@ -1,8 +1,8 @@
 import React from "react";
 import { render, screen, cleanup } from "@testing-library/react";
-import ReportListView from "../components/Report/ReportListView";
-import ReportListItem from "../components/Report/ReportListItem";
-import BarChart from "../components/Report/BarChart";
+import ReportListView from "../../components/Report/ReportListView";
+import ReportListItem from "../../components/Report/ReportListItem";
+import BarChart from "../../components/Report/BarChart";
 
 jest.mock("../ReportListItem", () => {
   const ReportListItem = jest.fn(() => <div />);
@@ -14,7 +14,7 @@ jest.mock("../BarChart", () => {
   return BarChart;
 });
 
-jest.mock("../firebase", () => {
+jest.mock("../../firebase", () => {
   const data = {
     "2020-09-17": {
       symptoms: [

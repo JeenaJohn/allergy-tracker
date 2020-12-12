@@ -1,10 +1,10 @@
 import React from "react";
 import { render, screen, cleanup } from "@testing-library/react";
 
-import MyAllergy from "../components/Diary/MyAllergy";
-import Symptoms from "../components/Diary/Symptoms";
-import Food from "../components/Diary/Food";
-import AdditionalData from "../components/Diary/AdditionalData";
+import MyAllergy from "../../components/Diary/MyAllergy";
+import Symptoms from "../../components/Diary/Symptoms";
+import Food from "../../components/Diary/Food";
+import AdditionalData from "../../components/Diary/AdditionalData";
 
 jest.mock("../Symptoms", () => {
   const Symptoms = jest.fn(() => <div />);
@@ -21,7 +21,7 @@ jest.mock("../AdditionalData", () => {
   return AdditionalData;
 });
 
-jest.mock("../firebase", () => {
+jest.mock("../../firebase", () => {
   const data = { 1: { kidName: "Kid1" }, 2: { kidName: "Kid2" } };
   const snapshot = {
     val: () => data,

@@ -143,6 +143,7 @@ export const Symptoms: React.FC<SymptomsProps> = (props) => {
           <label htmlFor="itchTime">What was the time when it was itchy?</label>
           <input
             type="time"
+            id="itchTime"
             name="itchTime"
             value={itchTime}
             onChange={(e) => handleChange(e)}
@@ -152,6 +153,7 @@ export const Symptoms: React.FC<SymptomsProps> = (props) => {
           <label htmlFor="notes">Notes</label>
           <textarea
             name="notes"
+            id="notes"
             rows={3}
             maxLength={200}
             className="notes"
@@ -183,7 +185,7 @@ export const Symptoms: React.FC<SymptomsProps> = (props) => {
         {existingSymptoms.length > 0 ? (
           existingSymptoms.map((symptom, index) => (
             <div className="box-existing-symptoms u-text-left">
-              <ListSymptoms index={index} symptom={symptom} />
+              <ListSymptoms key={symptom.id} symptom={symptom} />
             </div>
           ))
         ) : (

@@ -1,13 +1,13 @@
 import React from "react";
 import { render, screen, cleanup } from "@testing-library/react";
-import Report from "../components/Report/Report";
+import Report from "../../components/Report/Report";
 
 jest.mock("../ReportListView", () => {
   const ReportListView = () => <div />;
   return ReportListView;
 });
 
-jest.mock("../firebase", () => {
+jest.mock("../../firebase", () => {
   const data = { 1: { kidName: "Kid1" }, 2: { kidName: "Kid2" } };
   const snapshot = {
     val: () => data,
