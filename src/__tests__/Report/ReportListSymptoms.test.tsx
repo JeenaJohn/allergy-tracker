@@ -1,12 +1,12 @@
 import React from "react";
 import { render, screen, cleanup } from "@testing-library/react";
-import ReportListSymptoms from "../../components/Report/ReportListSymptoms";
+import {ReportListSymptoms} from "../../components/Report/ReportListSymptoms";
 
-const key = 1;
+const key = "1";
 const symptom = {
-  id: 1,
+  id: "1",
   rash: true,
-  itchLevel: "2",
+  itchLevel: 2,
   itchTime: "20:00",
   notes: "I feel Itchy",
 };
