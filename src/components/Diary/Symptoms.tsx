@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { toast } from "react-toastify";
-import {ListSymptoms} from "./ListSymptoms";
-import firebase from "../../firebase.js";
+import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
+import { ListSymptoms } from './ListSymptoms';
+import firebase from '../../firebase.js';
 
 type SymptomsProps = {
   userID: string | null;
@@ -11,20 +11,22 @@ type SymptomsProps = {
 };
 
 type TExistingSymptoms = {
-   id: string,
-  rash: boolean,
-  itchLevel: number,
-  itchTime: string,
-  notes: string,
+  id: string;
+  rash: boolean;
+  itchLevel: number;
+  itchTime: string;
+  notes: string;
 };
 
 export const Symptoms: React.FC<SymptomsProps> = (props) => {
   const [rash, setRash] = useState<boolean>(false);
-  const [itchTime, setItchTime] = useState<string>("");
+  const [itchTime, setItchTime] = useState<string>('');
   const [itchLevel, setItchLevel] = useState<any>(0);
-  const [notes, setNotes] = useState<string>("");
+  const [notes, setNotes] = useState<string>('');
 
-  const [existingSymptoms, setExistingSymptoms] = useState<TExistingSymptoms[]>([]);
+  const [existingSymptoms, setExistingSymptoms] = useState<TExistingSymptoms[]>(
+    []
+  );
 
   let saveBtnDisabled =
     props.userID == null || props.kidId == null ? true : false;
@@ -33,23 +35,23 @@ export const Symptoms: React.FC<SymptomsProps> = (props) => {
     .database()
     .ref(
       props.userID +
-        "/" +
+        '/' +
         props.kidId +
-        "/" +
+        '/' +
         props.date_yyyy_mm +
-        "/" +
+        '/' +
         props.date +
-        "/symptoms"
+        '/symptoms'
     );
 
   useEffect(() => {
     //initialize the questionaire values
     setRash(false);
     setItchLevel(0);
-    setItchTime("");
-    setNotes("");
+    setItchTime('');
+    setNotes('');
 
-    symptomsRef.on("value", (snapshot) => {
+    symptomsRef.on('value', (snapshot) => {
       let items = snapshot.val();
 
       let existingData = [];
@@ -67,107 +69,113 @@ export const Symptoms: React.FC<SymptomsProps> = (props) => {
     });
   }, [props]);
 
-  const handleChange = (e:React.ChangeEvent<any>) => {
+  const handleChange = (e: React.ChangeEvent<any>) => {
     const { name, value, checked } = e.currentTarget;
 
     switch (name) {
-      case "rash":
+      case 'rash':
         setRash(checked);
         break;
-      case "itchTime":
+      case 'itchTime':
         setItchTime(value);
         break;
-      case "itchLevel":
+      case 'itchLevel':
         setItchLevel(value);
         break;
-      case "notes":
+      case 'notes':
         setNotes(value);
         break;
       default:
     }
   };
 
-  const saveSymptoms = (e:React.FormEvent<HTMLFormElement>, rash:boolean, itchLevel:number, itchTime:string, notes:string) => {
+  const saveSymptoms = (
+    e: React.FormEvent<HTMLFormElement>,
+    rash: boolean,
+    itchLevel: number,
+    itchTime: string,
+    notes: string
+  ) => {
     e.preventDefault();
 
     /* adding data */
     symptomsRef.push({ rash, itchLevel, itchTime, notes });
-    toast.success("Symptoms saved successfully. See list below.");
+    toast.success('Symptoms saved successfully. See list below.');
 
     //initialize the questionaire values after save
     setRash(false);
     setItchLevel(0);
-    setItchTime("");
-    setNotes("");
+    setItchTime('');
+    setNotes('');
   };
 
   return (
-    <div className="box-questions">
+    <div className='box-questions'>
       <h3
-        className="heading-tertiary 
-          u-text-left u-margin-bottom-small"
+        className='heading-tertiary 
+          u-text-left u-margin-bottom-small'
       >
         Let's track Symptoms through out the day
       </h3>
       <form onSubmit={(e) => saveSymptoms(e, rash, itchLevel, itchTime, notes)}>
-        <div className="question">
-          <label htmlFor="rash">Are there any rashes?</label>
+        <div className='question'>
+          <label htmlFor='rash'>Are there any rashes?</label>
           <input
-            type="checkbox"
-            name="rash"
-            id="rash"
+            type='checkbox'
+            name='rash'
+            id='rash'
             checked={rash}
             onChange={(e) => handleChange(e)}
           />
         </div>
 
-        <div className="question">
-          <label htmlFor="itchLevel">Itch Level (scale of 0 - 10)</label>
+        <div className='question'>
+          <label htmlFor='itchLevel'>Itch Level (scale of 0 - 10)</label>
           <input
-            type="number"
-            name="itchLevel"
-            id="itchLevel"
-            min="0"
-            max="10"
+            type='number'
+            name='itchLevel'
+            id='itchLevel'
+            min='0'
+            max='10'
             value={itchLevel}
             onChange={(e) => handleChange(e)}
           />
-          <span className="itch-level">
-            <i className="italics-text">
+          <span className='itch-level'>
+            <i className='italics-text'>
               (Note: 0 is for no itching and 10 is for severe itching)
-            </i>{" "}
+            </i>{' '}
           </span>
         </div>
 
-        <div className="question">
-          <label htmlFor="itchTime">What was the time when it was itchy?</label>
+        <div className='question'>
+          <label htmlFor='itchTime'>What was the time when it was itchy?</label>
           <input
-            type="time"
-            id="itchTime"
-            name="itchTime"
+            type='time'
+            id='itchTime'
+            name='itchTime'
             value={itchTime}
             onChange={(e) => handleChange(e)}
           />
         </div>
-        <div className="question">
-          <label htmlFor="notes">Notes</label>
+        <div className='question'>
+          <label htmlFor='notes'>Notes</label>
           <textarea
-            name="notes"
-            id="notes"
+            name='notes'
+            id='notes'
             rows={3}
             maxLength={200}
-            className="notes"
+            className='notes'
             value={notes}
             onChange={(e) => handleChange(e)}
           />
         </div>
 
-        <div className="u-text-left">
+        <div className='u-text-left'>
           <button
             className={`btn btn-medium ${
-              saveBtnDisabled ? "btn-disabled" : ""
+              saveBtnDisabled ? 'btn-disabled' : ''
             } `}
-            type="submit"
+            type='submit'
             disabled={saveBtnDisabled}
           >
             Save
@@ -176,20 +184,20 @@ export const Symptoms: React.FC<SymptomsProps> = (props) => {
       </form>
 
       <h3
-        className="heading-tertiary 
-          u-text-left  u-margin-top-medium u-margin-bottom-small"
+        className='heading-tertiary 
+          u-text-left  u-margin-top-medium u-margin-bottom-small'
       >
         Symptoms already added for the day
       </h3>
       <div>
         {existingSymptoms.length > 0 ? (
           existingSymptoms.map((symptom, index) => (
-            <div className="box-existing-symptoms u-text-left">
+            <div className='box-existing-symptoms u-text-left'>
               <ListSymptoms key={symptom.id} symptom={symptom} />
             </div>
           ))
         ) : (
-          <h4 className="u-text-left">
+          <h4 className='u-text-left'>
             <i>No symptoms added yet</i>
           </h4>
         )}

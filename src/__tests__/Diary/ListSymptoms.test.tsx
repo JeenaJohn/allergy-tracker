@@ -1,12 +1,12 @@
 import React from "react";
 import { render, screen, cleanup } from "@testing-library/react";
-import {ListSymptoms} from "../../components/Diary/ListSymptoms";
+import ListSymptoms from "../../components/Diary/ListSymptoms";
 
-const key = 1;
+const key = "1";
 const symptom = {
-  id: 1,
+  id: "1",
   rash: true,
-  itchLevel: "2",
+  itchLevel: 2,
   itchTime: "20:00",
   notes: "Itchy",
 };
@@ -24,7 +24,7 @@ describe("List Symptoms component", () => {
   });
 
   test("Itch Level displays the correct value", () => {
-    const input = screen.getByRole("spinbutton");
+    const input: HTMLInputElement  = screen.getByRole("spinbutton") as HTMLInputElement;
     expect(input.value).toBe("2");
   });
 
@@ -35,7 +35,7 @@ describe("List Symptoms component", () => {
   // });
 
   test("Notes displays the correct value", () => {
-    const input = screen.getByRole("textbox");
+    const input: HTMLInputElement = screen.getByRole("textbox") as HTMLInputElement;
     expect(input.value).toBe("Itchy");
   });
 });

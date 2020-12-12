@@ -13,7 +13,7 @@ type ListSymptomsProps = {
   symptom: TSymptoms;
 };
 
-export const ListSymptoms: React.FC<ListSymptomsProps> = (props) => {
+const ListSymptoms: React.FC<ListSymptomsProps> = (props) => {
   //const [editMode, setEditMode] = useState(false);
 
   const [rash, setRash] = useState(props.symptom.rash);
@@ -88,3 +88,5 @@ export const ListSymptoms: React.FC<ListSymptomsProps> = (props) => {
     </div>
   );
 };
+
+export default ListSymptoms;
