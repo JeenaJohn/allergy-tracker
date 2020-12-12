@@ -1,8 +1,7 @@
 import React from "react";
-import { render, screen, cleanup } from "@testing-library/react";
-import ReportListView from "../../components/Report/ReportListView";
-import ReportListItem from "../../components/Report/ReportListItem";
-import BarChart from "../../components/Report/BarChart";
+import { render,  cleanup } from "@testing-library/react";
+import {ReportListView} from "../../components/Report/ReportListView";
+import {BarChart} from "../../components/Report/BarChart";
 
 jest.mock("../ReportListItem", () => {
   const ReportListItem = jest.fn(() => <div />);
@@ -68,7 +67,9 @@ jest.mock("../../firebase", () => {
 
 describe("ReportListView component renders properly", () => {
   beforeEach(() => {
-    render(<ReportListView />);
+    render(<ReportListView userID={null}
+      kidId={null}
+      date_yyyy_mm={"2020-09"}/>);
   });
 
   afterEach(cleanup);

@@ -5,7 +5,7 @@ import {Home} from "../../components/Home/Home";
 
 describe("Home component", () => {
   beforeEach(() => {
-    render(<Home userID={null} />);
+    render(<Home userID={"8xztH1zd2cRAPqokhLPzBv37ws00"} />);
   });
 
   afterEach(cleanup);
