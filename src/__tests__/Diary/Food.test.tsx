@@ -1,9 +1,9 @@
 import React from "react";
 import { render, screen, cleanup } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import {Food} from "../components/Diary/Food";
+import {Food} from "../../components/Diary/Food";
 
-jest.mock("../firebase", () => {
+jest.mock("../../firebase", () => {
   const data = {
     1: {
       breakfast: "Oats",

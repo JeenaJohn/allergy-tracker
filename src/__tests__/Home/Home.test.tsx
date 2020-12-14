@@ -1,11 +1,11 @@
 import React from "react";
 import { render, screen, cleanup } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import {Home} from "../components/Home/Home";
+import {Home} from "../../components/Home/Home";
 
 describe("Home component", () => {
   beforeEach(() => {
-    render(<Home userID={null} />);
+    render(<Home userID={"8xztH1zd2cRAPqokhLPzBv37ws00"} />);
   });
 
   afterEach(cleanup);
