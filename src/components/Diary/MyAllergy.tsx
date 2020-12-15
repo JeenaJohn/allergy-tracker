@@ -16,7 +16,7 @@ type TKids = {
 
 
 
-export const MyAllergy: React.FC<MyAllergyProps> = (props) => {
+ const MyAllergy: React.FC<MyAllergyProps> = (props) => {
   const [kids, setKids] = useState<TKids[]>([]);
 
   const [selectedKid, setSelectedKid] = useState<string>("");
@@ -203,3 +203,5 @@ export const MyAllergy: React.FC<MyAllergyProps> = (props) => {
     </div>
   );
 };
+
+export default MyAllergy;

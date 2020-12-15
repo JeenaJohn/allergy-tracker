@@ -6,7 +6,7 @@ type HomeProps = {
   userID: string | null;
 };
 
-export const Home: React.FC<HomeProps> = (props) => {
+ const Home: React.FC<HomeProps> = (props) => {
   return (
     <div>
       {/* header nav bar and footer are in Layout.js */}
@@ -70,3 +70,5 @@ export const Home: React.FC<HomeProps> = (props) => {
     </div>
   );
 };
+
+export default Home;

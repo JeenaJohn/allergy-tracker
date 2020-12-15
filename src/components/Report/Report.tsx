@@ -11,7 +11,7 @@ type TKids = {
   kidName: string;
 };
 
-export const Report: React.FC<ReportProps> = (props) => {
+const Report: React.FC<ReportProps> = (props) => {
   const [kids, setKids] = useState<TKids[]>([]);
 
   const [selectedKid, setSelectedKid] = useState<string>("");
@@ -176,3 +176,5 @@ export const Report: React.FC<ReportProps> = (props) => {
     </div>
   );
 };
+
+export default Report;

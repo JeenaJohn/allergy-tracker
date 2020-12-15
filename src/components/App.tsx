@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Suspense, lazy, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
@@ -7,10 +7,16 @@ import { auth, provider } from '../firebase';
 import '../App.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { Layout } from './Layout';
-import { Home } from './Home/Home';
-import { AddKid } from './AddKid/AddKid';
-import { MyAllergy } from './Diary/MyAllergy';
-import { Report } from './Report/Report';
+import Home from './Home/Home';
+
+// import { AddKid } from './AddKid/AddKid';
+// import { MyAllergy } from './Diary/MyAllergy';
+// import { Report } from './Report/Report';
+
+/* Lazy loading for Add Kid, Diary and Report routes*/
+const AddKid = lazy(() => import('./AddKid/AddKid'));
+const MyAllergy = lazy(() => import('./Diary/MyAllergy'));
+const Report = lazy(() => import('./Report/Report'));
 
 function App() {
   const [user, setUser] = useState<firebase.User | null>(null);
@@ -46,6 +52,7 @@ function App() {
     <Router>
       <div className='main-layout'>
         <ToastContainer autoClose={3000} hideProgressBar={true} />
+        {/* header nav bar and footer are in Layout component */}
         <Layout
           user={user}
           userID={userID}
@@ -55,15 +62,17 @@ function App() {
         >
           <Switch>
             <Route path='/' exact component={() => <Home userID={userID} />} />
-            <Route path='/kid' component={() => <AddKid userID={userID} />} />
-            <Route
-              path='/diary'
-              component={() => <MyAllergy userID={userID} />}
-            />
-            <Route
-              path='/report'
-              component={() => <Report userID={userID} />}
-            />
+            <Suspense fallback={<div>Loading...</div>}>
+              <Route path='/kid' component={() => <AddKid userID={userID} />} />
+              <Route
+                path='/diary'
+                component={() => <MyAllergy userID={userID} />}
+              />
+              <Route
+                path='/report'
+                component={() => <Report userID={userID} />}
+              />
+            </Suspense>
           </Switch>
         </Layout>
       </div>

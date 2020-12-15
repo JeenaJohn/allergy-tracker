@@ -12,7 +12,7 @@ type TKids = {
   kidName:string;
 };
 
-export const AddKid: React.FC<AddKidProps> = (props) => {
+const AddKid: React.FC<AddKidProps> = (props) => {
   const [newKidName, setNewKidName] = useState<string>("");
   const [defaultChecked, setDefaultChecked] = useState(false);
   const [firebaseID, setFirebaseID] = useState("");
@@ -167,5 +167,7 @@ export const AddKid: React.FC<AddKidProps> = (props) => {
     </div>
   );
 };
+
+export default AddKid;
 
 
