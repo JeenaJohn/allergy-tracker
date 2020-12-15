@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, cleanup } from "@testing-library/react";
-import {ReportListSymptoms} from "../../components/Report/ReportListSymptoms";
+import ReportListSymptoms from "../../components/Report/ReportListSymptoms";
 
 const key = "1";
 const symptom = {

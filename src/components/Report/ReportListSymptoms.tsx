@@ -13,7 +13,7 @@ type ReportListSymptomsProps = {
   symptom: TSymptoms,
 };
 
-export const ReportListSymptoms: React.FC<ReportListSymptomsProps> = (props) => {
+const ReportListSymptoms: React.FC<ReportListSymptomsProps> = (props) => {
   //const [editMode, setEditMode] = useState(false);
 
   const [rash, setRash] = useState(props.symptom.rash);
@@ -70,5 +70,7 @@ export const ReportListSymptoms: React.FC<ReportListSymptomsProps> = (props) => 
     </div>
   );
 }
+
+export default ReportListSymptoms;
 
 
