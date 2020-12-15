@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {ReportListSymptoms} from "./ReportListSymptoms";
+import ReportListSymptoms from "./ReportListSymptoms";
 
 type TSymptoms = {
   id: string,

@@ -6,6 +6,7 @@ import { auth, provider } from '../firebase';
 
 import '../App.css';
 import 'react-toastify/dist/ReactToastify.css';
+import ErrorBoundary from './ErrorBoundary';
 import { Layout } from './Layout';
 import Home from './Home/Home';
 
@@ -51,30 +52,42 @@ function App() {
   return (
     <Router>
       <div className='main-layout'>
-        <ToastContainer autoClose={3000} hideProgressBar={true} />
-        {/* header nav bar and footer are in Layout component */}
-        <Layout
-          user={user}
-          userID={userID}
-          login={login}
-          logout={logout}
-          stateChanged={stateChanged}
-        >
-          <Switch>
-            <Route path='/' exact component={() => <Home userID={userID} />} />
-            <Suspense fallback={<div>Loading...</div>}>
-              <Route path='/kid' component={() => <AddKid userID={userID} />} />
+        <ErrorBoundary>
+
+          <ToastContainer autoClose={3000} hideProgressBar={true} />
+
+          {/* header nav bar and footer are in Layout component */}
+          <Layout
+            user={user}
+            userID={userID}
+            login={login}
+            logout={logout}
+            stateChanged={stateChanged}
+          >
+            <Switch>
               <Route
-                path='/diary'
-                component={() => <MyAllergy userID={userID} />}
+                path='/'
+                exact
+                component={() => <Home userID={userID} />}
               />
-              <Route
-                path='/report'
-                component={() => <Report userID={userID} />}
-              />
-            </Suspense>
-          </Switch>
-        </Layout>
+              <Suspense fallback={<div>Loading...</div>}>
+                <Route
+                  path='/kid'
+                  component={() => <AddKid userID={userID} />}
+                />
+                <Route
+                  path='/diary'
+                  component={() => <MyAllergy userID={userID} />}
+                />
+                <Route
+                  path='/report'
+                  component={() => <Report userID={userID} />}
+                />
+              </Suspense>
+            </Switch>
+          </Layout>
+          
+        </ErrorBoundary>
       </div>
     </Router>
   );
