@@ -67,6 +67,7 @@ export const Symptoms: React.FC<SymptomsProps> = (props) => {
 
       setExistingSymptoms(existingData);
     });
+    console.log("in Symptoms",props);
   }, [props]);
 
   const handleChange = (e: React.ChangeEvent<any>) => {
@@ -158,10 +159,10 @@ export const Symptoms: React.FC<SymptomsProps> = (props) => {
           />
         </div>
         <div className='question'>
-          <label htmlFor='notes'>Notes</label>
+          <label htmlFor='symptomNotes'>Notes</label>
           <textarea
             name='notes'
-            id='notes'
+            id='symptomNotes'
             rows={3}
             maxLength={200}
             className='notes'

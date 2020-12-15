@@ -69,6 +69,7 @@ type TKids = {
     });
 
     formatDate(today);
+    console.log('In My allergy', props);
   }, [props]);
 
   const formatDate = (date_input: Date) => {
