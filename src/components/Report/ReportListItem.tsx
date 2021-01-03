@@ -38,7 +38,7 @@ type ReportItemProps = {
   additionalData: TAdditionalDataDB,
 };
 
-export const ReportListItem: React.FC<ReportItemProps> = (props) => {
+const ReportListItem: React.FC<ReportItemProps> = (props) => {
   const [symptoms, setSymptoms] = useState<TSymptoms[]>([]);
   const [food, setFood] = useState<TFood>({
     breakfast: "",
@@ -269,3 +269,5 @@ export const ReportListItem: React.FC<ReportItemProps> = (props) => {
     </div>
   );
 };
+
+export default ReportListItem;

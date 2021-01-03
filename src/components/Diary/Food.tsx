@@ -9,7 +9,7 @@ type FoodProps = {
   date_yyyy_mm: string | null;
 };
 
-export const Food: React.FC<FoodProps> = (props) => {
+const Food: React.FC<FoodProps> = (props) => {
   const [breakfast, setBreakfast] = useState<string>('');
   const [lunch, setLunch] = useState<string>('');
   const [dinner, setDinner] = useState<string>('');
@@ -205,3 +205,5 @@ export const Food: React.FC<FoodProps> = (props) => {
     </div>
   );
 };
+
+export default Food;

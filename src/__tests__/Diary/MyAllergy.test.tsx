@@ -2,22 +2,22 @@ import React from 'react';
 import { render, screen, cleanup } from '@testing-library/react';
 
 import MyAllergy from '../../components/Diary/MyAllergy';
-import { Symptoms } from '../../components/Diary/Symptoms';
-import { Food } from '../../components/Diary/Food';
-import { AdditionalData } from '../../components/Diary/AdditionalData';
+import Symptoms from '../../components/Diary/Symptoms';
+import Food from '../../components/Diary/Food';
+import AdditionalData from '../../components/Diary/AdditionalData';
 
 jest.mock('../../components/Diary/Symptoms', () => {
-  const Symptoms = jest.fn(() => <div />);
+  const Symptoms = () => <div />;
   return Symptoms;
 });
 
 jest.mock('../../components/Diary/Food', () => {
-  const Food = jest.fn(() => <div />);
+  const Food = () => <div />;
   return Food;
 });
 
 jest.mock('../../components/Diary/AdditionalData', () => {
-  const AdditionalData = jest.fn(() => <div />);
+  const AdditionalData = () => <div />;
   return AdditionalData;
 });
 

@@ -18,7 +18,7 @@ type TExistingSymptoms = {
   notes: string;
 };
 
-export const Symptoms: React.FC<SymptomsProps> = (props) => {
+const Symptoms: React.FC<SymptomsProps> = (props) => {
   const [rash, setRash] = useState<boolean>(false);
   const [itchTime, setItchTime] = useState<string>('');
   const [itchLevel, setItchLevel] = useState<any>(0);
@@ -206,3 +206,5 @@ export const Symptoms: React.FC<SymptomsProps> = (props) => {
     </div>
   );
 };
+
+export default Symptoms;

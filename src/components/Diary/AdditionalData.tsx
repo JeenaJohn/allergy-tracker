@@ -16,7 +16,7 @@ type TAdditionalData = {
   nails: boolean,
 };
 
-export const  AdditionalData:React.FC<AdditionalDataProps> = (props) => {
+const  AdditionalData:React.FC<AdditionalDataProps> = (props) => {
   const [additionalData, setAdditionalData] = useState<TAdditionalData>({
     outdoor: "",
     notes: "",
@@ -153,5 +153,7 @@ export const  AdditionalData:React.FC<AdditionalDataProps> = (props) => {
     </div>
   );
 }
+
+export default AdditionalData;
 
 

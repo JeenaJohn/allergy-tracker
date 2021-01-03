@@ -11,7 +11,7 @@ type BarChartProps = {
   graphData: TGraphData[];
 };
 
-export const BarChart: React.FC<BarChartProps> = (props) => {
+const BarChart: React.FC<BarChartProps> = (props) => {
   const d3Element = useRef(null);
   // const [dataset, setDataset] = useState([]);
   let dataset = [];
@@ -164,3 +164,5 @@ export const BarChart: React.FC<BarChartProps> = (props) => {
     <div id='div-for-chart' ref={d3Element} className='chart-container'></div>
   );
 };
+
+export default BarChart;

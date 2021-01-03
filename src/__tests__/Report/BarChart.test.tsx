@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, cleanup } from "@testing-library/react";
-import {BarChart} from "../../components/Report/BarChart";
+import BarChart from "../../components/Report/BarChart";
 
 const date_yyyy_mm = "2020-09";
 const graphData = [
