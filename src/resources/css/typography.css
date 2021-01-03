@@ -1,35 +1,19 @@
+
 .heading-primary {
-  margin-bottom: 6rem;
-  //text-align: center;
-  width: 100%;
-  color: #2C5080;
-  
-  
-}
-
-.heading-primary--main {
   display: inline-block;
-  font-size: 5rem;
-  font-weight: 700;
-  letter-spacing: 0.6rem;
-  text-transform: capitalize;
+  width: 100%;
+  font:   small-caps  5rem cursive;
+  letter-spacing: 0.5rem;
+  color: #9D6C19;
+  margin-bottom: 8rem;
 }
 
-.heading-primary--sub {
-  display: block;
-  font-size: 2rem;
-  font-weight: 400;
-  letter-spacing: 0.4rem;
-}
 
 .heading-secondary {
-  font-size: 2.6rem;
-
+  font-size: 2.2rem;
   font-weight: 700;
   display: inline-block;
   letter-spacing: 0.1rem;
-  
- 
 }
 
 .heading-tertiary {
