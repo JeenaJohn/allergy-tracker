@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-import { Symptoms } from "./Symptoms";
-import { Food } from "./Food";
-import { AdditionalData } from "./AdditionalData";
+import  Symptoms  from "./Symptoms";
+import  Food  from "./Food";
+import  AdditionalData  from "./AdditionalData";
 import firebase from "../../firebase.js";
 
 type MyAllergyProps = {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import firebase from "../../firebase.js";
-import {ReportListItem} from "./ReportListItem";
-import { BarChart } from "./BarChart";
+import ReportListItem from "./ReportListItem";
+import  BarChart  from "./BarChart";
 
 type ReportViewProps = {
   userID: string | null,

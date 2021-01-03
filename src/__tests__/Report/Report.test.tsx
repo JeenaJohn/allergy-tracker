@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, cleanup } from '@testing-library/react';
-import {Report} from '../../components/Report/Report';
+import Report from '../../components/Report/Report';
 
 jest.mock('../../components/Report/ReportListView', () => {
   const ReportListView = () => <div />;
