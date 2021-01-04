@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "tsc",
+    "build": "react-scripts build",
     "test": "jest",
     "test:watch": "jest --watch",
     "coverage": "react-scripts test --env=jsdom --watchAll=true --coverage",

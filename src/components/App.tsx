@@ -10,10 +10,6 @@ import ErrorBoundary from './ErrorBoundary';
 import { Layout } from './Layout';
 import Home from './Home/Home';
 
-// import { AddKid } from './AddKid/AddKid';
-// import { MyAllergy } from './Diary/MyAllergy';
-// import { Report } from './Report/Report';
-
 /* Lazy loading for Add Kid, Diary and Report routes*/
 const AddKid = lazy(() => import('./AddKid/AddKid'));
 const MyAllergy = lazy(() => import('./Diary/MyAllergy'));

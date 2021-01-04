@@ -78,7 +78,7 @@ describe('ReportListView component renders properly', () => {
   afterEach(cleanup);
 
   test('BarChart component is called', () => {
-  //  expect(BarChart).toHaveBeenCalled();
+    expect(BarChart).toHaveBeenCalled();
   });
 
   // test("If there is no data reported for the month, user message is displayed", () => {
