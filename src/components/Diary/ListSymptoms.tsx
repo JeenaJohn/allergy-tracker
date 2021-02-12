@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 type TSymptoms = {
   id: string;
@@ -40,49 +40,30 @@ const ListSymptoms: React.FC<ListSymptomsProps> = (props) => {
 
   return (
     <div>
-      <div className="report-item">
-        <label htmlFor="rash">Rashes?</label>
-        <input
-          className="u-display-mode"
-          type="checkbox"
-          name="rash"
-          checked={rash}
-          readOnly
-        />
+      <div className='report-item'>
+        Rashes?
+        <span className='report-item-text'>{rash ? 'Yes' : 'No'}</span>
       </div>
 
-      <div className="report-item">
-        <label htmlFor="itchLevel">Itch Level:</label>
-        <input
-          className="u-display-mode"
-          type="number"
-          name="itchLevel"
-          value={itchLevel}
-          readOnly
-        />
+      <div className='report-item'>
+        Itch Level:
+        <span className='report-item-text'>{itchLevel}</span>
       </div>
 
-      <div className="report-item">
-        <label htmlFor="itchTime">Time when it was itchy?</label>
+      <div className='report-item'>
+        Time when it was itchy?
         <input
-          className="u-display-mode"
-          type="time"
-          name="itchTime"
+          className='u-display-mode report-item-text'
+          type='time'
+          name='itchTime'
           value={itchTime}
           readOnly
         />
       </div>
       {notes.trim().length !== 0 ? (
-        <div className="report-item">
-          <label htmlFor="notes">Notes</label>
-          <textarea
-            name="notes"
-            rows={3}
-            maxLength={200}
-            className="u-display-mode notes"
-            value={notes}
-            readOnly
-          />
+        <div className='report-item'>
+          Notes:
+          <span className='report-item-text'>{notes}</span>
         </div>
       ) : null}
     </div>

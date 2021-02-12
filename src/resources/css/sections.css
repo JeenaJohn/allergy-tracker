@@ -4,7 +4,7 @@
 }
 
 .section-home {
-  background-color: #f7f7f7; 
+  background-color: #f7f7f7;
   padding: 8rem 4rem;
   height: 100%;
 }
@@ -26,7 +26,7 @@
   margin-bottom: 5rem;
   padding: 2rem;
   border: 1px solid #fff;
-  background-color: #eeeeee; 
+  background-color: #eeeeee;
   border-radius: 1rem;
 }
 
@@ -129,24 +129,24 @@
   margin-bottom: 5rem;
   padding: 2rem;
   border: 1px solid #a4a4a4;
-  //background-color: #eeeeee;
-  background-color: #fff;
+  background-color: #eeeeee;
+  //background-color: #fff;
   border-radius: 1rem;
 }
 
-.report-align-text{
-    text-align: left;
-    padding-left: 2rem;
+.report-align-text {
+  text-align: left;
+  padding-left: 2rem;
 }
 
 .report-item {
-  font-size: 1.9rem;
-  margin: 0.5rem 3rem;
+  font-size: 1.7rem;
+  margin: 0.2rem 0;
 }
 
-
-.report-item-text{
- margin-left: 1rem;
+.report-item-text {
+  padding-left: 1rem;
+  color: blue !important;
 }
 
 .report-date {
@@ -156,9 +156,8 @@
 .box-existing-symptoms {
   width: 90%;
   margin: 3rem 3rem;
-
-  padding: 1rem;
-  border: 1px solid #fff;
-  background-color: #f7f7f7;
-  border-radius: 1rem;
+  padding: 0.5rem 0;
+  border: 1px solid #a4a4a4;
+  background-color: #fff;
+  border-radius: 0.5rem;
 }
