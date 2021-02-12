@@ -4,7 +4,7 @@
 }
 
 .section-home {
-  background-color: #f7f7f7;
+  background-color: #f7f7f7; 
   padding: 8rem 4rem;
   height: 100%;
 }
@@ -27,7 +27,6 @@
   padding: 2rem;
   border: 1px solid #fff;
   background-color: #eeeeee; 
-
   border-radius: 1rem;
 }
 
@@ -71,16 +70,16 @@
 .box-questions {
   width: 60%;
   margin-left: 20%;
-  margin-bottom: 5rem;
-  padding: 2rem;
-  border: 1px solid #fff;
+  margin-bottom: 3rem;
+  padding: 1.2rem;
+  border: 1px solid #a4a4a4;
   background-color: #eeeeee;
   border-radius: 1rem;
 }
 
 .question {
   font-size: 1.5rem;
-  margin: 1rem 3rem;
+  margin: 0.5rem 3rem;
 }
 
 .itch-level {
@@ -129,8 +128,9 @@
   margin-left: 20%;
   margin-bottom: 5rem;
   padding: 2rem;
-  border: 1px solid #fff;
-  background-color: #eeeeee;
+  border: 1px solid #a4a4a4;
+  //background-color: #eeeeee;
+  background-color: #fff;
   border-radius: 1rem;
 }
 

@@ -1,62 +1,58 @@
-
 .heading-primary {
   display: inline-block;
   width: 100%;
-  font:   small-caps  5rem cursive;
+  font: small-caps 4rem cursive;
   letter-spacing: 0.5rem;
-  color: #9D6C19;
+  color: #9d6c19;
   margin-bottom: 8rem;
 }
 
-
 .heading-secondary {
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 700;
   display: inline-block;
   letter-spacing: 0.1rem;
 }
 
 .heading-tertiary {
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 700;
 }
 
 .heading-report-item {
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 700;
 }
 
 h4 {
-  font-size: 1.9rem;
+  font-size: 1.7rem;
   font-weight: 400;
   margin: 1rem 1rem;
 }
 
-
 .paragraph {
-  font-size: 1.9rem;
+  font-size: 1.7rem;
 }
 
-.list{
-  font-size: 1.9rem;
+.list {
+  font-size: 1.7rem;
 }
 
 label {
   margin-right: 1rem;
-  font-size: 1.9rem;
-}
-
-input, textarea{
-  font-size: 1.9rem;
-  border: 1px solid #fff;
-  border-radius: 0.6rem;
-  padding-left: 1rem;
-
-}
-
-
-.italics-text{
   font-size: 1.7rem;
+}
+
+input,
+textarea {
+  font-size: 1.7rem;
+  border: 1px solid #a4a4a4;
+  border-radius: 0.3rem;
+  padding-left: 1rem;
+}
+
+.italics-text {
+  font-size: 1.5rem;
   font-weight: 400;
 }
 
