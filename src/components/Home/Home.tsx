@@ -21,7 +21,7 @@ const Home: React.FC<HomeProps> = (props) => {
 
             <a
               href='/diary'
-              className='btn btn-header u-margin-top-very-small '
+              className='btn btn-medium u-margin-top-very-small '
             >
               Start Tracking
             </a>

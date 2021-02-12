@@ -4,63 +4,31 @@
   transition: all 0.2s;
   border: none;
   cursor: pointer;
-}
-
-.btn-header {
-  background-color: #9D6C19;
+  border-radius: 1rem;
+  background-color: #9d6c19;
   color: #f3fafe;
-
-  padding: 1rem 1rem;
-  border-radius: 1.4rem;
-  font-size: 1.8rem;
 }
-
 
 
 .btn-medium {
-  background-color: #9D6C19;
-  color: #f3fafe;
-  padding: 0.5rem 0.9rem;
-  border-radius: 1rem;
-  font-size: 1.6rem;
+  padding: 0.7rem 0.8rem;
+  font-size: 1.7rem;
 }
 
 .btn-small {
-  background-color: #9D6C19;
-  color: #f3fafe;
   padding: 0.4rem 0.6rem;
-  border-radius: 1rem;
   font-size: 1.2rem;
 }
 
-.btn-disabled{
+.btn-disabled {
   background-color: grey !important;
   cursor: none !important;
-  
 }
 
 .btn:hover {
-  transform: scaleX(1.2) scaleY(1.1);
+  transform: scaleX(1.1) scaleY(1.1);
 }
 
-
-.btn-medium-ghost {
-  background-color: transparent;
-  color: #f3fafe;
-  padding: 0.8rem 1.7rem;
-  border-radius: 1.2rem;
-  font-size: 1.1rem;
-  border: 1px solid #9D6C19;
-
-  margin-top: 0.5rem;
-  right: 0.5rem;
-}
-
-.btn-ghost {
-  border: 1px solid #9D6C19;
-  color: #f3fafe;
-  background-color: transparent;
-}
 
 .radio-btn {
   margin-right: 0.4rem;
