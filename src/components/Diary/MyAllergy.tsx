@@ -126,11 +126,23 @@ const MyAllergy: React.FC<MyAllergyProps> = (props) => {
         </p>
       ) : null}
       <div className='box-questions'>
+        <div className='u-text-left u-margin-bottom-small'>
+          <label htmlFor='entryDate' className='heading-tertiary'>
+            Date
+          </label>
+          <input
+            type='date'
+            name='entryDate'
+            value={entryDate}
+            onChange={(e) => handleEntryDate(e)}
+            required
+          />
+        </div>
         <h3
           className='heading-tertiary 
-          u-text-left u-margin-bottom-small'
+          u-text-left u-margin-bottom-very-small'
         >
-          Choose Kid Profile
+          Kid Profile
         </h3>
         <div className='u-margin-bottom-small'>
           {kids.map((kid, index) => (
@@ -161,21 +173,6 @@ const MyAllergy: React.FC<MyAllergyProps> = (props) => {
               </p>
             ) : null
           }
-        </div>
-        <div className='u-text-left u-margin-bottom-small'>
-          <label
-            htmlFor='entryDate'
-            className='heading-tertiary u-margin-right'
-          >
-            Date
-          </label>
-          <input
-            type='date'
-            name='entryDate'
-            value={entryDate}
-            onChange={(e) => handleEntryDate(e)}
-            required
-          />
         </div>
       </div>
 
