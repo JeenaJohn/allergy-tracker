@@ -70,8 +70,8 @@
 .box-questions {
   width: 60%;
   margin-left: 20%;
-  margin-bottom: 3rem;
-  padding: 1.2rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
   border: 1px solid #a4a4a4;
   background-color: #eeeeee;
   border-radius: 1rem;
@@ -126,7 +126,7 @@
 .box-report {
   width: 60%;
   margin-left: 20%;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
   padding: 1rem;
   border: 1px solid #a4a4a4;
   background-color: #eeeeee;
