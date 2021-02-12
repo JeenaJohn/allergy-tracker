@@ -112,11 +112,26 @@ const Report: React.FC<ReportProps> = (props) => {
         </p>
       ) : null}
       <div className='box-questions'>
+        <div className='u-text-left u-margin-bottom-small'>
+          <label htmlFor='entryMonth' className='heading-tertiary'>
+            Month
+          </label>
+
+          <input
+            type='month'
+            name='entryMonth'
+            value={entryMonth}
+            onChange={(e) => handleEntryMonth(e)}
+            required
+            data-testid='month-selector'
+          />
+        </div>
+
         <h3
           className='heading-tertiary 
-          u-text-left u-margin-bottom-small'
+          u-text-left u-margin-bottom-very-small'
         >
-          Choose Kid Profile
+          Kid Profile
         </h3>
         <div className='u-margin-bottom-small'>
           {kids.map((kid, index) => (
@@ -147,23 +162,6 @@ const Report: React.FC<ReportProps> = (props) => {
               </p>
             ) : null
           }
-        </div>
-        <div className='u-text-left'>
-          <h3
-            className='heading-tertiary 
-          u-margin-bottom-small'
-          >
-            Choose Month
-          </h3>
-
-          <input
-            type='month'
-            name='entryMonth'
-            value={entryMonth}
-            onChange={(e) => handleEntryMonth(e)}
-            required
-            data-testid='month-selector'
-          />
         </div>
       </div>
 
