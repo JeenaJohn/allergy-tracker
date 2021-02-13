@@ -12,19 +12,20 @@ const Home: React.FC<HomeProps> = (props) => {
       {/* header nav bar and footer are in Layout.js */}
 
       <section id='section-home' className='section-home'>
-        <div className='row u-margin-left u-margin-top-huge u-margin-bottom-medium'>
+        <div className='row u-margin-left u-margin-top-huge u-margin-bottom-small'>
           <div className='col span-1-of-2 u-text-left'>
             <h1 className='heading-primary '>Track My Allergy</h1>
             <h2 className='heading-secondary'>
               Your partner in Kids Allergy Tracking
             </h2>
-
-            <a
-              href='/diary'
-              className='btn btn-medium u-margin-top-very-small '
-            >
-              Start Tracking
-            </a>
+            <div>
+              <a
+                href='/diary'
+                className='btn btn-medium u-margin-top-very-small '
+              >
+                Start Tracking
+              </a>
+            </div>
           </div>
           <div className='col span-1-of-2 '>
             <p className='paragraph'>
