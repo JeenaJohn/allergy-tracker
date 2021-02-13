@@ -35,17 +35,17 @@ h4 {
 }
 
 .list {
-  font-size: 1.7rem;
+  font-size: 1.6rem;
 }
 
 label {
   margin-right: 1rem;
-  font-size: 1.7rem;
+  font-size: 1.6rem;
 }
 
 input,
 textarea {
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   border: 1px solid #a4a4a4;
   border-radius: 0.3rem;
   padding-left: 1rem;

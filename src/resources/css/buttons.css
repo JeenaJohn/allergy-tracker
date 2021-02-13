@@ -7,16 +7,14 @@
   border-radius: 1rem;
   background-color: #9d6c19;
   color: #f3fafe;
+  padding: 0.4rem 0.6rem;
 }
 
-
 .btn-medium {
-  padding: 0.7rem 0.8rem;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
 }
 
 .btn-small {
-  padding: 0.4rem 0.6rem;
   font-size: 1.2rem;
 }
 
@@ -28,7 +26,6 @@
 .btn:hover {
   transform: scaleX(1.1) scaleY(1.1);
 }
-
 
 .radio-btn {
   margin-right: 0.4rem;

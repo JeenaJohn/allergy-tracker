@@ -171,7 +171,7 @@ const Symptoms: React.FC<SymptomsProps> = (props) => {
           />
         </div>
 
-        <div className='u-text-left'>
+        <div className='u-text-left u-margin-top-very-small'>
           <button
             className={`btn btn-medium ${
               saveBtnDisabled ? 'btn-disabled' : ''

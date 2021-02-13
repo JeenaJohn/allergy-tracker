@@ -108,7 +108,7 @@ const Food: React.FC<FoodProps> = (props) => {
     <div className='box-questions'>
       <h3
         className='heading-tertiary
-          u-text-left u-margin-bottom-small'
+          u-text-left u-margin-bottom-very-small'
       >
         Let's track Food
       </h3>

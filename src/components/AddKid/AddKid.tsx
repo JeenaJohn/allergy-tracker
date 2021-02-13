@@ -99,7 +99,7 @@ const AddKid: React.FC<AddKidProps> = (props) => {
         onSubmit={(e) => save(e, newKidName, defaultChecked)}
       >
         <div className="question">
-          <label htmlFor="kidName">Kid's Name</label>
+          <label htmlFor="kidName">Name</label>
 
           <input
             type="text"
@@ -124,7 +124,7 @@ const AddKid: React.FC<AddKidProps> = (props) => {
           />
         </div>
         */}
-        <div className="u-text-left">
+        <div className="u-text-left  u-margin-top-very-small">
           <button
             className={`btn btn-medium ${
               saveBtnDisabled ? "btn-disabled" : ""
@@ -145,12 +145,12 @@ const AddKid: React.FC<AddKidProps> = (props) => {
           </p>
         ) : null*/}
       </form>
-      <div className="box-questions">
+      <div className="box-questions u-margin-top-medium">
         <h3
           className="heading-tertiary 
           u-text-left u-margin-bottom-small"
         >
-          List of kids already added
+          Kid Profiles already added
         </h3>
         {kids.length > 0 ? (
           <ol className="list-kids u-text-left u-capitalize u-margin-bottom-small">
