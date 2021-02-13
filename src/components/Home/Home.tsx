@@ -16,7 +16,7 @@ const Home: React.FC<HomeProps> = (props) => {
           <div className='col span-1-of-2 u-text-left'>
             <h1 className='heading-primary '>Track My Allergy</h1>
             <h2 className='heading-secondary'>
-              Track Kid's Allergy Symptoms and Allergy Triggers
+              Your partner in Kids Allergy Tracking
             </h2>
 
             <a
