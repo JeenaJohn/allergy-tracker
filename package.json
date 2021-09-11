@@ -12,12 +12,33 @@
     "react-scripts": "^4.0.3",
     "react-toastify": "^6.0.8"
   },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "@types/d3": "^6.2.0",
+    "@types/jest": "^26.0.19",
+    "@types/node": "^14.14.6",
+    "@types/react": "^16.9.55",
+    "@types/react-burger-menu": "^2.6.2",
+    "@types/react-dom": "^16.9.9",
+    "@types/react-router-dom": "^5.1.6",
+    "eslint-plugin-jest": "^24.4.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "jest": "^24.9.0",
+    "jest-svg-transformer": "^1.0.0",
+    "prettier": "^2.4.0",
+    "ts-jest": "^26.4.4",
+    "typescript": "^4.0.5"
+  },
   "scripts": {
     "start": "react-scripts start",
+    "prebuild" : "npm run lint",
     "build": "react-scripts build",
     "test": "jest",
     "test:watch": "jest --watch",
-    "lint": "eslint --ext ts,tsx src",
+    "lint": "tsc --project ./tsconfig.json && eslint --ext ts,tsx src",
     "lint:fix": "eslint --fix --ext ts,tsx src",
     "coverage": "react-scripts test --env=jsdom --watchAll=true --coverage",
     "eject": "react-scripts eject"
@@ -79,26 +100,7 @@
       "!src/index.js"
     ]
   },
-  "devDependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "@types/d3": "^6.2.0",
-    "@types/jest": "^26.0.19",
-    "@types/node": "^14.14.6",
-    "@types/react": "^16.9.55",
-    "@types/react-burger-menu": "^2.6.2",
-    "@types/react-dom": "^16.9.9",
-    "@types/react-router-dom": "^5.1.6",
-    "eslint-plugin-jest": "^24.4.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "jest": "^24.9.0",
-    "jest-svg-transformer": "^1.0.0",
-    "prettier": "^2.4.0",
-    "ts-jest": "^26.4.4",
-    "typescript": "^4.0.5"
-  },
+
   "prettier": {
     "endofLine": "lf"
   }
