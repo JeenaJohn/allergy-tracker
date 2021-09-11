@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import AdditionalData  from '../../components/Diary/AdditionalData';
+import AdditionalData  from './AdditionalData';
 
 jest.mock('../../firebase', () => {
   const data = {

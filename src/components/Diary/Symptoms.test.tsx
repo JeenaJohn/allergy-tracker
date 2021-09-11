@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import  Symptoms  from '../../components/Diary/Symptoms';
+import  Symptoms  from './Symptoms';
 
 jest.mock('../../components/Diary/ListSymptoms', () => {
   const ListSymptoms = () => <div />;

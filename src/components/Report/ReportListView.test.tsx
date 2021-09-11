@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, cleanup } from '@testing-library/react';
-import { ReportListView } from '../../components/Report/ReportListView';
+import { ReportListView } from './ReportListView';
 //import { ReportListItem } from '../../components/Report/ReportListItem';
-import BarChart  from '../../components/Report/BarChart';
+import BarChart  from './BarChart';
 
 jest.mock('../../components/Report/ReportListItem', () => {
   //const ReportListItem = jest.fn(() => <div />);

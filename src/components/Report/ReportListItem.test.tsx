@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, cleanup } from '@testing-library/react';
-import  ReportListItem  from '../../components/Report/ReportListItem';
+import  ReportListItem  from './ReportListItem';
 
 const date = '2020-09-17';
 const symptoms = [
