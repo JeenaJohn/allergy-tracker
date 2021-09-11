@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "build/dist",
+    "baseUrl" : "./src",
     "module": "esnext",
     "target": "es5",
     "lib": [
@@ -36,7 +36,9 @@
     "acceptance-tests",
     "webpack",
     "jest",
-    "src/setupTests.ts"
+    "**/setupTests.ts",
+    "**/*.test.ts",
+    "**/test-utils/*.ts*"
   ],
   "types": [
     "typePatches"
