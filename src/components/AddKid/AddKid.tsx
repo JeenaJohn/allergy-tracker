@@ -4,12 +4,12 @@ import { toast } from "react-toastify";
 import firebase from "../../firebase";
 
 type AddKidProps = {
-  userID:string|null;
+  userID: string | null;
 };
 
 type TKids = {
   id: string;
-  kidName:string;
+  kidName: string;
 };
 
 const AddKid: React.FC<AddKidProps> = (props) => {
@@ -30,7 +30,6 @@ const AddKid: React.FC<AddKidProps> = (props) => {
     /*  get list of existing kids */
 
     kidsRef.on("value", (snapshot) => {
-  
       let items = snapshot.val();
       let newState = [];
       for (let item in items) {
@@ -44,7 +43,7 @@ const AddKid: React.FC<AddKidProps> = (props) => {
     });
   }, [props]);
 
-  const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, checked } = e.target;
 
     switch (name) {
@@ -58,7 +57,11 @@ const AddKid: React.FC<AddKidProps> = (props) => {
     }
   };
 
-  const save = (e:React.FormEvent<HTMLFormElement>, kidName:string, defaultChecked:boolean) => {
+  const save = (
+    e: React.FormEvent<HTMLFormElement>,
+    kidName: string,
+    defaultChecked: boolean
+  ) => {
     e.preventDefault();
 
     /* save to DB only if no errors*/
@@ -106,7 +109,9 @@ const AddKid: React.FC<AddKidProps> = (props) => {
             name="kidName"
             className="kid-name-input"
             value={newKidName}
-            onChange={(e:React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              handleChange(e)
+            }
             required
           />
         </div>
@@ -169,5 +174,3 @@ const AddKid: React.FC<AddKidProps> = (props) => {
 };
 
 export default AddKid;
-
-

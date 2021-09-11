@@ -1,11 +1,11 @@
-import React from 'react';
-import { render, screen, cleanup } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import AdditionalData  from './AdditionalData';
+import React from "react";
+import { render, screen, cleanup } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import AdditionalData from "./AdditionalData";
 
-jest.mock('../../firebase', () => {
+jest.mock("../../firebase", () => {
   const data = {
-    1: { ac: true, nails: true, outdoor: 'playground', notes: 'Itchy' },
+    1: { ac: true, nails: true, outdoor: "playground", notes: "Itchy" },
   };
 
   const snapshot = {
@@ -25,7 +25,7 @@ jest.mock('../../firebase', () => {
   return returnVal;
 });
 
-describe('AdditionalData section renders properly', () => {
+describe("AdditionalData section renders properly", () => {
   beforeEach(() => {
     render(
       <AdditionalData
@@ -39,61 +39,61 @@ describe('AdditionalData section renders properly', () => {
 
   afterEach(cleanup);
 
-  test('Header is displayed ', () => {
-    expect(screen.getByText('Some more data to track')).toBeInTheDocument();
+  test("Header is displayed ", () => {
+    expect(screen.getByText("Some more data to track")).toBeInTheDocument();
   });
 
-  test('Input checkbox for A/C On exists', () => {
+  test("Input checkbox for A/C On exists", () => {
     const checkbox: HTMLInputElement = screen.getByLabelText(
-      'Was A/C On?'
+      "Was A/C On?"
     ) as HTMLInputElement;
     expect(checkbox).toBeInTheDocument();
     expect(checkbox).toBeTruthy();
-    userEvent.click(screen.getByText('Save'));
+    userEvent.click(screen.getByText("Save"));
   });
 
-  test('Existing entry for  A/C is displayed correctly', () => {
-    const checkbox = screen.getByLabelText('Was A/C On?');
+  test("Existing entry for  A/C is displayed correctly", () => {
+    const checkbox = screen.getByLabelText("Was A/C On?");
     expect(checkbox).toBeTruthy();
   });
 
-  test('Input checkbox for Nails trimmed exists', () => {
+  test("Input checkbox for Nails trimmed exists", () => {
     const checkbox: HTMLInputElement = screen.getByLabelText(
       "Kid's nails are trimmed?"
     ) as HTMLInputElement;
     expect(checkbox).toBeInTheDocument();
     userEvent.click(checkbox);
     expect(checkbox).toBeTruthy();
-    userEvent.click(screen.getByText('Save'));
+    userEvent.click(screen.getByText("Save"));
   });
 
-  test('Existing entry for  Nails trimmed is displayed correctly', () => {
+  test("Existing entry for  Nails trimmed is displayed correctly", () => {
     const checkbox = screen.getByLabelText("Kid's nails are trimmed?");
     expect(checkbox).toBeTruthy();
   });
 
-  test('Input element for entering Outdoor activities exists', () => {
-    const input = screen.getByLabelText('Outdoor Activities?');
+  test("Input element for entering Outdoor activities exists", () => {
+    const input = screen.getByLabelText("Outdoor Activities?");
     expect(input).toBeInTheDocument();
-    userEvent.type(input, 'Swimming');
-    userEvent.click(screen.getByText('Save'));
+    userEvent.type(input, "Swimming");
+    userEvent.click(screen.getByText("Save"));
   });
 
-  test('Existing entry for Outdoor activities is displayed correctly', () => {
+  test("Existing entry for Outdoor activities is displayed correctly", () => {
     const input: HTMLInputElement = screen.getByLabelText(
-      'Outdoor Activities?'
+      "Outdoor Activities?"
     ) as HTMLInputElement;
     expect(input).toBeInTheDocument();
-    expect(input.value).toBe('playground');
+    expect(input.value).toBe("playground");
   });
 
-  test('Input element for entering additional notes exists', () => {
-    const input = screen.getByText('Additional notes');
+  test("Input element for entering additional notes exists", () => {
+    const input = screen.getByText("Additional notes");
     expect(input).toBeInTheDocument();
   });
 
   test("'Save' button exists", () => {
-    const button = screen.getByRole('button', { name: 'Save' });
+    const button = screen.getByRole("button", { name: "Save" });
     expect(button).toBeInTheDocument();
   });
 });

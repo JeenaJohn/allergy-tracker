@@ -21,7 +21,9 @@ describe("Home component", () => {
   });
 
   test("Clicking 'Start Tracking' ", () => {
-    const link: HTMLLinkElement = screen.getByText("Start Tracking") as HTMLLinkElement;
+    const link: HTMLLinkElement = screen.getByText(
+      "Start Tracking"
+    ) as HTMLLinkElement;
     expect(link.href).toContain("/diary");
     userEvent.click(link);
   });

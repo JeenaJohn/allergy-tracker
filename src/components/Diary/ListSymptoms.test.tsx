@@ -24,7 +24,9 @@ describe("List Symptoms component", () => {
   });
 
   test("Itch Level displays the correct value", () => {
-    const input: HTMLInputElement  = screen.getByRole("spinbutton") as HTMLInputElement;
+    const input: HTMLInputElement = screen.getByRole(
+      "spinbutton"
+    ) as HTMLInputElement;
     expect(input.value).toBe("2");
   });
 
@@ -35,7 +37,9 @@ describe("List Symptoms component", () => {
   // });
 
   test("Notes displays the correct value", () => {
-    const input: HTMLInputElement = screen.getByRole("textbox") as HTMLInputElement;
+    const input: HTMLInputElement = screen.getByRole(
+      "textbox"
+    ) as HTMLInputElement;
     expect(input.value).toBe("Itchy");
   });
 });

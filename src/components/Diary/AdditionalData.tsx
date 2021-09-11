@@ -10,13 +10,13 @@ type AdditionalDataProps = {
 };
 
 type TAdditionalData = {
-  outdoor:string,
-  notes:string,
-  ac: boolean,
-  nails: boolean,
+  outdoor: string;
+  notes: string;
+  ac: boolean;
+  nails: boolean;
 };
 
-const  AdditionalData:React.FC<AdditionalDataProps> = (props) => {
+const AdditionalData: React.FC<AdditionalDataProps> = (props) => {
   const [additionalData, setAdditionalData] = useState<TAdditionalData>({
     outdoor: "",
     notes: "",
@@ -68,7 +68,10 @@ const  AdditionalData:React.FC<AdditionalDataProps> = (props) => {
       : setAdditionalData({ ...additionalData, [name]: value });
   };
 
-  const saveAdditionalData = (e:React.FormEvent<HTMLFormElement>, additionalData:TAdditionalData) => {
+  const saveAdditionalData = (
+    e: React.FormEvent<HTMLFormElement>,
+    additionalData: TAdditionalData
+  ) => {
     e.preventDefault();
 
     if (firebaseID === "") {
@@ -152,8 +155,6 @@ const  AdditionalData:React.FC<AdditionalDataProps> = (props) => {
       </form>
     </div>
   );
-}
+};
 
 export default AdditionalData;
-
-

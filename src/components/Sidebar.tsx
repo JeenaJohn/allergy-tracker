@@ -4,7 +4,7 @@ import logo from "../resources/images/sidebar_logo.svg";
 
 function Sidebar() {
   return (
-    <Menu width={"30%"} >
+    <Menu width={"30%"}>
       <div className="sidebar-logo-box">
         <img src={logo} alt="Logo" className="sidebar-logo" />
       </div>

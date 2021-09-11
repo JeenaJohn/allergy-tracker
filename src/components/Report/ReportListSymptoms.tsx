@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 
 type TSymptoms = {
-  id: string,
-  rash: boolean,
-  itchLevel: number,
-  itchTime: string,
-  notes: string,
+  id: string;
+  rash: boolean;
+  itchLevel: number;
+  itchTime: string;
+  notes: string;
 };
 
 type ReportListSymptomsProps = {
-  key: string,
-  symptom: TSymptoms,
+  key: string;
+  symptom: TSymptoms;
 };
 
 const ReportListSymptoms: React.FC<ReportListSymptomsProps> = (props) => {
@@ -44,7 +44,7 @@ const ReportListSymptoms: React.FC<ReportListSymptomsProps> = (props) => {
           </mark>
         ) : (
           <div>
-         Itch Level:
+            Itch Level:
             <span className="report-item-text">{itchLevel}</span>
           </div>
         )}
@@ -63,14 +63,12 @@ const ReportListSymptoms: React.FC<ReportListSymptomsProps> = (props) => {
       </div>
       {notes.trim().length !== 0 ? (
         <div className="report-item">
-           Notes
-            <span className="report-item-text">{notes}</span>
+          Notes
+          <span className="report-item-text">{notes}</span>
         </div>
       ) : null}
     </div>
   );
-}
+};
 
 export default ReportListSymptoms;
-
-

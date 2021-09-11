@@ -31,10 +31,7 @@ jest.mock("../../firebase", () => {
 
 describe("Food section renders properly", () => {
   beforeEach(() => {
-    render(<Food userID={null}
-      kidId={null}
-      date={null}
-      date_yyyy_mm={null}/>);
+    render(<Food userID={null} kidId={null} date={null} date_yyyy_mm={null} />);
   });
 
   afterEach(cleanup);
@@ -51,7 +48,9 @@ describe("Food section renders properly", () => {
   });
 
   test("Existing entry for breakfast is displayed correctly", () => {
-    const input: HTMLInputElement = screen.getByLabelText("Breakfast") as HTMLInputElement;
+    const input: HTMLInputElement = screen.getByLabelText(
+      "Breakfast"
+    ) as HTMLInputElement;
     expect(input).toBeInTheDocument();
     expect(input.value).toBe("Oats");
   });
@@ -64,7 +63,9 @@ describe("Food section renders properly", () => {
   });
 
   test("Existing entry for lunch is displayed correctly", () => {
-    const input: HTMLInputElement = screen.getByLabelText("Lunch") as HTMLInputElement;
+    const input: HTMLInputElement = screen.getByLabelText(
+      "Lunch"
+    ) as HTMLInputElement;
     expect(input).toBeInTheDocument();
     expect(input.value).toBe("Rice");
   });
@@ -77,7 +78,9 @@ describe("Food section renders properly", () => {
   });
 
   test("Existing entry for dinner is displayed correctly", () => {
-    const input: HTMLInputElement = screen.getByLabelText("Dinner") as HTMLInputElement;
+    const input: HTMLInputElement = screen.getByLabelText(
+      "Dinner"
+    ) as HTMLInputElement;
     expect(input).toBeInTheDocument();
     expect(input.value).toBe("Sandwich");
   });
@@ -90,7 +93,9 @@ describe("Food section renders properly", () => {
   });
 
   test("Existing entry for snacks is displayed correctly", () => {
-    const input: HTMLInputElement = screen.getByLabelText("Snacks") as HTMLInputElement;
+    const input: HTMLInputElement = screen.getByLabelText(
+      "Snacks"
+    ) as HTMLInputElement;
     expect(input).toBeInTheDocument();
     expect(input.value).toBe("Banana");
   });

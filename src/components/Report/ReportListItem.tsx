@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import ReportListSymptoms from './ReportListSymptoms';
+import React, { useState, useEffect } from "react";
+import ReportListSymptoms from "./ReportListSymptoms";
 
 type TSymptoms = {
   id: string;
@@ -41,22 +41,22 @@ type ReportItemProps = {
 const ReportListItem: React.FC<ReportItemProps> = (props) => {
   const [symptoms, setSymptoms] = useState<TSymptoms[]>([]);
   const [food, setFood] = useState<TFood>({
-    breakfast: '',
-    lunch: '',
-    dinner: '',
-    snacks: '',
+    breakfast: "",
+    lunch: "",
+    dinner: "",
+    snacks: "",
   });
   const [additionalData, setAdditionalData] = useState<TAdditionalData>({
-    outdoor: '',
-    notes: '',
+    outdoor: "",
+    notes: "",
     ac: false,
     nails: false,
   });
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState("");
 
   function formatDate(date: string) {
-    let datearray = date.split('-');
-    let newdate = datearray[1] + '-' + datearray[2] + '-' + datearray[0];
+    let datearray = date.split("-");
+    let newdate = datearray[1] + "-" + datearray[2] + "-" + datearray[0];
     setDate(newdate);
   }
 
@@ -81,10 +81,10 @@ const ReportListItem: React.FC<ReportItemProps> = (props) => {
 
     /* Food */
     let newStateFood: TFood = {
-      breakfast: '',
-      lunch: '',
-      dinner: '',
-      snacks: '',
+      breakfast: "",
+      lunch: "",
+      dinner: "",
+      snacks: "",
     };
     for (let key in props.food) {
       newStateFood = {
@@ -98,8 +98,8 @@ const ReportListItem: React.FC<ReportItemProps> = (props) => {
 
     /* AdditionalData */
     let newStateAdditionalData: TAdditionalData = {
-      outdoor: '',
-      notes: '',
+      outdoor: "",
+      notes: "",
       ac: false,
       nails: false,
     };
@@ -118,101 +118,101 @@ const ReportListItem: React.FC<ReportItemProps> = (props) => {
   return (
     <div>
       {/* Display Symptoms*/}
-      <div className='box-report '>
+      <div className="box-report ">
         <h3
-          className='heading-report-item 
-          u-margin-bottom-very-small u-bg-color-blue report-date'
+          className="heading-report-item 
+          u-margin-bottom-very-small u-bg-color-blue report-date"
         >
           Date: {date}
         </h3>
 
         {symptoms.map((symptom, index) => (
-          <div className='box-existing-symptoms' key={symptom.id}>
+          <div className="box-existing-symptoms" key={symptom.id}>
             <ReportListSymptoms key={symptom.id} symptom={symptom} />
           </div>
         ))}
 
         {/* Display Food*/}
 
-        <div className='report-align-text'>
+        <div className="report-align-text">
           <div
             className={`${
-              food.breakfast.length === 0 ? 'u-display-none' : 'report-item '
+              food.breakfast.length === 0 ? "u-display-none" : "report-item "
             }`}
           >
             Breakfast:
-            <span className='report-item-text'>{food.breakfast}</span>
+            <span className="report-item-text">{food.breakfast}</span>
           </div>
 
           <div
             className={`${
-              food.lunch.length === 0 ? 'u-display-none' : 'report-item '
+              food.lunch.length === 0 ? "u-display-none" : "report-item "
             }`}
           >
             Lunch:
-            <span className='report-item-text'>{food.lunch}</span>
+            <span className="report-item-text">{food.lunch}</span>
           </div>
           <div
             className={`${
-              food.dinner.length === 0 ? 'u-display-none' : 'report-item'
+              food.dinner.length === 0 ? "u-display-none" : "report-item"
             }`}
           >
             Dinner:
-            <span className='report-item-text'>{food.dinner}</span>
+            <span className="report-item-text">{food.dinner}</span>
           </div>
 
           <div
             className={`${
-              food.snacks.length === 0 ? 'u-display-none' : 'report-item'
+              food.snacks.length === 0 ? "u-display-none" : "report-item"
             }`}
           >
             Snacks:
-            <span className='report-item-text'>{food.snacks}</span>
+            <span className="report-item-text">{food.snacks}</span>
           </div>
         </div>
 
         {/* Display Additional Data*/}
 
-        <div className='report-align-text'>
+        <div className="report-align-text">
           <div
             className={`${
-              additionalData.ac ? 'report-item' : 'u-display-none'
+              additionalData.ac ? "report-item" : "u-display-none"
             }`}
           >
             A/C On?
-            <span className='report-item-text'>
-              {additionalData.ac ? 'Yes' : 'No'}
+            <span className="report-item-text">
+              {additionalData.ac ? "Yes" : "No"}
             </span>
           </div>
           <div
             className={`${
-              additionalData.nails ? 'report-item' : 'u-display-none'
+              additionalData.nails ? "report-item" : "u-display-none"
             }`}
           >
             Nails Trimmed?
-            <span className='report-item-text'>
-              {additionalData.nails ? 'Yes' : 'No'}
+            <span className="report-item-text">
+              {additionalData.nails ? "Yes" : "No"}
             </span>
           </div>
           <div
             className={`${
               additionalData.outdoor.length === 0
-                ? 'u-display-none'
-                : 'report-item'
+                ? "u-display-none"
+                : "report-item"
             }`}
           >
             Outdoor Activity:
-            <span className='report-item-text'>{additionalData.outdoor}</span>
+            <span className="report-item-text">{additionalData.outdoor}</span>
           </div>
           <div
             className={`${
               additionalData.notes.length === 0
-                ? 'u-display-none'
-                : 'report-item'
+                ? "u-display-none"
+                : "report-item"
             }`}
           >
             Additional Notes:
-            <span className='report-item-text'>{additionalData.notes}</span>
+            <span className="report-item-text">{additionalData.notes}</span>
           </div>
         </div>
       </div>

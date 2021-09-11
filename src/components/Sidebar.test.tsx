@@ -11,12 +11,14 @@ describe("Sidebar component", () => {
   afterEach(cleanup);
 
   test("Link to 'Home' exists' ", () => {
-    const link: HTMLLinkElement = screen.getByText("Home") as HTMLLinkElement ;
+    const link: HTMLLinkElement = screen.getByText("Home") as HTMLLinkElement;
     expect(link.href).toBe("http://localhost/");
   });
 
   test("Link to 'Add Kid' exists' ", () => {
-    const link: HTMLLinkElement = screen.getByText("Add Kid") as HTMLLinkElement;
+    const link: HTMLLinkElement = screen.getByText(
+      "Add Kid"
+    ) as HTMLLinkElement;
     expect(link.href).toContain("/kid");
   });
 
