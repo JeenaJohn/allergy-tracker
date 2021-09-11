@@ -17,11 +17,48 @@
     "build": "react-scripts build",
     "test": "jest",
     "test:watch": "jest --watch",
+    "lint": "eslint --ext ts,tsx src",
+    "lint:fix": "eslint --fix --ext ts,tsx src",
     "coverage": "react-scripts test --env=jsdom --watchAll=true --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app"
+    ],
+    "plugins": [
+      "@typescript-eslint",
+      "jest",
+      "react-hooks",
+      "prettier"
+    ],
+    "rules": {
+      "jest/no-disabled-tests": "warn",
+      "jest/no-focused-tests": "error",
+      "jest/no-identical-title": "error",
+      "jest/valid-expect": "error",
+      "react-hooks/exhaustive-deps": "error",
+      "react-hooks/rules-of-hooks": "error",
+      "prettier/prettier": "error"
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/*.ts?(x)"
+        ],
+        "rules" : {
+          "@typescript-eslint/ban-ts-comment" : "warn",
+          "import/no-extraneous-dependencies" : [ "error", {
+            "devDependencies" : [
+              "**/*.test.ts*",
+              "**/setupTests.ts",
+              "**/test-utils/*.ts*",
+              "**/*.spec.ts"
+            ]
+          }]
+        }
+      }
+    ]
   },
   "browserslist": {
     "production": [
