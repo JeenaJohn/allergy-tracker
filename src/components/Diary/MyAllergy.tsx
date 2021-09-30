@@ -144,7 +144,12 @@ const MyAllergy: React.FC<MyAllergyProps> = (props) => {
             onChange={(e) => handleEntryDate(e)}
             required
           />
-          <Calendar value={today} onChange={(e) => setDate(e.value)} />
+          <Calendar
+            value={today}
+            onChange={(e) => setDate(e.value)}
+            maxDate={new Date()}
+            showIcon
+          ></Calendar>
         </div>
         <h3
           className="heading-tertiary 
