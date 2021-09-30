@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import firebase from "../../firebase.js";
 import { ReportListView } from "./ReportListView";
+import { Calendar } from "primereact/calendar";
 
 type ReportProps = {
   userID: string | null;
@@ -124,6 +125,13 @@ const Report: React.FC<ReportProps> = (props) => {
             onChange={(e) => handleEntryMonth(e)}
             required
             data-testid="month-selector"
+          />
+          <Calendar
+            id="monthpicker"
+            view="month"
+            dateFormat="mm/yy"
+            yearNavigator
+            yearRange="2010:2030"
           />
         </div>
 
