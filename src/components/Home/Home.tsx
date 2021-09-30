@@ -40,8 +40,8 @@ const Home: React.FC<HomeProps> = (props) => {
         <div className="box-app-details">
           <p className="paragraph u-margin-bottom-medium">
             Knowing the allergy triggers is the most important step towards
-            preventing flareups. 'Track My Allergy' app helps you to track
-            symptoms as well as the possible triggers.
+            preventing flareups. We help you to track symptoms as well as the
+            possible triggers.
           </p>
           <ul className="list u-margin-bottom-medium u-margin-left">
             <li> Track Symptoms.</li>
@@ -59,9 +59,9 @@ const Home: React.FC<HomeProps> = (props) => {
           </p>
 
           <p className="paragraph">
-            Add a profile for your kid and start tracking their allergy
-            triggers!! You can add upto five kid's profiles and track the
-            allergies separately for each of them.
+            Add a profile for your kid and start tracking the allergy triggers.
+            You can add upto five profiles and track the allergies for each
+            profile.
           </p>
         </div>
       </section>

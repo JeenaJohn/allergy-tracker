@@ -116,7 +116,7 @@ const Symptoms: React.FC<SymptomsProps> = (props) => {
         className="heading-tertiary 
           u-text-left u-margin-bottom-small"
       >
-        Let's track Symptoms through out the day
+        Track Symptoms through out the day
       </h3>
       <form onSubmit={(e) => saveSymptoms(e, rash, itchLevel, itchTime, notes)}>
         <div className="question">

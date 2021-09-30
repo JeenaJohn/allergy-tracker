@@ -2,7 +2,7 @@ import React, { Suspense, lazy, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
-import { auth, provider } from "../firebase";
+import firebase, { auth, provider } from "../firebase";
 
 import "../App.css";
 import "react-toastify/dist/ReactToastify.css";

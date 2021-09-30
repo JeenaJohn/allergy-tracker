@@ -108,7 +108,7 @@ const AdditionalData: React.FC<AdditionalDataProps> = (props) => {
             />
           </div>
           <div className="question">
-            <label htmlFor="nails">Kid's nails are trimmed?</label>
+            <label htmlFor="nails">Nails are trimmed?</label>
             <input
               type="checkbox"
               name="nails"

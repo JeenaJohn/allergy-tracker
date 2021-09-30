@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-
 import firebase from "../../firebase";
 
 type AddKidProps = {
@@ -15,7 +14,7 @@ type TKids = {
 const AddKid: React.FC<AddKidProps> = (props) => {
   const [newKidName, setNewKidName] = useState<string>("");
   const [defaultChecked, setDefaultChecked] = useState(false);
-  const [firebaseID, setFirebaseID] = useState("");
+  // const [firebaseID, setFirebaseID] = useState("");
   // const [defaultKidID, setDefaultKidID] = useState("");
   // const [userMsg, setUserMsg] = useState("");
   //const [loginMsg, setLoginMsg] = useState("");
@@ -30,8 +29,8 @@ const AddKid: React.FC<AddKidProps> = (props) => {
     /*  get list of existing kids */
 
     kidsRef.on("value", (snapshot) => {
-      let items = snapshot.val();
-      let newState = [];
+      let items: any = snapshot.val();
+      let newState: any[] = [];
       for (let item in items) {
         newState.push({
           id: item,
@@ -44,7 +43,7 @@ const AddKid: React.FC<AddKidProps> = (props) => {
   }, [props]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, checked } = e.target;
+    const { name, value } = e.target;
 
     switch (name) {
       case "kidName":

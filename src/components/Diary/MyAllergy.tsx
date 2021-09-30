@@ -4,6 +4,7 @@ import Symptoms from "./Symptoms";
 import Food from "./Food";
 import AdditionalData from "./AdditionalData";
 import firebase from "../../firebase.js";
+import { Calendar } from "primereact/calendar";
 
 type MyAllergyProps = {
   userID: string | null;
@@ -22,6 +23,7 @@ const MyAllergy: React.FC<MyAllergyProps> = (props) => {
 
   const [entryDate, setEntryDate] = useState<string>("");
   const [entryMonth, setEntryMonth] = useState<string>("");
+  const [calDate, setCalDate] = useState<Date>();
 
   let today = new Date();
 
@@ -30,6 +32,7 @@ const MyAllergy: React.FC<MyAllergyProps> = (props) => {
 
   useEffect(() => {
     var defaultKid: string | null = null;
+    setCalDate(today);
 
     /*  check if a default kid is already set */
     defaultKidRef.on("value", (snapshot) => {
@@ -45,7 +48,7 @@ const MyAllergy: React.FC<MyAllergyProps> = (props) => {
     kidsRef.on("value", (snapshot) => {
       let items = snapshot.val();
 
-      let newState = [];
+      let newState: any[] = [];
       for (let item in items) {
         newState.push({
           id: item,
@@ -104,6 +107,10 @@ const MyAllergy: React.FC<MyAllergyProps> = (props) => {
     setEntryMonth(e.target.value.substring(0, 7));
   };
 
+  const setDate = (val: any) => {
+    let a = val;
+  };
+
   return (
     <div>
       <div className="u-center-text  u-padding-top-big u-margin-bottom-medium">
@@ -137,6 +144,7 @@ const MyAllergy: React.FC<MyAllergyProps> = (props) => {
             onChange={(e) => handleEntryDate(e)}
             required
           />
+          <Calendar value={today} onChange={(e) => setDate(e.value)} />
         </div>
         <h3
           className="heading-tertiary 
