@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import ListSymptoms from "./ListSymptoms";
 import firebase from "../../firebase.js";
+import { Calendar } from "primereact/calendar";
 
 type SymptomsProps = {
   userID: string | null;
@@ -157,6 +158,7 @@ const Symptoms: React.FC<SymptomsProps> = (props) => {
             value={itchTime}
             onChange={(e) => handleChange(e)}
           />
+          <Calendar timeOnly hourFormat="12" />
         </div>
         <div className="question">
           <label htmlFor="symptomNotes">Notes</label>
