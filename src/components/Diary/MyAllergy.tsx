@@ -136,6 +136,7 @@ const MyAllergy: React.FC<MyAllergyProps> = (props) => {
             onChange={(e) => setDiaryDate(e)}
             maxDate={today}
             showIcon
+            className="p-inputtext-lg u-text-color-dark"
           ></Calendar>
         </div>
         <h3
