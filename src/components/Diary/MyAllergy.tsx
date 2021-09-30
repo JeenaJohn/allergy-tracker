@@ -4,7 +4,7 @@ import Symptoms from "./Symptoms";
 import Food from "./Food";
 import AdditionalData from "./AdditionalData";
 import firebase from "../../firebase.js";
-import { Calendar } from "primereact/calendar";
+import { Calendar, CalendarChangeParams } from "primereact/calendar";
 
 type MyAllergyProps = {
   userID: string | null;
@@ -73,7 +73,7 @@ const MyAllergy: React.FC<MyAllergyProps> = (props) => {
     console.log("In My allergy", props);
   }, [props]);
 
-  const formatDate = (date_input: Date) => {
+  const formatDate = (date_input: any) => {
     let date_output;
     let date_output_yyyy_mm, dd_str, mm_str;
     let dd = date_input.getDate();
@@ -101,14 +101,8 @@ const MyAllergy: React.FC<MyAllergyProps> = (props) => {
     setSelectedKidId(e.target.id);
   };
 
-  const handleEntryDate = (e: React.ChangeEvent<any>) => {
-    //sets entry date and entry month
-    setEntryDate(e.target.value);
-    setEntryMonth(e.target.value.substring(0, 7));
-  };
-
-  const setDate = (val: any) => {
-    let a = val;
+  const setDiaryDate = (e: CalendarChangeParams) => {
+    e.value && formatDate(e.value);
   };
 
   return (
@@ -137,17 +131,10 @@ const MyAllergy: React.FC<MyAllergyProps> = (props) => {
           <label htmlFor="entryDate" className="heading-tertiary">
             Date
           </label>
-          <input
-            type="date"
-            name="entryDate"
-            value={entryDate}
-            onChange={(e) => handleEntryDate(e)}
-            required
-          />
           <Calendar
             value={today}
-            onChange={(e) => setDate(e.value)}
-            maxDate={new Date()}
+            onChange={(e) => setDiaryDate(e)}
+            maxDate={today}
             showIcon
           ></Calendar>
         </div>
