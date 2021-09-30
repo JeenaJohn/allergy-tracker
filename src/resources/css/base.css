@@ -8,8 +8,8 @@
 
 html {
   /* This defines what 1rem is*/
-  /*1 rem = 12px;  */
-  font-size: 12px;
+  /*1 rem = 10px;  */
+  font-size: 10px;
   text-rendering: optimizeLegibility;
 }
 
