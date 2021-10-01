@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import firebase from "../../firebase.js";
 import { ReportListView } from "./ReportListView";
-import { Calendar } from "primereact/calendar";
+import { Calendar, CalendarChangeParams } from "primereact/calendar";
 
 type ReportProps = {
   userID: string | null;
@@ -22,6 +22,7 @@ const Report: React.FC<ReportProps> = (props) => {
 
   const kidsRef = firebase.database().ref(props.userID + "/kids");
   const defaultKidRef = firebase.database().ref(props.userID + "/defaultKid");
+  let today = new Date();
 
   useEffect(() => {
     var defaultKid: string | null = null;
@@ -61,15 +62,14 @@ const Report: React.FC<ReportProps> = (props) => {
       setKids(newState);
     });
 
-    formatDate();
+    formatDate(today);
   }, [props]);
 
-  const formatDate = () => {
+  const formatDate = (inputDate: any) => {
     let mm_str;
-    let today = new Date();
 
-    let mm = today.getMonth() + 1;
-    let yyyy = today.getFullYear();
+    let mm = inputDate.getMonth() + 1;
+    let yyyy = inputDate.getFullYear();
 
     mm_str = mm;
 
@@ -86,8 +86,8 @@ const Report: React.FC<ReportProps> = (props) => {
     setSelectedKidId(e.target.id);
   };
 
-  const handleEntryMonth = (e: React.ChangeEvent<any>) => {
-    setEntryMonth(e.target.value);
+  const setReportDate = (e: CalendarChangeParams) => {
+    e.value && formatDate(e.value);
   };
 
   return (
@@ -118,20 +118,16 @@ const Report: React.FC<ReportProps> = (props) => {
             Month
           </label>
 
-          <input
-            type="month"
-            name="entryMonth"
-            value={entryMonth}
-            onChange={(e) => handleEntryMonth(e)}
-            required
-            data-testid="month-selector"
-          />
           <Calendar
             id="monthpicker"
+            value={today}
+            onChange={(e) => setReportDate(e)}
             view="month"
             dateFormat="mm/yy"
             yearNavigator
             yearRange="2010:2030"
+            showIcon
+            className="p-inputtext-lg"
           />
         </div>
 
