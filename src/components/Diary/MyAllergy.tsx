@@ -70,7 +70,6 @@ const MyAllergy: React.FC<MyAllergyProps> = (props) => {
     });
 
     formatDate(today);
-    console.log("In My allergy", props);
   }, [props]);
 
   const formatDate = (date_input: any) => {

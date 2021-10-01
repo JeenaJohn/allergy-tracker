@@ -67,9 +67,6 @@ const BarChart: React.FC<BarChartProps> = (props) => {
     svg.attr("width", width);
     svg.attr("height", height);
 
-    // console.log(`in render Svg attr width ${width}`);
-    // console.log(` in render Svg attr height ${height}`);
-
     const titleText = "Allergy Symptoms for the month";
     //const xAxisLabelText = "Days";
     const yAxisLabelText = "Itch Level";

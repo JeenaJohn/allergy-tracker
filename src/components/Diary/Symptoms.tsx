@@ -67,10 +67,9 @@ const Symptoms: React.FC<SymptomsProps> = (props) => {
           notes: items[item].notes,
         });
       }
-      console.log(existingData);
+
       setExistingSymptoms(existingData);
     });
-    console.log("in Symptoms", props);
   }, [props]);
 
   const handleChange = (e: React.ChangeEvent<any>) => {
@@ -98,7 +97,6 @@ const Symptoms: React.FC<SymptomsProps> = (props) => {
     notes: string
   ) => {
     e.preventDefault();
-    console.log(itchTime);
 
     /* adding data */
     symptomsRef.push({ rash, itchLevel, itchTime, notes });
@@ -115,8 +113,6 @@ const Symptoms: React.FC<SymptomsProps> = (props) => {
     if (e.value != undefined) {
       setCalendarTime(e.value);
       setItchTime(e.value.toLocaleTimeString());
-      console.log(e.value);
-      console.log(e.value.toLocaleTimeString());
     }
   };
 
