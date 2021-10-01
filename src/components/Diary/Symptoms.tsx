@@ -67,7 +67,7 @@ const Symptoms: React.FC<SymptomsProps> = (props) => {
           notes: items[item].notes,
         });
       }
-
+      console.log(existingData);
       setExistingSymptoms(existingData);
     });
     console.log("in Symptoms", props);

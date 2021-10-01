@@ -4,7 +4,7 @@ type TSymptoms = {
   id: string;
   rash: boolean;
   itchLevel: number;
-  itchTime: string;
+  itchTime: string | undefined;
   notes: string;
 };
 
@@ -52,13 +52,7 @@ const ListSymptoms: React.FC<ListSymptomsProps> = (props) => {
 
       <div className="report-item">
         Time when it was itchy?
-        <input
-          className="u-display-mode report-item-text"
-          type="time"
-          name="itchTime"
-          value={itchTime}
-          readOnly
-        />
+        <span className="report-item-text">{itchTime}</span>
       </div>
       {notes.trim().length !== 0 ? (
         <div className="report-item">
