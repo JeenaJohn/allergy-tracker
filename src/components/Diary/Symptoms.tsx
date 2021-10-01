@@ -21,8 +21,9 @@ type TExistingSymptoms = {
 
 const Symptoms: React.FC<SymptomsProps> = (props) => {
   const [rash, setRash] = useState<boolean>(false);
-  const [itchTime, setItchTime] = useState<string>("");
-  const [itchLevel, setItchLevel] = useState<any>(0);
+  const [itchTime, setItchTime] = useState<string>();
+  const [calendarTime, setCalendarTime] = useState<Date>();
+  const [itchLevel, setItchLevel] = useState<number>(0);
   const [notes, setNotes] = useState<string>("");
 
   const [existingSymptoms, setExistingSymptoms] = useState<TExistingSymptoms[]>(
@@ -50,6 +51,7 @@ const Symptoms: React.FC<SymptomsProps> = (props) => {
     setRash(false);
     setItchLevel(0);
     setItchTime("");
+    setCalendarTime(undefined);
     setNotes("");
 
     symptomsRef.on("value", (snapshot) => {
@@ -78,9 +80,6 @@ const Symptoms: React.FC<SymptomsProps> = (props) => {
       case "rash":
         setRash(checked);
         break;
-      case "itchTime":
-        setItchTime(value);
-        break;
       case "itchLevel":
         setItchLevel(value);
         break;
@@ -95,10 +94,11 @@ const Symptoms: React.FC<SymptomsProps> = (props) => {
     e: React.FormEvent<HTMLFormElement>,
     rash: boolean,
     itchLevel: number,
-    itchTime: string,
+    itchTime: string | undefined,
     notes: string
   ) => {
     e.preventDefault();
+    console.log(itchTime);
 
     /* adding data */
     symptomsRef.push({ rash, itchLevel, itchTime, notes });
@@ -108,7 +108,16 @@ const Symptoms: React.FC<SymptomsProps> = (props) => {
     setRash(false);
     setItchLevel(0);
     setItchTime("");
+    setCalendarTime(undefined);
     setNotes("");
+  };
+  const setSymptomsTime = (e: any) => {
+    if (e.value != undefined) {
+      setCalendarTime(e.value);
+      setItchTime(e.value.toLocaleTimeString());
+      console.log(e.value);
+      console.log(e.value.toLocaleTimeString());
+    }
   };
 
   return (
@@ -151,14 +160,14 @@ const Symptoms: React.FC<SymptomsProps> = (props) => {
 
         <div className="question">
           <label htmlFor="itchTime">What was the time when it was itchy?</label>
-          <input
-            type="time"
-            id="itchTime"
-            name="itchTime"
-            value={itchTime}
-            onChange={(e) => handleChange(e)}
+
+          <Calendar
+            value={calendarTime}
+            timeOnly
+            hourFormat="12"
+            onChange={(e) => setSymptomsTime(e)}
+            className="p-inputtext-lg "
           />
-          <Calendar timeOnly hourFormat="12" />
         </div>
         <div className="question">
           <label htmlFor="symptomNotes">Notes</label>
