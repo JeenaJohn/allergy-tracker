@@ -51,15 +51,8 @@ const ReportListSymptoms: React.FC<ReportListSymptomsProps> = (props) => {
       </div>
 
       <div className="report-item">
-        <label htmlFor="itchTime">Time when it was itchy?</label>
-        <input
-          className="u-display-mode"
-          type="time"
-          id="itchTime"
-          name="itchTime"
-          value={itchTime}
-          readOnly
-        />
+        Time when it was itchy?
+        <span className="report-item-text">{itchTime}</span>
       </div>
       {notes.trim().length !== 0 ? (
         <div className="report-item">
