@@ -25,7 +25,7 @@ const Symptoms: React.FC<SymptomsProps> = (props) => {
   const [rash, setRash] = useState<boolean>(false);
   const [itchTime, setItchTime] = useState<string>();
   const [calendarTime, setCalendarTime] = useState<Date>();
-  const [itchLevel, setItchLevel] = useState<number>(1);
+  const [itchLevel, setItchLevel] = useState<number>(0);
   const [notes, setNotes] = useState<string>("");
 
   const [existingSymptoms, setExistingSymptoms] = useState<TExistingSymptoms[]>(
@@ -51,7 +51,7 @@ const Symptoms: React.FC<SymptomsProps> = (props) => {
   useEffect(() => {
     //initialize the questionaire values
     setRash(false);
-    setItchLevel(1);
+    setItchLevel(0);
     setItchTime("");
     setCalendarTime(undefined);
     setNotes("");
@@ -106,7 +106,7 @@ const Symptoms: React.FC<SymptomsProps> = (props) => {
 
     //initialize the questionaire values after save
     setRash(false);
-    setItchLevel(1);
+    setItchLevel(0);
     setItchTime("");
     setCalendarTime(undefined);
     setNotes("");
@@ -138,10 +138,8 @@ const Symptoms: React.FC<SymptomsProps> = (props) => {
           />
         </div>
 
-        <div className="question">
-          <label htmlFor="itchLevel">Itch Level (scale of 0 - 10): </label>
-          {itchLevel}
-
+        <div className="question knob-flexbox">
+          <p className="u-padding-right-1rem">Itch Level (scale of 0 - 10): </p>
           <Knob
             value={itchLevel}
             min={0}
@@ -149,11 +147,11 @@ const Symptoms: React.FC<SymptomsProps> = (props) => {
             size={60}
             onChange={(e) => setItchLevel(e.value)}
           />
-          <span className="itch-level">
-            <i className="italics-text">
-              (Note: 0 is for no itching and 10 is for severe itching)
-            </i>{" "}
-          </span>
+        </div>
+        <div className="question">
+          <p className="italics-text">
+            (Note: 0 is for no itching and 10 is for severe itching)
+          </p>{" "}
         </div>
 
         <div className="question">
