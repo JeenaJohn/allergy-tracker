@@ -53,6 +53,41 @@
     "coverage": "react-scripts test --env=jsdom --watchAll=true --coverage",
     "eject": "react-scripts eject"
   },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:prettier/recommended"
+    ],
+    "plugins": [
+      "@typescript-eslint",
+      "jest",
+      "react-hooks",
+      "prettier"
+    ],
+    "rules": {
+      "jest/no-disabled-tests": "warn",
+      "jest/no-focused-tests": "error",
+      "jest/no-identical-title": "error",
+      "jest/valid-expect": "error",
+      "react-hooks/exhaustive-deps": "warn",
+      "react-hooks/rules-of-hooks": "error",
+      "prettier/prettier": "error"
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/*.ts?(x)"
+        ],
+        "rules": {
+          "@typescript-eslint/ban-ts-comment": "warn",
+          "no-unused-vars": "warn",
+          "react/prop-types": "warn",
+          "import/no-extraneous-dependencies": "warn"
+        }
+      }
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
