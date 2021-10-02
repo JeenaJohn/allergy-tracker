@@ -139,7 +139,12 @@ const Symptoms: React.FC<SymptomsProps> = (props) => {
         </div>
 
         <div className="question knob-flexbox">
-          <p className="u-padding-right-1rem">Itch Level (scale of 0 - 10): </p>
+          <p className="u-padding-right-1rem">
+            Itch Level (scale of 0 - 10):
+            <div className="italics-text">
+              (Note: 0 is for no itching and 10 is for severe itching)
+            </div>{" "}
+          </p>
           <Knob
             value={itchLevel}
             min={0}
@@ -147,11 +152,6 @@ const Symptoms: React.FC<SymptomsProps> = (props) => {
             size={60}
             onChange={(e) => setItchLevel(e.value)}
           />
-        </div>
-        <div className="question">
-          <p className="italics-text">
-            (Note: 0 is for no itching and 10 is for severe itching)
-          </p>{" "}
         </div>
 
         <div className="question">
