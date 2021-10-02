@@ -1,4 +1,3 @@
-
 @import "./resources/css/base.css";
 @import "./resources/css/typography.css";
 @import "./resources/css/header.css";
@@ -9,9 +8,4 @@
 @import "./resources/css/Grid.css";
 @import "./resources/css/sidebar.css";
 @import "./resources/css/queries.css";
-
-
-
-
-
-
+@import "./resources/css/primeReact.css";

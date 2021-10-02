@@ -7,15 +7,15 @@
   border-radius: 1rem;
   background-color: #9d6c19;
   color: #f3fafe;
-  padding: 0.4rem 0.6rem;
+  padding: 0.5rem 0.6rem;
 }
 
 .btn-medium {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 .btn-small {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .btn-disabled {

@@ -1,27 +1,57 @@
 {
   "name": "allergy-tracker",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "d3": "^6.2.0",
     "firebase": "^7.15.1",
+    "primeicons": "^4.1.0",
+    "primereact": "^6.6.0-rc.1",
     "react": "^16.13.1",
     "react-burger-menu": "^2.7.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
+    "react-scripts": "^4.0.3",
     "react-toastify": "^6.0.8"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "@types/d3": "^6.2.0",
+    "@types/jest": "^26.0.19",
+    "@types/node": "^14.14.6",
+    "@types/react": "^16.9.55",
+    "@types/react-burger-menu": "^2.6.2",
+    "@types/react-dom": "^16.9.9",
+    "@types/react-router-dom": "^5.1.6",
+    "@typescript-eslint/eslint-plugin": "^4.32.0",
+    "@typescript-eslint/parser": "^4.32.0",
+    "eslint": "^7.32.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jest": "^24.4.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.26.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "jest-svg-transformer": "^1.0.0",
+    "prettier": "^2.4.0",
+    "ts-jest": "^26.4.4",
+    "typescript": "^4.0.5"
   },
   "scripts": {
     "start": "react-scripts start",
+    "prebuild": "npm run lint",
     "build": "react-scripts build",
     "test": "jest",
     "test:watch": "jest --watch",
+    "tsc": "tsc --project ./tsconfig.json",
+    "lint": "tsc --project ./tsconfig.json && eslint --ext ts,tsx src",
+    "lint:fix": "eslint --fix --ext ts,tsx src",
     "coverage": "react-scripts test --env=jsdom --watchAll=true --coverage",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -42,20 +72,7 @@
       "!src/index.js"
     ]
   },
-  "devDependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "@types/d3": "^6.2.0",
-    "@types/jest": "^26.0.19",
-    "@types/node": "^14.14.6",
-    "@types/react": "^16.9.55",
-    "@types/react-burger-menu": "^2.6.2",
-    "@types/react-dom": "^16.9.9",
-    "@types/react-router-dom": "^5.1.6",
-    "jest": "^24.9.0",
-    "jest-svg-transformer": "^1.0.0",
-    "ts-jest": "^26.4.4",
-    "typescript": "^4.0.5"
+  "prettier": {
+    "endofLine": "auto"
   }
 }

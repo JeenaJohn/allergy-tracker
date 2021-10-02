@@ -1,0 +1,15 @@
+.p-knob-text {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+.p-knob {
+  display: inline-block;
+}
+
+.knob-flexbox {
+  display: flex;
+  align-items: center;
+}
+.p-inputtext {
+  color: rgb(28, 30, 33);
+}

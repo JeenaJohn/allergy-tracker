@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-
 import firebase from "../../firebase";
 
 type AddKidProps = {
-  userID:string|null;
+  userID: string | null;
 };
 
 type TKids = {
   id: string;
-  kidName:string;
+  kidName: string;
 };
 
 const AddKid: React.FC<AddKidProps> = (props) => {
   const [newKidName, setNewKidName] = useState<string>("");
   const [defaultChecked, setDefaultChecked] = useState(false);
-  const [firebaseID, setFirebaseID] = useState("");
+  // const [firebaseID, setFirebaseID] = useState("");
   // const [defaultKidID, setDefaultKidID] = useState("");
   // const [userMsg, setUserMsg] = useState("");
   //const [loginMsg, setLoginMsg] = useState("");
@@ -30,9 +29,8 @@ const AddKid: React.FC<AddKidProps> = (props) => {
     /*  get list of existing kids */
 
     kidsRef.on("value", (snapshot) => {
-  
-      let items = snapshot.val();
-      let newState = [];
+      let items: any = snapshot.val();
+      let newState: any[] = [];
       for (let item in items) {
         newState.push({
           id: item,
@@ -44,8 +42,8 @@ const AddKid: React.FC<AddKidProps> = (props) => {
     });
   }, [props]);
 
-  const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, checked } = e.target;
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
 
     switch (name) {
       case "kidName":
@@ -58,7 +56,11 @@ const AddKid: React.FC<AddKidProps> = (props) => {
     }
   };
 
-  const save = (e:React.FormEvent<HTMLFormElement>, kidName:string, defaultChecked:boolean) => {
+  const save = (
+    e: React.FormEvent<HTMLFormElement>,
+    kidName: string,
+    defaultChecked: boolean
+  ) => {
     e.preventDefault();
 
     /* save to DB only if no errors*/
@@ -106,7 +108,9 @@ const AddKid: React.FC<AddKidProps> = (props) => {
             name="kidName"
             className="kid-name-input"
             value={newKidName}
-            onChange={(e:React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              handleChange(e)
+            }
             required
           />
         </div>
@@ -169,5 +173,3 @@ const AddKid: React.FC<AddKidProps> = (props) => {
 };
 
 export default AddKid;
-
-

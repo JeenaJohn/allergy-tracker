@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 type TSymptoms = {
   id: string;
   rash: boolean;
   itchLevel: number;
-  itchTime: string;
+  itchTime: string | undefined;
   notes: string;
 };
 
@@ -40,30 +40,24 @@ const ListSymptoms: React.FC<ListSymptomsProps> = (props) => {
 
   return (
     <div>
-      <div className='report-item'>
+      <div className="report-item">
         Rashes?
-        <span className='report-item-text'>{rash ? 'Yes' : 'No'}</span>
+        <span className="report-item-text">{rash ? "Yes" : "No"}</span>
       </div>
 
-      <div className='report-item'>
+      <div className="report-item">
         Itch Level:
-        <span className='report-item-text'>{itchLevel}</span>
+        <span className="report-item-text">{itchLevel}</span>
       </div>
 
-      <div className='report-item'>
+      <div className="report-item">
         Time when it was itchy?
-        <input
-          className='u-display-mode report-item-text'
-          type='time'
-          name='itchTime'
-          value={itchTime}
-          readOnly
-        />
+        <span className="report-item-text">{itchTime}</span>
       </div>
       {notes.trim().length !== 0 ? (
-        <div className='report-item'>
+        <div className="report-item">
           Notes:
-          <span className='report-item-text'>{notes}</span>
+          <span className="report-item-text">{notes}</span>
         </div>
       ) : null}
     </div>

@@ -8,8 +8,8 @@
 
 html {
   /* This defines what 1rem is*/
-  /*1 rem = 12px;  */
-  font-size: 12px;
+  /*1 rem = 10px;  */
+  font-size: 10px;
   text-rendering: optimizeLegibility;
 }
 
@@ -19,7 +19,5 @@ body {
   /*font-size: 10px; */
   font-weight: 400, 700;
   line-height: 1.7;
-  color: rgb(5,5,5);
+  color: rgb(28, 30, 33);
 }
-
-

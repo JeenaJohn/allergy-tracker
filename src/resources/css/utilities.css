@@ -17,6 +17,9 @@
 .u-padding-right {
   padding-right: 2rem;
 }
+.u-padding-right-1rem {
+  padding-right: 1rem;
+}
 
 .u-margin-bottom-very-small {
   margin-bottom: 0.5rem !important;
@@ -63,20 +66,18 @@
   text-decoration: underline;
 }
 
-
-
 .u-capitalize {
   text-transform: capitalize;
 }
 
-.u-text-color-red{
+.u-text-color-red {
   color: red !important;
 }
-.u-text-color-blue{
+.u-text-color-blue {
   color: blue !important;
 }
 
-.u-bg-color-red{
+.u-bg-color-red {
   background-color: red !important;
 }
 
@@ -90,4 +91,8 @@
 
 .u-display-none {
   display: none;
+}
+
+.u-text-color-dark {
+  color: rgb(28, 30, 33) !important;
 }

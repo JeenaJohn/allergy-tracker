@@ -1,19 +1,19 @@
-import React, { Suspense, lazy, useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import React, { Suspense, lazy, useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
-import { auth, provider } from '../firebase';
+import firebase, { auth, provider } from "../firebase";
 
-import '../App.css';
-import 'react-toastify/dist/ReactToastify.css';
-import ErrorBoundary from './ErrorBoundary';
-import { Layout } from './Layout';
-import Home from './Home/Home';
+import "../App.css";
+import "react-toastify/dist/ReactToastify.css";
+import ErrorBoundary from "./ErrorBoundary";
+import { Layout } from "./Layout";
+import Home from "./Home/Home";
 
 /* Lazy loading for Add Kid, Diary and Report routes*/
-const AddKid = lazy(() => import('./AddKid/AddKid'));
-const MyAllergy = lazy(() => import('./Diary/MyAllergy'));
-const Report = lazy(() => import('./Report/Report'));
+const AddKid = lazy(() => import("./AddKid/AddKid"));
+const MyAllergy = lazy(() => import("./Diary/MyAllergy"));
+const Report = lazy(() => import("./Report/Report"));
 
 function App() {
   const [user, setUser] = useState<firebase.User | null>(null);
@@ -47,9 +47,8 @@ function App() {
 
   return (
     <Router>
-      <div className='main-layout'>
+      <div className="main-layout">
         <ErrorBoundary>
-
           <ToastContainer autoClose={3000} hideProgressBar={true} />
 
           {/* header nav bar and footer are in Layout component */}
@@ -62,27 +61,26 @@ function App() {
           >
             <Switch>
               <Route
-                path='/'
+                path="/"
                 exact
                 component={() => <Home userID={userID} />}
               />
               <Suspense fallback={<div>Loading...</div>}>
                 <Route
-                  path='/kid'
+                  path="/kid"
                   component={() => <AddKid userID={userID} />}
                 />
                 <Route
-                  path='/diary'
+                  path="/diary"
                   component={() => <MyAllergy userID={userID} />}
                 />
                 <Route
-                  path='/report'
+                  path="/report"
                   component={() => <Report userID={userID} />}
                 />
               </Suspense>
             </Switch>
           </Layout>
-          
         </ErrorBoundary>
       </div>
     </Router>
